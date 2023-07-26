@@ -62,7 +62,7 @@ class CreateAdController extends Controller
             'brand_id' => 'required',
             'model_id' => 'required',
             'condition' => 'required',
-            'part_accessory_type_id' => 'required',
+            // 'part_accessory_type_id' => 'required',
             'image_1' => 'required',
             'additional_information' => 'required',
             'city_name' => 'required',
@@ -98,7 +98,7 @@ class CreateAdController extends Controller
                 'brands_id' => $request->brand_id,
                 'models_id' => $request->model_id,
                 'ads_condition' => $request->condition,
-                'ads_parts_accessory_type' => $request->part_accessory_type_id,
+                'ads_parts_accessory_type' => null,
                 'ads_customers_id' => session('vendor_data')->id,
                 'is_top_id' => $istopad = isset($check_top_ad_count)  ? 1 : 0, // check top ad or not
                 'top_ad_expire_date' => $top_ad_expire_date = isset($check_top_ad_count)  ? Carbon::now()->addDays(1) : null, // check top ad or not

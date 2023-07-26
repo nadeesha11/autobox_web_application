@@ -152,7 +152,7 @@
 
                                     </div>
                                 </div>
-                                <div class="row shipping_calculator">
+                                {{-- <div class="row shipping_calculator">
                                     <div class="form-group col-lg-6">
                                         <div class="custom_select">
                                             <select id="accessory_type" name="part accessory type_id"
@@ -172,7 +172,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group row ">
                                     @if ($package_max_image >= 1)

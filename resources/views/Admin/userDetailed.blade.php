@@ -193,10 +193,10 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('admin.users.more.changeStatus', ['id' => $item->id]) }}"
-                                                            class="btn btn-xs p-2">status (admin)</a>
+                                                            class="btn btn-xs p-2 m-1">status (admin)</a>
                                                         <a href="{{ route('admin.users.more.deleteAd', ['id' => $item->id]) }}"
                                                             style="color: white; background-color: brown;"
-                                                            class="btn btn-xs p-2"
+                                                            class="btn btn-xs p-2 m-1"
                                                             onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
 
                                                     </td>
