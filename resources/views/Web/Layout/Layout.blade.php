@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="{{ asset('web/assets/css/plugins/animate.min.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs5.min.css" />
 
-
     <!-- Vendor JS-->
     <script src="{{ asset('web/assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
     <script src="{{ asset('web/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
@@ -44,6 +43,14 @@
     <script src="{{ asset('web/assets/js/plugins/jquery.elevatezoom.js') }}"></script>
     <!-- Template  JS -->
 
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css"
+        integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
+        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -55,8 +62,6 @@
         .footer-list li a {
             color: rgb(223, 213, 213) !important;
         }
-
-
 
         @media (max-width: 992px) {
             .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-top {
@@ -208,10 +213,10 @@
                                 <div class="search-location">
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <button class="btn "
-                                        style="background-color: white !important; border-color:rgba(0, 126, 84, 0.932)  !important; color:rgb(0, 117, 78) !important;">
+                                    <a href="" class="btn "
+                                        style="background-color: white !important; border-color:rgba(0, 126, 84, 0.932)  !important; color:rgb(0, 117, 78) !important; font-size:14px; padding:15px !important;">
                                         <i class="fa-solid fa-car"></i> Find My
-                                        Garage</button>
+                                        Garage</a>
                                 </div>
                                 <div class="header-action-icon-2">
                                     @if (session('vendor_data'))

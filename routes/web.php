@@ -13,6 +13,7 @@ use App\Http\Controllers\web\ActivatePackagesController;
 use App\Http\Controllers\web\adsManagementController;
 use App\Http\Controllers\web\allAdsController;
 use App\Http\Controllers\web\CreateAdController;
+use App\Http\Controllers\web\garageController;
 use App\Http\Controllers\web\homeController;
 use App\Http\Controllers\web\topAdsManagementController;
 use App\Http\Controllers\web\vendorManagement;
@@ -50,6 +51,13 @@ Route::get('/Web/dashBoard/adsmanagement/delete{id}', [VendorDashboard::class, '
 Route::post('/Web/dashBoard/adsmanagement/imageUpdate', [VendorDashboard::class, 'imageUpdate'])->name('web.dashboard.ad.imageEdit'); // ad image update
 Route::post('/Web/dashBoard/adsmanagement/addNewImage', [VendorDashboard::class, 'addNewImage'])->name('web.dashboard.ad.addNewImage'); // ad new images
 
+// garage routes for vendor 
+Route::get('/Web/dashBoard/garage', [garageController::class, 'index'])->name('web.dashboard.index'); // web garage display
+Route::post('/Web/dashBoard/garage/create', [garageController::class, 'create'])->name('web.garage.create'); // web garage create
+Route::get('/Web/dashBoard/garage/recieveData', [garageController::class, 'recieveData'])->name('web.garage.recieveData'); // web garage recieveData
+Route::get('web/garage/{id}/delete', [garageController::class, 'delete'])->name('web.garage.delete'); // web garage delete
+Route::get('web/garage/{id}/more', [garageController::class, 'more'])->name('web.garage.more'); // web garage more
+Route::get('web/dashboard/garage/editPage/{id}', [garageController::class, 'nextPage'])->name('web.garage.nextPage'); // web garage edit for new page
 
 
 Route::get('/Web/AllAds', [allAdsController::class, 'view'])->name('web.allads.view'); // web all ads display view

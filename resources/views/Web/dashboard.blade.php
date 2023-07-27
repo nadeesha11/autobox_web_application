@@ -70,21 +70,18 @@
                                                     class="fi-rs-shopping-bag mr-10"></i>Package Details</a>
                                         </li>
                                         <li class="nav-item">
-                                            {{-- <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab"
-                                                href="#track-orders" role="tab" aria-controls="track-orders"
-                                                aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Ads
-                                                Management</a> --}}
+
                                             <a class="nav-link" id="track-orders-tab"
                                                 href="{{ route('vendor.dashboard.adsmanagement') }}"><i
                                                     class="fi-rs-shopping-cart-check mr-10"></i>Ads
                                                 Management</a>
                                         </li>
-                                        {{-- <li class="nav-item">
-                                            <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address"
-                                                role="tab" aria-controls="address" aria-selected="true"><i
-                                                    class="fi-rs-marker mr-10"></i>My Address</a>
-                                        </li> --}}
+                                        <li class="nav-item">
 
+                                            <a class="nav-link" id="track-orders-tab"
+                                                href="{{ route('web.dashboard.index') }}"><i class="fa fa-car"
+                                                    aria-hidden="true"></i> Garage Management</a>
+                                        </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('web.vendor.logout') }}"><i
                                                     class="fi-rs-sign-out mr-10"></i>Logout</a>
@@ -110,8 +107,6 @@
                                                             Dealer</button>
                                                         <p style="font-size: 10px;">You need to fill basic details first</p>
                                                     @endif
-
-
                                                 </div>
 
                                             </div>
