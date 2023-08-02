@@ -58,7 +58,9 @@ Route::get('/Web/dashBoard/garage/recieveData', [garageController::class, 'recie
 Route::get('web/garage/{id}/delete', [garageController::class, 'delete'])->name('web.garage.delete'); // web garage delete
 Route::get('web/garage/{id}/more', [garageController::class, 'more'])->name('web.garage.more'); // web garage more
 Route::get('web/dashboard/garage/editPage/{id}', [garageController::class, 'nextPage'])->name('web.garage.nextPage'); // web garage edit for new page
+Route::post('/Web/dashBoard/garage/update', [garageController::class, 'update'])->name('web.garage.update'); // web garage update
 
+// web.garage.update
 
 Route::get('/Web/AllAds', [allAdsController::class, 'view'])->name('web.allads.view'); // web all ads display view
 Route::get('AllAds/Type{id}', [allAdsController::class, 'viewType'])->name('web.allads.vehicleType'); //view vehicletype

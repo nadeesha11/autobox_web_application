@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Intervention\Image\ImageManagerStatic as Image;
+use File;
 
 class garageController extends Controller
 {
@@ -27,7 +28,6 @@ class garageController extends Controller
             'address' => 'required|max:1000',
             'desc' => 'required|max:1000',
             'image' => 'required',
-
         ]);
 
         try {
@@ -46,7 +46,6 @@ class garageController extends Controller
                     $font->align('center'); // Set the text alignment
                     $font->valign('middle'); // Set the text vertical alignment
                     $font->angle(0); // Set the text rotation angle
-
 
                 });
                 $image->save(public_path("assets/myCustomThings/Garage/{$image_1}"));
@@ -102,6 +101,15 @@ class garageController extends Controller
 
     public function delete($id)
     {
+        //delete current image start
+        $image_to_be_deleted = DB::table('garage')->where('id', $id)->pluck('image')->first();
+
+        $image_path = public_path('assets/myCustomThings/Garage/' . $image_to_be_deleted);
+        if (File::exists($image_path)) {
+            File::delete($image_path);
+            //1690282460161.jpg  1690282462445.jpg  1690282463557.jpg
+        }
+
         $result = DB::table('garage')->where('id', $id)->delete();
         if ($result) {
             return response()->json(['code' => 'success', 'msg' => 'garage deleted succesfully']);
@@ -119,7 +127,46 @@ class garageController extends Controller
     public function nextPage($id)
     {
         $data = DB::table('garage')->find($id);
-
         return view('Web.garageEdit', compact("data"));
+    }
+
+    public function update(Request $request)
+    {
+
+        if ($request->hidden_single_type === 'Name') {
+            $rules['input'] = 'required|max:100';
+        } elseif ($request->hidden_single_type === 'url') {
+            $rules['input'] = 'required|url';
+        } else if ($request->hidden_single_type === 'Address') {
+            $rules['input'] = 'required|max:1000';
+        } else if ($request->hidden_single_type === 'Description') {
+            $rules['input'] = 'required|max:1000';
+        }
+
+        $request->validate($rules);
+
+        if ($request->hidden_single_type === 'Name') {
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'name' => $request->input
+            ]);
+        } elseif ($request->hidden_single_type === 'url') {
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'url' => $request->input
+            ]);
+        } elseif ($request->hidden_single_type === 'Address') {
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'address' => $request->input
+            ]);
+        } elseif ($request->hidden_single_type === 'Description') {
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'desc' => $request->input
+            ]);
+        }
+
+        if ($check) {
+            return response()->json(['code' => 'true', 'msg' => "Garage details edited."]);
+        } else {
+            return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+        }
     }
 }

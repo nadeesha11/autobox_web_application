@@ -61,15 +61,13 @@
                                         </tr>
                                         <tr>
                                             <th width="30%;">City</th>
-                                            <td width="70%;">{{ $data->city }} <a href="#"
-                                                    onclick="editDetails('city','{{ $data->city }}'); "><i
+                                            <td width="70%;">{{ $data->city }} <a href="#" onclick=""><i
                                                         class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
                                         </tr>
                                         <tr>
                                             <th width="30%;">Number</th>
-                                            <td width="70%;">+94 {{ $data->number }} <a href="#"
-                                                    onclick="editDetails('number','{{ $data->number }}'); "><i
+                                            <td width="70%;">+94 {{ $data->number }} <a href="#"><i
                                                         class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
                                         </tr>
@@ -84,14 +82,14 @@
                                         <tr>
                                             <th width="30%;">Address</th>
                                             <td width="70%;">{{ $data->address }} <a href="#"
-                                                    onclick="editDetails('address','{{ $data->address }}'); "><i
+                                                    onclick="editDetails2('Address','{{ $data->address }}'); "><i
                                                         class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
                                         </tr>
                                         <tr>
                                             <th width="30%;">Description</th>
                                             <td width="70%;">{{ $data->desc }} <a href="#"
-                                                    onclick="editDetails('desc','{{ $data->desc }}'); "><i
+                                                    onclick="editDetails2('Description','{{ $data->desc }}'); "><i
                                                         class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
                                         </tr>
@@ -157,10 +155,11 @@
                     <div class="modal-body">
                         <form id="update_single_values_form">
                             <div class="mb-3">
+                                <input type="hidden" name="id" value="{{ $data->id }}">
                                 <input type="hidden" id="hidden_single_type" name="hidden_single_type"
                                     class="clear_input">
                                 <label id="change_title_input" class="form-label"></label>
-                                <input type="text" name="single_value" style="border-color: #37B093 !important; "
+                                <input type="text" name="input" style="border-color: #37B093 !important; "
                                     class="form-control clear_input" id="single_input_value">
                                 <span style="color:#ee2c1e" id="display_input_error" class="clear_form_error"></span>
                             </div>
@@ -168,6 +167,37 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" id="change_single_data_btn" class="btn btn-primary">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="edit_garage2" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title2">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update_single_values_form2">
+                            <div class="mb-3">
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" id="hidden_single_type2" name="hidden_single_type"
+                                    class="clear_input">
+                                <label id="change_title_input2" class="form-label"></label>
+                                <textarea id="single_input_value2" style="border-color: #37B093 !important;" name="input" cols="30"
+                                    rows="10"></textarea>
+
+                                <span style="color:#ee2c1e" id="display_input_error2" class="clear_form_error"></span>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="change_single_data_btn2" class="btn btn-primary">Save changes</button>
                         </form>
                     </div>
                 </div>
@@ -182,15 +212,131 @@
         integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-        $(document).ready(function() {
-
-
-        });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        }); //ajax setup
 
         function editDetails(type, value) {
-            console.log(type, value);
+
+            $('.clear_input').val('');
+            $('.clear_form_error').html('');
+
+            $('#hidden_single_type').val(type);
+            $('#single_input_value').val(value);
+            var modalTitle = document.getElementById("modal_title");
+            var change_title_input = document.getElementById("change_title_input");
+            modalTitle.textContent = "Change " + type;
+            change_title_input.textContent = type;
+
             $('#edit_garage').modal('show');
-            //2023.07.27  need to create edit
+
         }
+
+        function editDetails2(type, value) {
+
+            $('.clear_input').val('');
+            $('.clear_form_error').html('');
+
+            $('#hidden_single_type2').val(type);
+            $('#single_input_value2').val(value);
+            var modalTitle = document.getElementById("modal_title2");
+            var change_title_input = document.getElementById("change_title_input2");
+            modalTitle.textContent = "Change " + type;
+            change_title_input.textContent = type;
+
+            $('#edit_garage2').modal('show');
+
+        }
+
+        $('#change_single_data_btn').click(function() {
+            document.getElementById("change_single_data_btn").disabled = true;
+            $('.clear_form_error').html('');
+
+            // to get csrf
+            var form = $('#update_single_values_form')[0];
+            var form_data = new FormData(form); // get form data
+
+            // ajax post start 
+            $.ajax({
+                url: "{{ route('web.garage.update') }}",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: form_data,
+                success: function(response) {
+                    console.log(response);
+                    document.getElementById("change_single_data_btn").disabled = false;
+                    if (response.code === "false") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response.msg,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }) //display error msg
+
+                        $('.clear_input').val('');
+                        $('.clear_form_error').html('');
+                        $('#edit_garage').modal('hide');
+
+                    } else {
+                        // Refresh the page
+                        location.reload();
+                    }
+                },
+                error: function(error) {
+                    document.getElementById("change_single_data_btn").disabled = false;
+                    $('#display_input_error').html(error.responseJSON.errors
+                        .input);
+                }
+            });
+        })
+
+        $('#change_single_data_btn2').click(function() {
+            document.getElementById("change_single_data_btn2").disabled = true;
+            $('.clear_form_error').html('');
+
+            // to get csrf
+            var form2 = $('#update_single_values_form2')[0];
+            var form_data2 = new FormData(form2); // get form data
+
+            // ajax post start 
+            $.ajax({
+                url: "{{ route('web.garage.update') }}",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: form_data2,
+                success: function(response) {
+                    console.log(response);
+                    document.getElementById("change_single_data_btn2").disabled = false;
+                    if (response.code === "false") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response.msg,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }) //display error msg
+
+                        $('.clear_input').val('');
+                        $('.clear_form_error').html('');
+                        $('#edit_garage2').modal('hide');
+
+                    } else {
+                        // Refresh the page
+                        location.reload();
+
+                    }
+
+                },
+                error: function(error) {
+                    document.getElementById("change_single_data_btn2").disabled = false;
+                    $('#display_input_error2').html(error.responseJSON.errors
+                        .input);
+
+                }
+            });
+        })
     </script>
 @endsection
