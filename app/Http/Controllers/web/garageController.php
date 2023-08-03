@@ -126,8 +126,9 @@ class garageController extends Controller
 
     public function nextPage($id)
     {
+        $cities =  DB::table('cities')->get('name_en');
         $data = DB::table('garage')->find($id);
-        return view('Web.garageEdit', compact("data"));
+        return view('Web.garageEdit', compact("data", "cities"));
     }
 
     public function update(Request $request)
@@ -141,6 +142,12 @@ class garageController extends Controller
             $rules['input'] = 'required|max:1000';
         } else if ($request->hidden_single_type === 'Description') {
             $rules['input'] = 'required|max:1000';
+        } else if ($request->hidden_single_type === 'City') {
+            $rules['input'] = 'required';
+        } else if ($request->hidden_single_type === 'Number') {
+            $rules['input'] = 'required|digits:9';
+        } else if ($request->hidden_single_type === 'Image') {
+            $rules['input'] = 'required';
         }
 
         $request->validate($rules);
@@ -161,6 +168,45 @@ class garageController extends Controller
             $check = DB::table('garage')->where('id', $request->id)->update([
                 'desc' => $request->input
             ]);
+        } elseif ($request->hidden_single_type === 'City') {
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'city' => $request->input
+            ]);
+        } elseif ($request->hidden_single_type === 'Number') {
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'number' => $request->input
+            ]);
+        } elseif ($request->hidden_single_type === 'Image') {
+
+            //delete current image start
+            $image_to_be_deleted = DB::table('garage')->where('id', $request->id)->pluck('image')->first();
+
+            $image_path = public_path('assets/myCustomThings/Garage/' . $image_to_be_deleted);
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+                //1690282460161.jpg  1690282462445.jpg  1690282463557.jpg
+            }
+            //rename image
+            $image_1 = time() . rand(1, 1000) . '.' . $request->input->extension();
+            $image = Image::make($request->file('input'))->resize(484, 600); // Create an instance of the image
+
+            $watermarkText = "AUTOBOX";
+            $image->text($watermarkText, $image->width() / 2, $image->height() / 2, function ($font) {
+                $font->file(public_path('fonts/FiraSans-Black.ttf')); // Replace with the actual path to your font file
+                $font->size(20); // Set the font size
+                $font->color(['255', '255', '255']); // Set the font color
+                $font->align('center'); // Set the text alignment
+                $font->valign('middle'); // Set the text vertical alignment
+                $font->angle(0); // Set the text rotation angle
+
+            });
+            $image->save(public_path("assets/myCustomThings/Garage/{$image_1}"));
+
+            //reaname image
+
+            $check = DB::table('garage')->where('id', $request->id)->update([
+                'image' => $image_1
+            ]);
         }
 
         if ($check) {
@@ -168,5 +214,12 @@ class garageController extends Controller
         } else {
             return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
         }
+    }
+
+    public function displayAllGarages()
+    {
+        $data =  DB::table('garage')->where('status', 1)->paginate(4);
+        $totalCount = $data->total();
+        return view('Web.garage', compact('data', 'totalCount'));
     }
 }

@@ -88,6 +88,13 @@
                         <span class="text">Top Ad Management</span>
                     </a>
                 </li>
+                <li class="menu-item{{ request()->routeIs('admin.garageManagement.view') ? ' active' : '' }}">
+                    <a class="menu-link" href="{{ route('admin.garageManagement.view') }}">
+                        <i style="margin-right: 10px !important; color: #028d2c;"
+                            class="fa-solid fa-medal fa-beat fa-lg"></i>
+                        <span class="text">Garage Management</span>
+                    </a>
+                </li>
 
                 <!--<li class="menu-item has-submenu">-->
                 <!--    <a class="menu-link" href="page-products-list.html">-->

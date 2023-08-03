@@ -61,14 +61,17 @@
                                         </tr>
                                         <tr>
                                             <th width="30%;">City</th>
-                                            <td width="70%;">{{ $data->city }} <a href="#" onclick=""><i
+                                            <td width="70%;">{{ $data->city }} <a href="#"
+                                                    onclick="editCity('City','{{ $data->city }}'); "><i
                                                         class="fa fa-pencil" aria-hidden="true"></i></a></td>
 
                                         </tr>
                                         <tr>
                                             <th width="30%;">Number</th>
                                             <td width="70%;">+94 {{ $data->number }} <a href="#"><i
-                                                        class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                                        class="fa fa-pencil"
+                                                        onclick="editDetailsPhone('Number','{{ $data->number }}'); "
+                                                        aria-hidden="true"></i></a></td>
 
                                         </tr>
                                         <tr>
@@ -99,9 +102,10 @@
 
                                                 <img style="height: 200px; width:200px;"
                                                     src="{{ asset('assets/myCustomThings/Garage/' . $data->image) }}"
-                                                    alt=""> <a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                    alt=""> <a href="#"
+                                                    onclick="editDetailsImage('Image','{{ $data->image }}'); "><i
+                                                        class="fa fa-pencil" aria-hidden="true"></i></a>
                                             </td>
-
                                         </tr>
                                     </tbody>
                                 </table>
@@ -202,6 +206,151 @@
                     </div>
                 </div>
             </div>
+        </div> <!-- Modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="edit_garageCityModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title_for_city">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="city_form">
+                            <div class="mb-3">
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" id="hidden_single_type_city" name="hidden_single_type"
+                                    class="clear_input">
+                                <label id="change_title_type_for_city" class="form-label"></label>
+                                <select name="input" id="cityEdit">
+                                    <option value="">Choose City</option>
+                                    @foreach ($cities as $item)
+                                        <option value="{{ $item->name_en }}">{{ $item->name_en }}</option>
+                                    @endforeach
+                                </select>
+                                <span style="color:#ee2c1e" id="change_garage_error" class="clear_form_error"></span>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="change_city_btn" class="btn btn-primary">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+
+
+        <div class="modal fade" id="edit_garage2" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title2">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update_single_values_form2">
+                            <div class="mb-3">
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" id="hidden_single_type2" name="hidden_single_type"
+                                    class="clear_input">
+                                <label id="change_title_input2" class="form-label"></label>
+                                <textarea id="single_input_value2" style="border-color: #37B093 !important;" name="input" cols="30"
+                                    rows="10"></textarea>
+
+                                <span style="color:#ee2c1e" id="display_input_error2" class="clear_form_error"></span>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="change_single_data_btn2" class="btn btn-primary">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editDetailsPhoneModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title_phone">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update_single_values_phone">
+                            <div class="mb-3">
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" id="hidden_single_type_phone" name="hidden_single_type"
+                                    class="clear_input">
+                                <label id="change_title_phone" class="form-label"></label>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon1">+94</span>
+                                    <input type="text" name="input" id="value_edit_phone"
+                                        style="border-color: #37B093 !important; " class="form-control clear_input"
+                                        placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+
+                                <span style="color:#ee2c1e" id="display_input_phone_error"
+                                    class="clear_form_error"></span>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="change_single_data_phone" class="btn btn-primary">Save
+                            changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editDetailsImageModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title_image">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update_single_values_image">
+                            <div class="mb-3">
+                                <input type="hidden" name="id" value="{{ $data->id }}">
+                                <input type="hidden" id="hidden_single_type_image" name="hidden_single_type"
+                                    class="clear_input">
+                                <label id="change_title_image" class="form-label"></label>
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+
+                                        <img style="height: 200px !important; width:70% !important;" id="garage_image"
+                                            src="" alt="">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input id="image_edit" data-allowed-file-extensions="jpeg  jpg "
+                                            data-max-file-size-preview="5M" name="input" class="dropify"
+                                            type="file">
+                                    </div>
+                                </div>
+                                <span style="color:#ee2c1e" id="display_input_image_error"
+                                    class="clear_form_error"></span>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" id="change_single_data_image_btn" class="btn btn-primary">Save
+                            changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -217,6 +366,48 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         }); //ajax setup
+
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a image here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            }
+        });
+
+        function editDetailsPhone(type, value) {
+
+            $('.clear_input').val('');
+            $('.clear_form_error').html('');
+
+            $('#hidden_single_type_phone').val(type);
+            $('#value_edit_phone').val(value);
+            var modalTitle = document.getElementById("modal_title_phone");
+            var change_title_input = document.getElementById("change_title_phone");
+            modalTitle.textContent = "Change " + type;
+            change_title_input.textContent = type;
+
+            $('#editDetailsPhoneModal').modal('show');
+
+        }
+
+        function editDetailsImage(type, value) {
+            var imageUrl = '/assets/myCustomThings/Garage/' + value;
+            $('#garage_image').attr('src', imageUrl);
+            $('.clear_input').val('');
+            $('.clear_form_error').html('');
+
+            $('#hidden_single_type_image').val(type);
+
+            var modalTitle = document.getElementById("modal_title_image");
+            var change_title_input = document.getElementById("change_title_image");
+            modalTitle.textContent = "Change " + type;
+            change_title_input.textContent = type;
+
+            $('#editDetailsImageModal').modal('show');
+
+        }
 
         function editDetails(type, value) {
 
@@ -247,6 +438,26 @@
             change_title_input.textContent = type;
 
             $('#edit_garage2').modal('show');
+
+        }
+
+        function editCity(type, value) {
+
+            $('.clear_input').val('');
+            $('.clear_form_error').html('');
+
+            $('#hidden_single_type_city').val(type);
+
+            //change type for select 
+            $('#cityEdit').val(value); // This will select the option with the specified value
+            //change type for select 
+
+            var modalTitle = document.getElementById("modal_title_for_city");
+            var change_title_input = document.getElementById("change_title_type_for_city");
+            modalTitle.textContent = "Change " + type;
+            change_title_input.textContent = type;
+
+            $('#edit_garageCityModal').modal('show');
 
         }
 
@@ -338,5 +549,138 @@
                 }
             });
         })
+
+        $('#change_city_btn').click(function() {
+            document.getElementById("change_city_btn").disabled = true;
+            $('.clear_form_error').html('');
+
+            // to get csrf
+            var city_form = $('#city_form')[0];
+            var city_form_city = new FormData(city_form); // get form data
+
+            // ajax post start 
+            $.ajax({
+                url: "{{ route('web.garage.update') }}",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: city_form_city,
+                success: function(response) {
+                    console.log(response);
+                    document.getElementById("change_city_btn").disabled = false;
+                    if (response.code === "false") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response.msg,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }) //display error msg
+
+                        $('.clear_input').val('');
+                        $('.clear_form_error').html('');
+                        $('#edit_garage2').modal('hide');
+
+                    } else {
+                        // Refresh the page
+                        location.reload();
+                    }
+                },
+                error: function(error) {
+                    document.getElementById("change_city_btn").disabled = false;
+                    $('#change_garage_error').html(error.responseJSON.errors
+                        .input);
+
+                }
+            });
+        });
+
+        $('#change_single_data_phone').click(function() {
+            document.getElementById("change_single_data_phone").disabled = true;
+            $('.clear_form_error').html('');
+
+            // to get csrf
+            var phone_form = $('#update_single_values_phone')[0];
+            var phone_form_city = new FormData(phone_form); // get form data
+
+            // ajax post start 
+            $.ajax({
+                url: "{{ route('web.garage.update') }}",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: phone_form_city,
+                success: function(response) {
+                    console.log(response);
+                    document.getElementById("change_single_data_phone").disabled = false;
+                    if (response.code === "false") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response.msg,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }) //display error msg
+
+                        $('.clear_input').val('');
+                        $('.clear_form_error').html('');
+                        $('#edit_garage2').modal('hide');
+
+                    } else {
+                        // Refresh the page
+                        location.reload();
+                    }
+                },
+                error: function(error) {
+                    document.getElementById("change_single_data_phone").disabled = false;
+                    $('#display_input_phone_error').html(error.responseJSON.errors
+                        .input);
+
+                }
+            });
+        })
+
+
+        $('#change_single_data_image_btn').click(function() {
+            document.getElementById("change_single_data_image_btn").disabled = true;
+            $('.clear_form_error').html('');
+
+            // to get csrf
+            var image_form = $('#update_single_values_image')[0];
+            var image_form_data = new FormData(image_form); // get form data
+
+            // ajax post start 
+            $.ajax({
+                url: "{{ route('web.garage.update') }}",
+                method: "POST",
+                processData: false,
+                contentType: false,
+                data: image_form_data,
+                success: function(response) {
+                    console.log(response);
+                    document.getElementById("change_single_data_image_btn").disabled = false;
+                    if (response.code === "false") {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: response.msg,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        }) //display error msg
+
+                        $('.clear_input').val('');
+                        $('.clear_form_error').html('');
+                        $('#editDetailsImageModal').modal('hide');
+
+                    } else {
+                        // Refresh the page
+                        location.reload();
+                    }
+                },
+                error: function(error) {
+                    document.getElementById("change_single_data_image_btn").disabled = false;
+                    $('#display_input_image_error').html(error.responseJSON.errors
+                        .input);
+
+                }
+            });
+        });
     </script>
 @endsection

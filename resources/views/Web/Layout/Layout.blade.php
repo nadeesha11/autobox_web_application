@@ -213,7 +213,7 @@
                                 <div class="search-location">
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <a href="" class="btn "
+                                    <a href="{{ route('web.garage.findMyGarage') }}" class="btn"
                                         style="background-color: white !important; border-color:rgba(0, 126, 84, 0.932)  !important; color:rgb(0, 117, 78) !important; font-size:14px; padding:15px !important;">
                                         <i class="fa-solid fa-car"></i> Find My
                                         Garage</a>

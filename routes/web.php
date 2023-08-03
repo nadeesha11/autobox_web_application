@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\packagesController;
 use App\Http\Controllers\admin\topAdManagementController;
 use App\Http\Controllers\admin\VehicleTypesController;
 use App\Http\Controllers\admin\viewUsersController;
+use App\Http\Controllers\adminpanel\garageManagementController;
 use App\Http\Controllers\web\ActivatePackagesController;
 use App\Http\Controllers\web\adsManagementController;
 use App\Http\Controllers\web\allAdsController;
@@ -37,6 +38,7 @@ use Illuminate\Support\Facades\Route;
 // dashboard start 
 Route::get('/Web/dashBoard', [VendorDashboard::class, 'index'])->name('web.dashboardIndex'); // web dashboard
 
+Route::get('/Web/FindGarage', [garageController::class, 'displayAllGarages'])->name('web.garage.findMyGarage'); // web findMygarage
 
 Route::post('/Web/dashBoard/getCity', [VendorDashboard::class, 'getCity'])->name('web.dashboard.getCity'); // web get city
 Route::post('/Web/dashBoard/basicFormDetailsCreate', [VendorDashboard::class, 'createBasicForm'])->name('web.dashboard.basicFormDetailsCreate'); // dashboard basicFormDetailsCreate
@@ -59,8 +61,6 @@ Route::get('web/garage/{id}/delete', [garageController::class, 'delete'])->name(
 Route::get('web/garage/{id}/more', [garageController::class, 'more'])->name('web.garage.more'); // web garage more
 Route::get('web/dashboard/garage/editPage/{id}', [garageController::class, 'nextPage'])->name('web.garage.nextPage'); // web garage edit for new page
 Route::post('/Web/dashBoard/garage/update', [garageController::class, 'update'])->name('web.garage.update'); // web garage update
-
-// web.garage.update
 
 Route::get('/Web/AllAds', [allAdsController::class, 'view'])->name('web.allads.view'); // web all ads display view
 Route::get('AllAds/Type{id}', [allAdsController::class, 'viewType'])->name('web.allads.vehicleType'); //view vehicletype
@@ -134,6 +134,13 @@ Route::get('/forgetPasswordToken{token}', [adminManagement::class, 'showResetFor
 // admin panel protected routes
 Route::group(['middleware' => ['adminCheck']], function () {
   Route::get('/admin/dashboard/index', [dashBoardController::class, 'index'])->name('admin.dashboard'); // admin dashboard
+
+  Route::get('/admin/garageManagement/view', [garageManagementController::class, 'index'])->name('admin.garageManagement.view'); // garage management
+  Route::get('/admin/garageManagement/getData', [garageManagementController::class, 'getData'])->name('admin.garage.recieveData'); // admin garage getData
+  Route::get('/admin/garageManagement/{id}/more', [garageManagementController::class, 'more'])->name('admin.garage.more'); // admin garage more
+  Route::post('/admin/garageManagement/update', [garageManagementController::class, 'update'])->name('admin.garage.update'); // admin garage update
+
+
 
   Route::get('/admin/users', [viewUsersController::class, 'index'])->name('admin.users.view'); // admin users view
   Route::get('/admin/users/getData', [viewUsersController::class, 'getData'])->name('admin.users.recieveData'); // admin users getData
