@@ -96,19 +96,12 @@
                     </a>
                 </li>
 
-                <!--<li class="menu-item has-submenu">-->
-                <!--    <a class="menu-link" href="page-products-list.html">-->
-                <!--        <i class="icon material-icons md-shopping_bag"></i>-->
-                <!--        <span class="text">Products</span>-->
-                <!--    </a>-->
-                <!--    <div class="submenu">-->
-                <!--        <a href="page-products-list.html">Product List</a>-->
-                <!--        <a href="page-products-grid.html">Product grid</a>-->
-                <!--        <a href="page-products-grid-2.html">Product grid 2</a>-->
-                <!--        <a href="page-categories.html">Categories</a>-->
-                <!--    </div>-->
-                <!--</li>-->
-
+                <li class="menu-item{{ request()->routeIs('admin.sliderManagement.view') ? ' active' : '' }}">
+                    <a class="menu-link" href="{{ route('admin.sliderManagement.view') }}">
+                        <i style="margin-right: 10px !important; color: #028d2c;" class="fa-solid fa-image fa-beat"></i>
+                        <span class="text">Slider Management</span>
+                    </a>
+                </li>
 
 
             </ul>
@@ -123,19 +116,7 @@
     <main class="main-wrap">
         <header class="main-header navbar">
             <div class="col-search">
-                <!--<form class="searchform">-->
-                <!--    <div class="input-group">-->
-                <!--        <input list="search_terms" type="text" class="form-control" placeholder="Search term" />-->
-                <!--        <button class="btn btn-light bg" type="button"><i-->
-                <!--                class="material-icons md-search"></i></button>-->
-                <!--    </div>-->
-                <!--    <datalist id="search_terms">-->
-                <!--        <option value="Products"></option>-->
-                <!--        <option value="New orders"></option>-->
-                <!--        <option value="Apple iphone"></option>-->
-                <!--        <option value="Ahmed Hassan"></option>-->
-                <!--    </datalist>-->
-                <!--</form>-->
+
             </div>
             <div class="col-nav">
                 <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"><i
@@ -147,28 +128,12 @@
                             <span class="badge rounded-pill">3</span>
                         </a>
                     </li>
-                    <!--<li class="nav-item">-->
-                    <!--    <a class="nav-link btn-icon darkmode" href="#"> <i-->
-                    <!--            class="material-icons md-nights_stay"></i> </a>-->
-                    <!--</li>-->
+
                     <li class="nav-item">
                         <a href="#" class="requestfullscreen nav-link btn-icon"><i
                                 class="material-icons md-cast"></i></a>
                     </li>
-                    <!--<li class="dropdown nav-item">-->
-                    <!--    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage"-->
-                    <!--        aria-expanded="false"><i class="material-icons md-public"></i></a>-->
-                    <!--    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">-->
-                    <!--        <a class="dropdown-item text-brand" href="#"><img-->
-                    <!--                src="assets/imgs/theme/flag-us.png" alt="English" />English</a>-->
-                    <!--        <a class="dropdown-item" href="#"><img src="assets/imgs/theme/flag-fr.png"-->
-                    <!--                alt="Français" />Français</a>-->
-                    <!--        <a class="dropdown-item" href="#"><img src="assets/imgs/theme/flag-jp.png"-->
-                    <!--                alt="Français" />日本語</a>-->
-                    <!--        <a class="dropdown-item" href="#"><img src="assets/imgs/theme/flag-cn.png"-->
-                    <!--                alt="Français" />中国人</a>-->
-                    <!--    </div>-->
-                    <!--</li>-->
+
                     <li class="dropdown nav-item">
                         <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount"
                             aria-expanded="false"> <img class="img-xs rounded-circle"

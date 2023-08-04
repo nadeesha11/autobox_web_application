@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\BrandsController;
 use App\Http\Controllers\admin\dashBoardController;
 use App\Http\Controllers\admin\modelsController;
 use App\Http\Controllers\admin\packagesController;
+use App\Http\Controllers\admin\sliderManagementController;
 use App\Http\Controllers\admin\topAdManagementController;
 use App\Http\Controllers\admin\VehicleTypesController;
 use App\Http\Controllers\admin\viewUsersController;
@@ -42,6 +43,7 @@ Route::get('/Web/FindGarage', [garageController::class, 'displayAllGarages'])->n
 Route::get('/Web/FindGarageDetailed/{id}', [garageController::class, 'displayGarageDetailed'])->name('web.garage.detailed'); // web findMygarage detailed
 Route::post('/Web/FindGarage/searchGarage', [garageController::class, 'searchGarage'])->name('web.search.garageDisplay'); // web search garage
 Route::get('/display/garage/results', [garageController::class, 'displayGarageResults'])->name('web.display.garage.results');
+
 
 
 
@@ -145,7 +147,12 @@ Route::group(['middleware' => ['adminCheck']], function () {
   Route::get('/admin/garageManagement/{id}/more', [garageManagementController::class, 'more'])->name('admin.garage.more'); // admin garage more
   Route::post('/admin/garageManagement/update', [garageManagementController::class, 'update'])->name('admin.garage.update'); // admin garage update
 
+  Route::get('/admin/sliderManagement/view', [sliderManagementController::class, 'index'])->name('admin.sliderManagement.view'); // slider management
+  Route::post('/admin/sliderManagement/create', [sliderManagementController::class, 'create'])->name('admin.slider.create'); // slider create
+  Route::get('/admin/sliderManagement/recieveData', [sliderManagementController::class, 'recieveData'])->name('admin.slider_management.recieveData'); // slider recieve data
+  Route::get('/admin/slider/{id}/delete', [sliderManagementController::class, 'delete'])->name('admin.sliderManagement.delete'); // slider management delete
 
+  // url: '{{ url('admin/slider') }}' + '/' + id + '/delete',
 
   Route::get('/admin/users', [viewUsersController::class, 'index'])->name('admin.users.view'); // admin users view
   Route::get('/admin/users/getData', [viewUsersController::class, 'getData'])->name('admin.users.recieveData'); // admin users getData

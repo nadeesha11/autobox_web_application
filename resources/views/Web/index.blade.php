@@ -77,35 +77,27 @@
         <section class="home-slider position-relative">
             <div class="home-slide-cover">
                 <div class="hero-slider-1 style-4 dot-style-1 dot-style-1-position-1">
-                    <div class="single-hero-slider rectangle single-animation-wrap" style="position: relative;">
-                        <div class="slider-content">
-                            <h1 class="display-2 mb-40">
-                                <span style="color: white !important;"> WELCOME TO </span>
-                                <span style="color: #FCCC21;">AUTOBOX</span>
-                            </h1>
-                            <p style="font-weight:bold !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;"
-                                class="mb-65">
-                                <span style="color: white !important;">THE LARGEST</span>
-                                <span style="color: #37B093;">AUTO PARTS</span>
-                                <span style="color: rgb(255, 255, 255) !important;"> MARKETPLACE IN </span>
-                                <span style="color: #FCCC21; ">SRI LANKA</span>
-                            </p>
-                            {{-- <div class="input-group mb-3">
-                                <input
-                                    style="background-color: #ffffffd2 !important; border-radius:24px 0 0 24px !important;"
-                                    type="text" class="form-control" placeholder="Search"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" />
-                                <span
-                                    style="background-color:#37B093;  width:50px !important; border-radius:0 24px  24px 0 !important;"
-                                    class="input-group-text" id="basic-addon2">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </span>
-                            </div> --}}
+                    @foreach ($slider as $item)
+                        <div class="single-hero-slider rectangle single-animation-wrap" style="position: relative;">
+                            <div class="slider-content">
+                                <h1 class="display-2 mb-40">
+                                    <span style="color: white !important;"> WELCOME TO </span>
+                                    <span style="color: #FCCC21;">AUTOBOX</span>
+                                </h1>
+                                <p style="font-weight:bold !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;"
+                                    class="mb-65">
+                                    <span style="color: white !important;">THE LARGEST</span>
+                                    <span style="color: #37B093;">AUTO PARTS</span>
+                                    <span style="color: rgb(255, 255, 255) !important;"> MARKETPLACE IN </span>
+                                    <span style="color: #FCCC21; ">SRI LANKA</span>
+                                </p>
+
+                            </div>
+                            <div
+                                style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('{{ asset('assets/myCustomThings/slider/' . $item->image) }}'); background-size: cover; background-position: center; filter: blur(1px); z-index: -1;">
+                            </div>
                         </div>
-                        <div
-                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('{{ asset('web/assets/imgs/slider/slider_test.jpg') }}'); background-size: cover; background-position: center; filter: blur(1px); z-index: -1;">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="slider-arrow hero-slider-1-arrow"></div>
             </div>
@@ -126,7 +118,6 @@
                                 <option value="{{ $district }}">{{ $district }}</option>
                             @endforeach
                         </select>
-
                     </div>
                     <div class="select2-web-container">
                         <select name="type" class="js-example-basic-single" onchange="handleTypeChange(this.value)"

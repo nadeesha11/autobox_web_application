@@ -13,6 +13,7 @@ class homeController extends Controller
     public function index()
     {
         $districts = DB::table('districts')->pluck('name_en');
+        $slider = DB::table('slider')->get(); // sliders
         $vehicle_types = DB::table('vehicle_types')->where('vt_status', 1)->pluck('vt_name', 'id');
 
         $latest_ads = DB::table('ads')
@@ -27,7 +28,7 @@ class homeController extends Controller
             ->get();
 
 
-        return view('Web.index', compact(['latest_ads', 'districts', 'vehicle_types']));
+        return view('Web.index', compact(['latest_ads', 'districts', 'vehicle_types', 'slider']));
     }
 
     public function detailed($id)
