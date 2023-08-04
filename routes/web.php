@@ -39,6 +39,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/Web/dashBoard', [VendorDashboard::class, 'index'])->name('web.dashboardIndex'); // web dashboard
 
 Route::get('/Web/FindGarage', [garageController::class, 'displayAllGarages'])->name('web.garage.findMyGarage'); // web findMygarage
+Route::get('/Web/FindGarageDetailed/{id}', [garageController::class, 'displayGarageDetailed'])->name('web.garage.detailed'); // web findMygarage detailed
+Route::post('/Web/FindGarage/searchGarage', [garageController::class, 'searchGarage'])->name('web.search.garageDisplay'); // web search garage
+Route::get('/display/garage/results', [garageController::class, 'displayGarageResults'])->name('web.display.garage.results');
+
+
 
 Route::post('/Web/dashBoard/getCity', [VendorDashboard::class, 'getCity'])->name('web.dashboard.getCity'); // web get city
 Route::post('/Web/dashBoard/basicFormDetailsCreate', [VendorDashboard::class, 'createBasicForm'])->name('web.dashboard.basicFormDetailsCreate'); // dashboard basicFormDetailsCreate

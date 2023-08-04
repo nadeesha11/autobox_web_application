@@ -218,8 +218,30 @@ class garageController extends Controller
 
     public function displayAllGarages()
     {
+        $city = DB::table('cities')->get('name_en');
         $data =  DB::table('garage')->where('status', 1)->paginate(4);
         $totalCount = $data->total();
-        return view('Web.garage', compact('data', 'totalCount'));
+        return view('Web.garage', compact('data', 'totalCount', 'city'));
+    }
+
+    public function displayGarageDetailed($id)
+    {
+
+        $data = DB::table('garage')->where('status', 1)->where('id', $id)->first();
+        return view('Web.garageDetailed', compact('data'));
+    }
+
+    public function searchGarage(Request $request)
+    {
+        $city = $request->district;
+        return redirect()->route('web.display.garage.results', ['city' => $city]);
+    }
+
+    public function displayGarageResults(Request $request)
+    {
+        $city = $request->input('city');
+        $data = DB::table('garage')->where('city', $city)->where('status', 1)->paginate(4);
+        $totalCount = $data->total();
+        return view('Web.filterdGarage', compact('data', 'totalCount', 'city'));
     }
 }

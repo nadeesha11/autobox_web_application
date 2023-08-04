@@ -1,52 +1,19 @@
 @extends('Web.Layout.Layout')
 @section('content')
-    <style>
-        .select2-web-container {
-            width: 100% !important;
-            margin: 4px !important;
-            padding: 4px !important;
-            /* background-color: #5edba1 !important; */
-        }
-
-        .js-example-basic-single+.select2-container .select2-selection {
-            border-radius: 10px !important;
-            height: 58px !important;
-            background-color: #5edba1 !important;
-            text-align: center !important;
-        }
-    </style>
-
     <main class="main pages mb-80">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Garage List
+                    <span></span> Garage Filterd List
                 </div>
             </div>
         </div>
         <div class="page-content pt-50">
             <div class="container">
                 <div class="archive-header-2 text-center">
-                    <h1 class="display-2 mb-50">Garage List</h1>
-                    <div class="row">
-                        <div class="col-lg-5 mx-auto">
-                            <form action="{{ route('web.search.garageDisplay') }}" method="POST">
-                                @csrf
-                                <div class="select2-web-container">
-                                    <select name="district" class="js-example-basic-single"
-                                        style="background-color: white; margin-right: 4px; height: 55px !important;">
-                                        <option value="">Choose Location</option>
-                                        @foreach ($city as $item)
-                                            <option value="{{ $item->name_en }}">{{ $item->name_en }}</option>
-                                        @endforeach
-                                    </select>
+                    <h1 class="display-2 mb-50">Garage List ({{ $city }})</h1>
 
-                                </div>
-                                <button type="submit"><i class="fi-rs-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
 
 
@@ -110,13 +77,4 @@
             </div>
         </div>
     </main>
-
-    <script>
-        $(document).ready(function() {
-            $('.js-example-basic-single').select2({
-
-            });
-
-        });
-    </script>
 @endsection
