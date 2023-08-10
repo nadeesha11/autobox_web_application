@@ -80,17 +80,13 @@
                     @foreach ($slider as $item)
                         <div class="single-hero-slider rectangle single-animation-wrap" style="position: relative;">
                             <div class="slider-content">
+                                <p class=" mb-40">Best way of the delivering</p>
                                 <h1 class="display-2 mb-40">
-                                    <span style="color: white !important;"> WELCOME TO </span>
-                                    <span style="color: #FCCC21;">AUTOBOX</span>
+                                    <span style="color: white !important;">Your Journey <br>
+                                        With</span>
+                                    <span style="color: #FCCC21;">AutoBox</span>
                                 </h1>
-                                <p style="font-weight:bold !important; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;"
-                                    class="mb-65">
-                                    <span style="color: white !important;">THE LARGEST</span>
-                                    <span style="color: #37B093;">AUTO PARTS</span>
-                                    <span style="color: rgb(255, 255, 255) !important;"> MARKETPLACE IN </span>
-                                    <span style="color: #FCCC21; ">SRI LANKA</span>
-                                </p>
+                                <p class=" mb-40">Lorem ipsum dolor sit amet, consectetur</p>
 
                             </div>
                             <div
@@ -105,11 +101,14 @@
 
 
         <div class="d-none d-lg-block web_filter_div"
-            style="padding: 20px !important; background-color: rgb(255, 255, 255) !important;">
+            style="padding: 10px !important; background-color: #00A791 !important; border: 2px solid #41d49cce; ">
+
             <form method="POST" action="{{ route('web.main.filter') }}">
+
                 @csrf
                 <div
-                    style=" background-color: rgb(0, 0, 0); display: flex; align-items: center; justify-content: center; border: 2px solid #41d49cce; border-radius: 60px; padding: 10px; ">
+                    style=" background-color: #00A791; display: flex; align-items: center; justify-content: center;  padding: 10px; ">
+
                     <div class="select2-web-container">
                         <select name="district" class="js-example-basic-single"
                             style="background-color: white; margin-right: 4px; height: 55px !important;">
@@ -148,8 +147,8 @@
                         <input name="title" placeholder="search by title"
                             style="height: 55px !important; background-color:#d9e0d9 !important;" type="text">
                     </div>
-                    <button style="height: 57px !important; border-radius: 0 25px 25px 0; background-color: #37B093;"
-                        class="btn ">Filter</button>
+                    <button style="height: 57px !important; color:#673500; border-radius: 25px; background-color: #FFC800;"
+                        class="btn ">Search</button>
                 </div>
             </form>
         </div>
@@ -213,7 +212,7 @@
             <div style="padding: 15px; background-color: #d9e0d9 !important;" class="container card">
                 <h1 class="mb-20 text-center "
                     style="font-size: 2.5rem !important; color: #000000ce !important; font-weight: bold !important; text-transform: uppercase !important; font-family: Tahoma, sans-serif !important;">
-                    RECENT <span style="color: #37B093 !important;">AUTOPARTS</span></h1>
+                    RECENT <span style="color: #FFC800 !important;">AUTOPARTS</span></h1>
                 <h3 style="color: rgb(0, 0, 0) !important; font-size:15px !important; font-weight:400 !important;"
                     class="mb-20 text-center">Choose
                     From Top Brands Including
@@ -239,16 +238,29 @@
                                     </div>
                                 </div>
 
-                                <p class="category">{{ $item->created_at }}</p>
-                                <div style="padding: 5px !important; @if ($item->is_top_id == 1) border:#37B093 2px solid !important; @endif"
+
+                                <div style="padding: 13px !important; @if ($item->is_top_id == 1) border:#37B093 2px solid !important; @endif background-color:#00A791 !important; "
                                     class="product-info">
-                                    <p class="category">{{ $item->vt_name }}</p>
-                                    <p class="category">Ad number : {{ $item->ad_number }}</p>
-                                    <h5 class="title">{{ $item->ad_title }}</h5>
-                                    <h3 class="price">Rs. {{ $item->ad_price }}</h3>
-                                    <p style="margin-top: 3px !important;" class="price"><i
+                                    <p style="color:white !important; margin-bottom:0px !important;" class="category">
+                                        {{ $item->vt_name }}</p>
+                                    <p style="color:white !important; margin-bottom:0px !important;" class="category">Ad
+                                        number :
+                                        {{ $item->ad_number }}</p>
+                                    <p style="color:white !important; margin-bottom:0px !important;" class="title">
+                                        {{ $item->ad_title }}</p>
+                                    <div style="text-align: center !important; margin-top:4px !important;">
+                                        <hr
+                                            style="margin: 0 auto; color: #d9e0d9 !important; width: 100% !important; height: 4px !important;">
+                                    </div>
+
+
+
+
+                                    <h3 style="color:white !important;" class="price">Rs. {{ $item->ad_price }}</h3>
+                                    <p style="margin-top: 3px !important; color:white !important;" class="price"><i
                                             style="font-size:20px; margin:10px;" class="fa">&#xf041;</i>
                                         {{ $item->ad_district }} {{ $item->ad_city }}</p>
+                                    <p style="color: white !important;" class="category">{{ $item->created_at }}</p>
                                 </div>
                             </div>
                         </div>

@@ -63,6 +63,14 @@
             color: rgb(223, 213, 213) !important;
         }
 
+        .header-style-1.header-height-2 {
+            background-color: #032234 !important;
+        }
+
+        .hero-slider-1 .single-hero-slider.rectangle .slider-content {
+            left: 35% !important;
+        }
+
         @media (max-width: 992px) {
             .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-top {
                 padding-top: 40px !important;
@@ -197,14 +205,14 @@
                         <div style=" text-align: center !important;" class="search-style-2">
 
                             <nav>
-                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:black !important; "
+                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:rgb(255, 255, 255) !important; "
                                     href="{{ route('web.home') }}">HOME</a>
-                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:black !important; "
+                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:rgb(255, 255, 255) !important; "
                                     href="about.html">ABOUT</a>
-                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:black !important; "
+                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:rgb(255, 255, 255) !important; "
                                     href="{{ route('web.allads.view') }}">ALL ADS</a>
 
-                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:black !important; "
+                                <a style="font-size: 23px ;  font-style: bold; margin-left:4%; font-weight:900 !important; color:rgb(255, 255, 255) !important; "
                                     href="careers.html">CONTACT</a>
                             </nav>
                         </div>
@@ -214,7 +222,7 @@
                                 </div>
                                 <div class="header-action-icon-2">
                                     <a href="{{ route('web.garage.findMyGarage') }}" class="btn"
-                                        style="background-color: white !important; border-color:rgba(0, 126, 84, 0.932)  !important; color:rgb(0, 117, 78) !important; font-size:14px; padding:15px !important;">
+                                        style=" border-radius: 15px !important; background-color: #032234 !important; border-color: #00A791  !important; color:#00A791 !important; font-size:14px; padding:15px !important;">
                                         <i class="fa-solid fa-car"></i> Find My
                                         Garage</a>
                                 </div>
@@ -223,18 +231,18 @@
                                         @if (session('vendor_data')->phone)
                                             <button
                                                 onclick="window.location.href = '{{ route('web.dashboard.create_ad') }}';"
-                                                style="background-color: #37B093 !important; color:rgb(255, 255, 255) ;"
+                                                style="background-color: #FFC800 !important; color: #673500; border-radius: 15px !important;"
                                                 class="btn btn-warning"> <i class="fa-solid fa-car"></i> POST YOUR
                                                 ADD</button>
                                         @else
                                             <button onclick="alert('Please update your account');"
-                                                style="background-color: #37B093 !important; color:rgb(255, 255, 255) ;"
+                                                style="background-color: #FFC800 !important; color: #673500 ;  border-radius: 15px !important;"
                                                 class="btn btn-warning"> <i class="fa-solid fa-car"></i> POST YOUR
                                                 ADD</button>
                                         @endif
                                     @else
                                         <button onclick="window.location.href = '{{ route('web.vendor.login') }}';"
-                                            style="background-color: #37B093 !important; color:rgb(255, 255, 255) ;"
+                                            style="background-color: #FFC800 !important; color: #673500;  border-radius: 15px !important;"
                                             class="btn btn-warning"> <i class="fa-solid fa-car"></i> POST YOUR
                                             ADD</button>
                                     @endif
