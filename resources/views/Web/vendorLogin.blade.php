@@ -49,20 +49,22 @@
                                     </div>
                                     <form id="login_form">
                                         <div class="form-group">
-                                            <input type="text" name="name" class="clear_input"
-                                                placeholder="Your Username *" />
+                                            <input type="text"
+                                                @if (Cookie::has('autobox_vendor_username')) value="{{ Cookie::get('autobox_vendor_username') }}" @endif
+                                                name="name" class="clear_input" placeholder="Your Username *" />
                                             <span id="username_error" class="clear_form_error text-danger"> </span>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="clear_input"
-                                                placeholder="Your password *" />
+                                            <input type="password"
+                                                @if (Cookie::has('autobox_vendor_password')) value="{{ Cookie::get('autobox_vendor_password') }}" @endif
+                                                name="password" class="clear_input" placeholder="Your password *" />
                                             <span id="password_error" class="clear_form_error text-danger"> </span>
                                         </div>
                                         <div class="login_footer form-group mb-50">
                                             <div class="chek-form">
                                                 <div class="custome-checkbox">
-                                                    <input class="form-check-input" type="checkbox" name="checkbox"
-                                                        id="exampleCheckbox1" value="" />
+                                                    <input class="form-check-input" checked type="checkbox" name="checkbox"
+                                                        id="exampleCheckbox1" value="checkbox" />
                                                     <label class="form-check-label" for="exampleCheckbox1"><span>Remember
                                                             me</span></label>
                                                 </div>
@@ -130,7 +132,7 @@
                                 confirmButtonText: 'OK'
                             }) //display error msg
 
-                        } else {
+                        } else if (response.code == 'true') {
                             window.location.href = "{{ route('web.dashboardIndex') }}";
                         }
 

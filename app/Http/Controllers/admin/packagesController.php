@@ -19,11 +19,11 @@ class packagesController extends Controller
     {
         $request->validate([
             'package_name' => 'required|max:25',
-            'image_count' => 'required|max:10',
+            'image_count' => 'required|max:10|gt:0',
             'package_ad_count' => 'required|integer|gt:0',
             'package_duration' => "required|integer|gt:0",
             'package_price' => 'required|numeric',
-            'topup_count' => 'required|numeric',
+            'topup_count' => 'required|numeric|gt:0',
         ]);
 
 

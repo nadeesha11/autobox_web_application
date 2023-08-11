@@ -192,13 +192,14 @@
                 </div>
             </div>
         </div>
+
     </div>
     <header class="header-area header-style-1 header-style-5 header-height-2">
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
-                        <a href="index.html"><img src="{{ asset('assets/imgs/theme/logo-color.png') }}"
+                        <a href="{{ route('web.home') }}"><img src="{{ asset('assets/imgs/theme/logo-color.png') }}"
                                 alt="logo" /></a>
                     </div>
                     <div class="header-right">

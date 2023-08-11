@@ -18,7 +18,7 @@ class topAdManagementController extends Controller
     {
         $request->validate([
             'package_name' => 'required|max:50',
-            'ads_count' => 'required|max:1000|integer',
+            'ads_count' => 'required|max:1000|integer|gt:0',
             'package_price' => 'required|numeric',
         ]);
 

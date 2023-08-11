@@ -32,10 +32,15 @@ class vendorManagement extends Controller
             $vendor_details = DB::table('users')->where('name', $request->name)->first();
             session(['vendor_data' => $vendor_details]);
             // check remember me token clicked or not start
-            if (isset($request->remember)) {
+            if (isset($request->checkbox)) {
 
-                Cookie::queue('autobox_vendor_username', $request->username, 1440);
+
+
+                Cookie::queue('autobox_vendor_username', $request->name, 1440);
                 Cookie::queue('autobox_vendor_password', $request->password, 1440);
+            } else {
+                Cookie::queue(Cookie::forget('autobox_vendor_username'));
+                Cookie::queue(Cookie::forget('autobox_vendor_password'));
             }
             return response()->json(['code' => 'true', 'msg' => "Login Success"]);
         } else {

@@ -43,7 +43,7 @@
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
+            <a href="{{ route('admin.dashboard') }}" class="brand-wrap">
                 <img src="{{ asset('assets/imgs/theme/logo-color.png') }}" class="logo" alt="Nest Dashboard" />
             </a>
             <div>
@@ -122,12 +122,12 @@
                 <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"><i
                         class="material-icons md-apps"></i></button>
                 <ul class="nav">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link btn-icon" href="#">
                             <i class="material-icons md-notifications animation-shake"></i>
                             <span class="badge rounded-pill">3</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a href="#" class="requestfullscreen nav-link btn-icon"><i
@@ -139,7 +139,7 @@
                             aria-expanded="false"> <img class="img-xs rounded-circle"
                                 src="{{ asset('assets/imgs/people/avatar-2.png') }}" alt="User" /></a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                            <a class="dropdown-item" href="#"><i
+                            {{-- <a class="dropdown-item" href="#"><i
                                     class="material-icons md-perm_identity"></i>Edit Profile</a>
                             <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account
                                 Settings</a>
@@ -149,7 +149,7 @@
                                     class="material-icons md-receipt"></i>Billing</a>
                             <a class="dropdown-item" href="#"><i
                                     class="material-icons md-help_outline"></i>Help center</a>
-                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-divider"></div> --}}
                             <a href="{{ route('admin.logout') }}" class="dropdown-item text-danger"
                                 href="#"><i class="material-icons md-exit_to_app"></i>Logout</a>
                         </div>

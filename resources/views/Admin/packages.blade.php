@@ -307,8 +307,8 @@
                             error: function(error) {
                                 Swal.close(); // Close the SweetAlert
                                 // display validations in created slider 
-                                $('#image_count_error').html(error.responseJSON.errors.package_name);
-                                $('#package_name_error').html(error.responseJSON.errors.image_count);
+                                $('#image_count_error').html(error.responseJSON.errors.image_count);
+                                $('#package_name_error').html(error.responseJSON.errors.package_name);
                                 $('#package_ad_count_error').html(error.responseJSON.errors
                                     .package_ad_count);
                                 $('#package_duration_error').html(error.responseJSON.errors
