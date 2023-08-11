@@ -249,9 +249,10 @@
                                 </div>
 
                                 <div class="header-action-icon-2">
-                                    <a href="page-account.html">
-                                        <img class="svgInject" alt="Nest"
-                                            src="{{ asset('web/assets/imgs/theme/icons/icon-user.svg') }}" />
+                                    <a href="#">
+                                        {{-- <img class="svgInject"
+                                            src="{{ asset('web/assets/imgs/theme/icons/icon-user.svg') }}" /> --}}
+                                        <i class="fa-solid fa-user" style="color: #ffffff;"></i>
                                     </a>
                                     <a><span class="lable ml-0"></span></a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2 account-dropdown">
@@ -683,12 +684,7 @@
                 </div>
             </div>
             <div class="mobile-header-content-area">
-                {{-- <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
-                        <input type="text" placeholder="Search for items…" />
-                        <button type="submit"><i class="fi-rs-search"></i></button>
-                    </form>
-                </div> --}}
+
                 <div class="mobile-menu-wrap mobile-header-border">
                     <!-- mobile menu start -->
                     <nav>
@@ -762,7 +758,7 @@
 
     @yield('content')
 
-    <footer style="background-color: rgb(0, 0, 0); " class="main">
+    <footer style="background-color: #032234; " class="main">
 
 
         <section class="section-padding footer-mid">
@@ -811,10 +807,7 @@
                             <a href="#" class="hover-up mb-sm-2"><img style="height:60px !important;"
                                     src="https://i.ibb.co/z2xLY7s/playstore.png" alt="" /></a>
                         </div>
-                        <p style="color: white !important;" class="mb-20">Sampath Payment Gateway</p>
-                        <img style="height: 50px ; weight:50px;" class="wow fadeIn animated"
-                            src="https://i.ibb.co/7jVrN07/sampath-bank-logo-660-B6-E8-BC9-seeklogo-com.png"
-                            alt="" />
+
                     </div>
                 </div>
             </div>

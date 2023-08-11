@@ -26,7 +26,7 @@
         }
 
         .category_image {
-            width: 30%;
+            width: 15%;
             height: auto;
         }
 
@@ -237,8 +237,6 @@
                                         </a>
                                     </div>
                                 </div>
-
-
                                 <div style="padding: 13px !important; @if ($item->is_top_id == 1) border:#37B093 2px solid !important; @endif background-color:#00A791 !important; "
                                     class="product-info">
                                     <p style="color:white !important; margin-bottom:0px !important;" class="category">
@@ -252,10 +250,6 @@
                                         <hr
                                             style="margin: 0 auto; color: #d9e0d9 !important; width: 100% !important; height: 4px !important;">
                                     </div>
-
-
-
-
                                     <h3 style="color:white !important;" class="price">Rs. {{ $item->ad_price }}</h3>
                                     <p style="margin-top: 3px !important; color:white !important;" class="price"><i
                                             style="font-size:20px; margin:10px;" class="fa">&#xf041;</i>
@@ -286,58 +280,81 @@
             </div>
         </div>
 
-        <div>
+        <div style="background-color: #d9e0d9;">
             <div class="row mt-3">
-                <h2 style="color: #37B093; text-align:center;  font-family: Tahoma, sans-serif !important;">AUTO PARTS
-                    <span style="color:#111111">CATEGORIES</span>
+                <h2 style="color: #032234; text-align:center;  font-family: Tahoma, sans-serif !important;">AUTO PARTS
+                    <span style="color:#FFC800">CATEGORIES</span>
                 </h2>
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam, labore ipsum.
+                    Temporibus quam cum vero
+                    quis, alias tempora ex</p>
                 <div class="col-2"></div>
                 <div class="col-8 row " style="margin-top: 10px;">
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height">
-                        <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                            <img class="category_image" src="{{ asset('assets/imgs/theme/car.png') }}" alt="">
-                            <h6 class="text-center">CARS, DOUBLE CABS & SUVS</h6>
+                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                        <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                            class="card mb-3">
+
+                            <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                <img class="category_image" src="{{ asset('assets/imgs/theme/car.png') }}"
+                                    alt="">
+                                <p class="text-center">CARS, DOUBLE CABS & SUVS</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height">
-                        <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                            <img class="category_image" src="{{ asset('assets/imgs/theme/motorcycle.png') }}"
-                                alt="">
-                            <h6 class="text-center">MOTOR BIKES & SCOOTERS</h6>
+                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                        <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                            class="card mb-3">
+                            <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                <img class="category_image" src="{{ asset('assets/imgs/theme/motorcycle.png') }}"
+                                    alt="">
+                                <p class="text-center">MOTOR BIKES & SCOOTERS</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height">
-                        <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                            <img class="category_image" src="{{ asset('assets/imgs/theme/delivery-van.png') }}"
-                                alt="">
-                            <h6 class="text-center">BUSES, TRUCK & LORRIES</h6>
+                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                        <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                            class="card mb-3">
+                            <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                <img class="category_image" src="{{ asset('assets/imgs/theme/delivery-van.png') }}"
+                                    alt="">
+                                <p class="text-center">BUSES, TRUCK & LORRIES</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height">
-                        <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                            <img class="category_image" src="{{ asset('assets/imgs/theme/autorickshaw.png') }}"
-                                alt="">
-                            <h6 class="text-center">THREE WHEELERS</h6>
+                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                        <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                            class="card mb-3">
+                            <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                <img class="category_image" src="{{ asset('assets/imgs/theme/autorickshaw.png') }}"
+                                    alt="">
+                                <p class="text-center">THREE WHEELERS</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height">
-                        <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                            <img class="category_image" src="{{ asset('assets/imgs/theme/delivery-van.png') }}"
-                                alt="">
-                            <h6 class="text-center">VANS</h6>
+                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                        <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                            class="card mb-3">
+                            <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                <img class="category_image" src="{{ asset('assets/imgs/theme/delivery-van.png') }}"
+                                    alt="">
+                                <p class="text-center">VANS</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height">
-                        <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                            <img class="category_image" src="{{ asset('assets/imgs/theme/loader.png') }}"
-                                alt="">
-                            <h6 class="text-center">HEAVY MACHINERY & TRACTORS</h6>
+                    <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                        <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                            class="card mb-3">
+                            <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                <img class="category_image" src="{{ asset('assets/imgs/theme/loader.png') }}"
+                                    alt="">
+                                <p class="text-center">HEAVY MACHINERY & TRACTORS</p>
+                            </div>
                         </div>
                     </div>
 

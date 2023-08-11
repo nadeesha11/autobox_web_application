@@ -5,7 +5,7 @@
             background-color: #f2f2f2 !important;
             border-radius: 5px !important;
             padding: 10px !important;
-            display:  !important;
+            display: !important;
             align-items: center !important;
         }
 
@@ -115,16 +115,23 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <p class="category">{{ $item->created_at }}</p>
+
                                         <div class="product-info "
-                                            style="  @if ($item->is_top_id == 1) border:#37B093 2px solid !important; @endif">
-                                            <p class="category">{{ $item->vt_name }}</p>
-                                            <p class="category">Ad number : {{ $item->ad_number }}</p>
-                                            <h5 class="title">{{ $item->ad_title }}</h5>
-                                            <h3 class="price">Rs. {{ $item->ad_price }}</h3>
-                                            <p style="margin-top: 3px !important;" class="price"><i
-                                                    style="font-size:20px; margin:10px;" class="fa">&#xf041;</i>
+                                            style="  @if ($item->is_top_id == 1) border:#37B093 2px solid !important; @endif  background-color:#00A791 !important;">
+                                            <p style="color: #f2f2f2 !important;" class="category">{{ $item->vt_name }}</p>
+                                            <p style="color: #f2f2f2 !important;" class="category">Ad number :
+                                                {{ $item->ad_number }}</p>
+                                            <h5 style="color: #f2f2f2 !important;" class="title">{{ $item->ad_title }}</h5>
+                                            <hr
+                                                style="margin: 0 auto; color: #d9e0d9 !important; width: 100% !important; height: 4px !important;">
+                                            <h3 style="color: #f2f2f2 !important;" class="price">Rs. {{ $item->ad_price }}
+                                            </h3>
+                                            <p style="color: #f2f2f2 !important;" style="margin-top: 3px !important;"
+                                                class="price"><i style="font-size:20px; margin:10px;"
+                                                    class="fa">&#xf041;</i>
                                                 {{ $item->ad_district }} {{ $item->ad_city }} </p>
+                                            <p style="color: #f2f2f2 !important;" class="category">{{ $item->created_at }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
