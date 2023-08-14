@@ -7,6 +7,12 @@
             /* Add a background color to the content container if needed */
             padding: 20px;
         }
+
+        .hover_green_color:hover {
+            border: 1px green solid;
+            border-radius: 5px;
+
+        }
     </style>
     <main class="main pages">
         <div class="page-header breadcrumb-wrap">
@@ -43,212 +49,189 @@
 
                         <div class="row ">
                             <div class="col-lg-3 col-md-3 col-sm-12">
-                                <div class="card m-2">
-                                    <div style=" background-color: rgb(196, 185, 42);
-                                    "
-                                        class="card-body">
+                                <div class="card-body hover_green_color">
+                                    <div style="background-color: rgba(255, 255, 255, 0.8);" class="card card_trans p-2">
+                                        <h5 class="card-title">Free</h5>
+                                        @if (count($free_category) == 0)
+                                            <p>There is no packages</p>
+                                        @else
+                                            @foreach ($free_data as $single)
+                                                <table>
+                                                    <tr>
+                                                        <td>Package Name</td>
+                                                        <td>{{ $single->package_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Package Price</td>
+                                                        <td>Rs. {{ $single->package_price }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Amount</td>
+                                                        <td>{{ $single->package_ad_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Top Ads</td>
+                                                        <td>{{ $single->topup_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Duration</td>
+                                                        <td>{{ $single->package_duration }} days</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Image Count</td>
+                                                        <td>{{ $single->image_count }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><a class="btn btn-sucess"
+                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Activate</a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
 
-                                        <div style="background-color: rgba(255, 255, 255, 0.8);"
-                                            class="card card_trans p-2">
-                                            <h5 class="card-title">Free</h5>
-                                            @if (count($free_category) == 0)
-                                                <p>There is no packages</p>
-                                            @else
-                                                @foreach ($free_data as $single)
-                                                    <table>
-                                                        <tr>
-                                                            <td>Package Name</td>
-                                                            <td>{{ $single->package_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Package Price</td>
-                                                            <td>Rs. {{ $single->package_price }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Amount</td>
-                                                            <td>{{ $single->package_ad_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Top Ads</td>
-                                                            <td>{{ $single->topup_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Duration</td>
-                                                            <td>{{ $single->package_duration }} days</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Image Count</td>
-                                                            <td>{{ $single->image_count }} </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td><a class="btn btn-sucess"
-                                                                    href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Activate</a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                @endforeach
-                                            @endif
-                                        </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <div class="card-body hover_green_color">
+                                    <div style="background-color: rgba(255, 255, 255, 0.8);" class="card card_trans p-2">
+                                        <h5 class="card-title">Silver</h5>
+                                        @if (count($silver_category) == 0)
+                                            <p>There is no packages</p>
+                                        @else
+                                            @foreach ($silver_data as $single)
+                                                <table>
+                                                    <tr>
+                                                        <td>Package Name</td>
+                                                        <td>{{ $single->package_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Package Price</td>
+                                                        <td>Rs. {{ $single->package_price }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Amount</td>
+                                                        <td>{{ $single->package_ad_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Top Ads</td>
+                                                        <td>{{ $single->topup_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Duration</td>
+                                                        <td>{{ $single->package_duration }} days</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Image Count</td>
+                                                        <td>{{ $single->image_count }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><a class="btn btn-sucess"
+                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
+                                                                Now</a></td>
+                                                    </tr>
+                                                </table>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <div class="card-body hover_green_color">
+                                    <div style="background-color: rgba(255, 255, 255, 0.8);" class="card card_trans p-2">
+                                        <h5 class="card-title">Gold</h5>
+                                        @if (count($gold_category) == 0)
+                                            <p>There is no packages</p>
+                                        @else
+                                            @foreach ($gold_data as $single)
+                                                <table>
+                                                    <tr>
+                                                        <td>Package Name</td>
+                                                        <td>{{ $single->package_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Package Price</td>
+                                                        <td>Rs. {{ $single->package_price }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Amount</td>
+                                                        <td>{{ $single->package_ad_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Top Ads</td>
+                                                        <td>{{ $single->topup_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Duration</td>
+                                                        <td>{{ $single->package_duration }} days</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Image Count</td>
+                                                        <td>{{ $single->image_count }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><a class="btn btn-sucess"
+                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
+                                                                Now</a></td>
+                                                    </tr>
+                                                </table>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12">
-                                <div class="card m-2">
+                                <div class="card-body hover_green_color">
+                                    <div style="background-color: rgba(255, 255, 255, 0.8);" class="card card_trans p-2">
+                                        <h5 class="card-title">Platinum</h5>
+                                        @if (count($platinum_category) == 0)
+                                            <p>There is no packages</p>
+                                        @else
+                                            @foreach ($platinum_data as $single)
+                                                <table>
+                                                    <tr>
+                                                        <td>Package Name</td>
+                                                        <td>{{ $single->package_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Package Price</td>
+                                                        <td>Rs. {{ $single->package_price }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Amount</td>
+                                                        <td>{{ $single->package_ad_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Top Ads</td>
+                                                        <td>{{ $single->topup_count }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ads Duration</td>
+                                                        <td>{{ $single->package_duration }} days</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Image Count</td>
+                                                        <td>{{ $single->image_count }} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td><a class="btn btn-sucess"
+                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
+                                                                Now</a></td>
+                                                    </tr>
+                                                </table>
+                                            @endforeach
+                                        @endif
 
-                                    <div style="  background-color: rgb(20, 10, 7);
-                                    "
-                                        class="card-body">
-                                        <div style="background-color: rgba(255, 255, 255, 0.8);"
-                                            class="card card_trans p-2">
-                                            <h5 class="card-title">Silver</h5>
-                                            @if (count($silver_category) == 0)
-                                                <p>There is no packages</p>
-                                            @else
-                                                @foreach ($silver_data as $single)
-                                                    <table>
-                                                        <tr>
-                                                            <td>Package Name</td>
-                                                            <td>{{ $single->package_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Package Price</td>
-                                                            <td>Rs. {{ $single->package_price }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Amount</td>
-                                                            <td>{{ $single->package_ad_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Top Ads</td>
-                                                            <td>{{ $single->topup_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Duration</td>
-                                                            <td>{{ $single->package_duration }} days</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Image Count</td>
-                                                            <td>{{ $single->image_count }} </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td><a class="btn btn-sucess"
-                                                                    href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
-                                                                    Now</a></td>
-                                                        </tr>
-                                                    </table>
-                                                @endforeach
-                                            @endif
-                                        </div>
+
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
-                                <div class="card m-2">
 
-                                    <div style="  background-color: rgb(179, 48, 0);
-                                    "
-                                        class="card-body">
-                                        <div style="background-color: rgba(255, 255, 255, 0.8);"
-                                            class="card card_trans p-2">
-                                            <h5 class="card-title">Gold</h5>
-                                            @if (count($gold_category) == 0)
-                                                <p>There is no packages</p>
-                                            @else
-                                                @foreach ($gold_data as $single)
-                                                    <table>
-                                                        <tr>
-                                                            <td>Package Name</td>
-                                                            <td>{{ $single->package_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Package Price</td>
-                                                            <td>Rs. {{ $single->package_price }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Amount</td>
-                                                            <td>{{ $single->package_ad_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Top Ads</td>
-                                                            <td>{{ $single->topup_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Duration</td>
-                                                            <td>{{ $single->package_duration }} days</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Image Count</td>
-                                                            <td>{{ $single->image_count }} </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td><a class="btn btn-sucess"
-                                                                    href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
-                                                                    Now</a></td>
-                                                        </tr>
-                                                    </table>
-                                                @endforeach
-                                            @endif
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-12">
-                                <div class="card m-2">
-
-                                    <div style="   background-color: rgb(56, 15, 0);
-                                   "
-                                        class="card-body">
-                                        <div style="background-color: rgba(255, 255, 255, 0.8);"
-                                            class="card card_trans p-2">
-                                            <h5 class="card-title">Platinum</h5>
-                                            @if (count($platinum_category) == 0)
-                                                <p>There is no packages</p>
-                                            @else
-                                                @foreach ($platinum_data as $single)
-                                                    <table>
-                                                        <tr>
-                                                            <td>Package Name</td>
-                                                            <td>{{ $single->package_name }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Package Price</td>
-                                                            <td>Rs. {{ $single->package_price }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Amount</td>
-                                                            <td>{{ $single->package_ad_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Top Ads</td>
-                                                            <td>{{ $single->topup_count }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Ads Duration</td>
-                                                            <td>{{ $single->package_duration }} days</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Image Count</td>
-                                                            <td>{{ $single->image_count }} </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td><a class="btn btn-sucess"
-                                                                    href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
-                                                                    Now</a></td>
-                                                        </tr>
-                                                    </table>
-                                                @endforeach
-                                            @endif
-
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 

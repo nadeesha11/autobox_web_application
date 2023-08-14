@@ -97,261 +97,171 @@
                                         <div class="card">
                                             <div class="card-header d-flex justify-content-between align-items-center">
                                                 <h3 class="mb-0">Hello {{ session('vendor_data')->name }}</h3>
-                                                <div>
-                                                    @if (isset($vendor_details->First_Name))
-                                                        <a href="{{ route('web.dashboard.becomeDealer') }}"
-                                                            class="btn btn-primary">Become
-                                                            Dealer</a>
-                                                    @else
-                                                        <button disabled class="btn btn-primary">Become
-                                                            Dealer</button>
-                                                        <p style="font-size: 10px;">You need to fill basic details first</p>
-                                                    @endif
-                                                </div>
+
 
                                             </div>
                                             <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Profile Picture</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->Profile_Image))
-                                                                        <img style="height: 100px; width:100px; object-fit:cover;"
-                                                                            src="{{ asset('assets/myCustomThings/vehicleTypes/' . $vendor_details->Profile_Image) }}" />
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a><i class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Username</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->name))
-                                                                        {{ $vendor_details->name }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    {{-- @if (session('vendor_data')->phone)
-                                                                        <a onclick="editDetails('Username'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif --}}
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Email</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->email))
-                                                                        {{ $vendor_details->email }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    {{-- @if (session('vendor_data')->phone)
-                                                                        <a onclick="editDetails('Email'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif --}}
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>First Name</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->First_Name))
-                                                                        {{ $vendor_details->First_Name }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('First Name','{{ $vendor_details->First_Name }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Last Name</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->Last_Name))
-                                                                        {{ $vendor_details->Last_Name }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('Last Name','{{ $vendor_details->Last_Name }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>phone</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->phone))
-                                                                        {{ $vendor_details->phone }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('Phone','{{ $vendor_details->phone }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>district</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->district))
-                                                                        {{ $vendor_details->district }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-
-                                                                </td>
-                                                                <td>
-                                                                    {{-- @if (session('vendor_data')->phone)
-                                                                        <a href=""><i class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif --}}
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>city</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->city))
-                                                                        {{ $vendor_details->city }}
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    {{-- @if (session('vendor_data')->phone)
-                                                                        <a href=""><i class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif --}}
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Fb link</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->Fb_link))
-                                                                        <a
-                                                                            href="{{ $vendor_details->Fb_link }}">{{ $vendor_details->Fb_link }}</a>
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('Fb link','{{ $vendor_details->Fb_link }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Twitter link</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->Twitter_link))
-                                                                        <a
-                                                                            href="{{ $vendor_details->Twitter_link }}">{{ $vendor_details->Twitter_link }}</a>
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('Twitter link','{{ $vendor_details->Twitter_link }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Linkedin link</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->Linkedin_link))
-                                                                        <a
-                                                                            href="{{ $vendor_details->Linkedin_link }}">{{ $vendor_details->Linkedin_link }}</a>
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('Linkedin link','{{ $vendor_details->Linkedin_link }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Youtube link</td>
-                                                                <td>
-                                                                    @if (isset($vendor_details->Youtube_link))
-                                                                        <a
-                                                                            href="{{ $vendor_details->Youtube_link }}">{{ $vendor_details->Youtube_link }}</a>
-                                                                    @else
-                                                                        <p>Not Added</p>
-                                                                    @endif
-
-                                                                </td>
-                                                                <td>
-                                                                    @if (session('vendor_data')->phone)
-                                                                        <a
-                                                                            onclick="editDetails('Youtube link','{{ $vendor_details->Youtube_link }}'); "><i
-                                                                                class="fa fa-pencil"
-                                                                                aria-hidden="true"></i></a>
-                                                                    @endif
-
-                                                                </td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
+                                                {{-- chnaged ui start --}}
+                                                <div class="text-center">
+                                                    @if (isset($vendor_details->Profile_Image))
+                                                        <img style="height: 100px; width:100px; object-fit:cover;"
+                                                            src="{{ asset('assets/myCustomThings/vehicleTypes/' . $vendor_details->Profile_Image) }}" />
+                                                    @else
+                                                        <img style="height: 100px; width:100px; object-fit:cover;"
+                                                            src="https://i.ibb.co/C2g55RP/3135715.png" alt="profile">
+                                                    @endif
                                                 </div>
+                                                <div class="text-center">
+                                                    @if (isset($vendor_details->name))
+                                                        {{ $vendor_details->name }}
+                                                    @else
+                                                    @endif
+                                                </div>
+                                                <div class="text-center">
+                                                    <div>
+                                                        @if (isset($vendor_details->First_Name))
+                                                            <a href="{{ route('web.dashboard.becomeDealer') }}"
+                                                                class="btn btn-primary">Become
+                                                                Dealer</a>
+                                                        @else
+                                                            <button disabled class="btn btn-primary">Become
+                                                                Dealer</button>
+                                                            <p style="font-size: 10px;">You need to fill basic details first
+                                                            </p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div>
+                                                        @if (isset($vendor_details->email))
+                                                            {{ $vendor_details->email }}
+                                                        @else
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->First_Name))
+                                                            {{ $vendor_details->First_Name }}
+                                                        @else
+                                                        @endif
+                                                        @if (session('vendor_data')->phone)
+                                                            <a
+                                                                onclick="editDetails('First Name','{{ $vendor_details->First_Name }}'); "><i
+                                                                    class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+
+                                                        @if (isset($vendor_details->Last_Name))
+                                                            {{ $vendor_details->Last_Name }}
+                                                        @else
+                                                        @endif
+
+                                                        @if (session('vendor_data')->phone)
+                                                            <a
+                                                                onclick="editDetails('Last Name','{{ $vendor_details->Last_Name }}'); "><i
+                                                                    class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                        @endif
+
+                                                    </div>
+
+
+                                                    <div>
+                                                        @if (isset($vendor_details->phone))
+                                                            {{ '+94' . $vendor_details->phone }}
+                                                        @else
+                                                        @endif
+
+                                                        @if (session('vendor_data')->phone)
+                                                            <a
+                                                                onclick="editDetails('Phone','{{ $vendor_details->phone }}'); "><i
+                                                                    class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->district))
+                                                            {{ $vendor_details->district }}
+                                                        @else
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->city))
+                                                            {{ $vendor_details->city }}
+                                                        @else
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->Fb_link))
+                                                            <a href="{{ $vendor_details->Fb_link }}">{{ $vendor_details->Fb_link }}
+                                                                (Facebook)</a>
+                                                        @else
+                                                        @endif
+                                                        @if (session('vendor_data')->phone)
+                                                            @if (isset($vendor_details->Fb_link))
+                                                                <a
+                                                                    onclick="editDetails('Fb link','{{ $vendor_details->Fb_link }}'); "><i
+                                                                        class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                            @endif
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->Twitter_link))
+                                                            <a href="{{ $vendor_details->Twitter_link }}">{{ $vendor_details->Twitter_link }}
+                                                                (Twitter)</a>
+                                                        @else
+                                                        @endif
+                                                        @if (session('vendor_data')->phone)
+                                                            @if (isset($vendor_details->Twitter_link))
+                                                                <a
+                                                                    onclick="editDetails('Twitter link','{{ $vendor_details->Twitter_link }}'); "><i
+                                                                        class="fa fa-pencil" aria-hidden="true"></i> </a>
+                                                            @endif
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->Linkedin_link))
+                                                            <a href="{{ $vendor_details->Linkedin_link }}">{{ $vendor_details->Linkedin_link }}
+                                                                Linkedin</a>
+                                                        @else
+                                                        @endif
+                                                        @if (session('vendor_data')->phone)
+                                                            @if (isset($vendor_details->Linkedin_link))
+                                                                <a
+                                                                    onclick="editDetails('Linkedin link','{{ $vendor_details->Linkedin_link }}'); "><i
+                                                                        class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                            @endif
+                                                        @endif
+                                                    </div>
+
+                                                    <div>
+                                                        @if (isset($vendor_details->Youtube_link))
+                                                            <a href="{{ $vendor_details->Youtube_link }}">{{ $vendor_details->Youtube_link }}
+                                                                Youtube</a>
+                                                        @else
+                                                        @endif
+
+                                                        @if (session('vendor_data')->phone)
+                                                            @if (isset($vendor_details->Youtube_link))
+                                                                <a
+                                                                    onclick="editDetails('Youtube link','{{ $vendor_details->Youtube_link }}'); "><i
+                                                                        class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                            @endif
+                                                        @endif
+
+                                                        </td>
+                                                        </tr>
+                                                    </div>
+
+
+                                                </div>
+                                                {{-- chnaged ui end --}}
+
 
 
                                             </div>

@@ -157,8 +157,7 @@
                                     </div>
                                 @endfor
                             </div>
-                            <a class="btn m-4" href="javascript:void(0);" type="button" id="add_images_btn"
-                                href="">Add
+                            <a class="btn m-4" href="javascript:void(0);" type="button" id="add_images_btn">Add
                                 Images</a>
                         </form>
                     @endif

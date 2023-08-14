@@ -7,6 +7,12 @@
             /* Add a background color to the content container if needed */
             padding: 20px;
         }
+
+        .hover_green_color:hover {
+            border: 1px green solid;
+            border-radius: 5px;
+
+        }
     </style>
     <main class="main pages">
         <div class="page-header breadcrumb-wrap">
@@ -27,33 +33,31 @@
                         <div class="row ">
                             @foreach ($data as $single)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <div class="card m-2">
-                                        <div style=" background-color: rgb(196, 185, 42);
-                                    "
-                                            class="card-body">
-                                            <div style="background-color: rgba(255, 255, 255, 0.8);"
-                                                class="card card_trans p-2">
-                                                <table>
-                                                    <tr>
-                                                        <td>Package Name</td>
-                                                        <td>{{ $single->package_name }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Package Price</td>
-                                                        <td>{{ $single->package_price }}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Top Ads</td>
-                                                        <td>{{ $single->count }}</td>
-                                                    </tr>
+                                    <div class="card m-2 hover_green_color">
 
-                                                    <tr>
-                                                        <td></td>
-                                                        <td><a class="btn btn-sucess" href="">Buy</a></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
+                                        <div style="background-color: rgba(255, 255, 255, 0.8);"
+                                            class="card card_trans p-2">
+                                            <table>
+                                                <tr>
+                                                    <td>Package Name</td>
+                                                    <td>{{ $single->package_name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Package Price</td>
+                                                    <td>{{ $single->package_price }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Top Ads</td>
+                                                    <td>{{ $single->count }}</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td><a class="btn btn-sucess" href="">Buy</a></td>
+                                                </tr>
+                                            </table>
                                         </div>
+
                                     </div>
                                 </div>
                             @endforeach

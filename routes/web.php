@@ -44,9 +44,6 @@ Route::get('/Web/FindGarageDetailed/{id}', [garageController::class, 'displayGar
 Route::post('/Web/FindGarage/searchGarage', [garageController::class, 'searchGarage'])->name('web.search.garageDisplay'); // web search garage
 Route::get('/display/garage/results', [garageController::class, 'displayGarageResults'])->name('web.display.garage.results');
 
-
-
-
 Route::post('/Web/dashBoard/getCity', [VendorDashboard::class, 'getCity'])->name('web.dashboard.getCity'); // web get city
 Route::post('/Web/dashBoard/basicFormDetailsCreate', [VendorDashboard::class, 'createBasicForm'])->name('web.dashboard.basicFormDetailsCreate'); // dashboard basicFormDetailsCreate
 Route::get('/Web/dashBoard/logout', [VendorDashboard::class, 'logout'])->name('web.vendor.logout'); // web logout
@@ -59,6 +56,8 @@ Route::post('/Web/dashBoard/adsmanagement/update', [VendorDashboard::class, 'adU
 Route::get('/Web/dashBoard/adsmanagement/delete{id}', [VendorDashboard::class, 'adDelete'])->name('web.dashboard.ad.delete'); // web ad delete
 Route::post('/Web/dashBoard/adsmanagement/imageUpdate', [VendorDashboard::class, 'imageUpdate'])->name('web.dashboard.ad.imageEdit'); // ad image update
 Route::post('/Web/dashBoard/adsmanagement/addNewImage', [VendorDashboard::class, 'addNewImage'])->name('web.dashboard.ad.addNewImage'); // ad new images
+Route::get('web/vendorAds/delete/{id}', [VendorDashboard::class, 'deleteVendorAd'])->name('vendor.dashboard.deleteVendorAd'); // web dashboard ads management
+
 
 // garage routes for vendor 
 Route::get('/Web/dashBoard/garage', [garageController::class, 'index'])->name('web.dashboard.index'); // web garage display
@@ -73,7 +72,6 @@ Route::get('/Web/AllAds', [allAdsController::class, 'view'])->name('web.allads.v
 Route::get('AllAds/Type{id}', [allAdsController::class, 'viewType'])->name('web.allads.vehicleType'); //view vehicletype
 Route::get('AllAds/Brand/{id}/{brandId}', [allAdsController::class, 'viewBrand'])->name('web.allads.vehicleBrand'); // view vehicelbrand
 Route::get('AllAds/Brand/{id}/{brandId}/{modelId}', [allAdsController::class, 'viewModel'])->name('web.allads.vehicleModel'); // view vehicleModel
-
 
 Route::post('Web/Vendor/Login', [vendorManagement::class, 'login'])->name('web.login'); // web vendor login
 Route::get('/Vendor/Login', [vendorManagement::class, 'index'])->name('web.vendor.login'); // web vendor login index
@@ -96,7 +94,6 @@ Route::get('/Web/dashBoard/Ad/Success', [CreateAdController::class, 'display_suc
 
 Route::get('/', [homeController::class, 'index'])->name('web.home'); // web home
 Route::get('/Detailed{id}', [homeController::class, 'detailed'])->name('web.detailed_ad'); // web ad detailed
-
 
 Route::get("/PrivacyPolicy", function () { //return services
   return "PrivacyPolicy";

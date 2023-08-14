@@ -13,12 +13,10 @@ use Illuminate\Validation\Rule;
 use Validator;
 use Intervention\Image\Facades\Image;
 use File;
-
+use Illuminate\Console\View\Components\Alert;
 
 class VendorDashboard extends Controller
 {
-
-
      public function index()
      {
           $current_package_details = DB::table('assign_packages')->where('customer_id', session()->get('vendor_data')->id)
@@ -46,7 +44,7 @@ class VendorDashboard extends Controller
           $request->validate([
                'First_Name' => 'required|max:25',
                'Last_Name' => 'required|max:25',
-               'phone' => 'required|max:25|digits:7',
+               'phone' => 'required|max:25|digits:9',
                'district' => 'required',
                'city' => 'required',
                'Fb_link' => 'url|max:500|nullable',
@@ -129,7 +127,7 @@ class VendorDashboard extends Controller
           } elseif ($request->hidden_single_type === 'Last Name') {
                $rules['single_value'] = 'required|max:25';
           } elseif ($request->hidden_single_type === 'Phone') {
-               $rules['single_value'] = 'required|max:25|digits:7';
+               $rules['single_value'] = 'required|max:25|digits:9';
           } elseif ($request->hidden_single_type === 'Fb link') {
                $rules['single_value'] = 'url|max:500';
           } elseif ($request->hidden_single_type === 'Twitter link') {
@@ -332,6 +330,7 @@ class VendorDashboard extends Controller
 
      public function addNewImage(Request $request)
      {
+          return $request;
           $request->validate([
                'image_1' => 'mimes:jpeg,jpg',
                'image_2' => 'mimes:jpeg,jpg',
@@ -340,7 +339,6 @@ class VendorDashboard extends Controller
                'image_5' => 'mimes:jpeg,jpg',
                'image_6' => 'mimes:jpeg,jpg',
           ]);
-
 
           if ($request->image_1) {
                $image_1 = time() . rand(1, 1000) . '.' . $request->image_1->extension();
@@ -493,11 +491,20 @@ class VendorDashboard extends Controller
                ]);
           }
 
-
           if ($result) {
                return response()->json(['code' => 'true']);
           } else {
                return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+          }
+     }
+
+     public function deleteVendorAd($id)
+     {
+          $check = DB::table('ads')->where('id', $id)->delete();
+          if ($check) {
+               return redirect()->back()->with('delete_success', 'Ad succesfully deleted');
+          } else {
+               return redirect()->back()->with('delete_error', 'Something went wrong !!!');
           }
      }
 }
