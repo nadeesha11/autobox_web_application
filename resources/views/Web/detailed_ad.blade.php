@@ -4,7 +4,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> <a href="shop-grid-right.html">ad detailed</a>
                 </div>
             </div>
@@ -49,7 +49,8 @@
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <span class="current-price text-brand">RS.
-                                                {{ $detailed_ads[0]->ad_price }}</span>
+                                                {{ number_format($detailed_ads[0]->ad_price, 2, '.', '') }}
+                                            </span>
 
                                         </div>
                                     </div>

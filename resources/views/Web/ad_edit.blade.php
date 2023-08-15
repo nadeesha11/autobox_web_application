@@ -62,7 +62,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> Dashboard <span></span> ads <span></span> edit
                 </div>
             </div>
@@ -133,34 +133,35 @@
                                     <td>
                                         <a onclick="editImage('{{ $images->name }}','{{ $images->id }}')"
                                             href="#">edit</a>
-                                        <a style="color:#ee2c1e;"
+                                        {{-- <a style="color:#ee2c1e;"
                                             href="{{ route('web.dashboard.ad.delete', ['id' => $images->id]) }}"
-                                            onclick="return confirm('Are you sure you want to delete this image?')">delete</a>
+                                            onclick="return confirm('Are you sure you want to delete this image?')">delete</a> --}}
 
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
                     </div>
-                    @if ($available_images > 0)
-                        <form id="add_new_image_form" class="text-left">
-                            <input type="hidden" name="ad_id" value="{{ $id }}">
+                    {{-- @if ($available_images > 0)
+                        <form method="post" action="{{ route('web.dashboard.ad.addNewImage') }}" class="text-left">
+                            @csrf
+                            <input type="text" name="ad_id" value="{{ $id }}">
                             <div class="form-group row m-2">
                                 @for ($i = $available_images; $i >= 1; $i--)
                                     <div class=" col-md-4 col-sm-12">
                                         <div class="m-3">
-                                            <input id="image_{{ $i }}" data-allowed-file-extensions="jpeg  jpg "
-                                                data-max-file-size-preview="1M" name="image_{{ $i }}"
+                                            <input id="image_{{ $i }}" data-allowed-file-extensions="jpeg  jpg"
+                                                data-max-file-size-preview="5M" name="image_{{ $i }}"
                                                 class="dropify" type="file">
                                             <span class="clear_form_error" id="image_{{ $i }}_error"></span>
                                         </div>
                                     </div>
                                 @endfor
                             </div>
-                            <a class="btn m-4" href="javascript:void(0);" type="button" id="add_images_btn">Add
-                                Images</a>
+                            <button class="btn m-4" type="submit">Add
+                                Images</button>
                         </form>
-                    @endif
+                    @endif --}}
                 </div>
 
             </div>
@@ -257,7 +258,6 @@
                                         <span class="clear_form_error" id="condition_error"></span>
                                     </div>
                                 </div>
-
                                 <span style="color:#ee2c1e" id="display_input_error_details"
                                     class="clear_form_error"></span>
                             </div>
@@ -292,7 +292,6 @@
                                         id="image_edit_update_error"></span>
                                 </div>
                             </div>
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -302,8 +301,6 @@
                 </div>
             </div>
         </div>
-
-
     </main>
 
 
@@ -568,60 +565,5 @@
             $('#image_edit_id_single').val(imageId)
 
         }
-
-        $('#add_images_btn').click(function() {
-
-            document.getElementById("add_images_btn").disabled = true;
-            $('.clear_form_error').html('');
-
-            // to get csrf
-            var form = $('#add_new_image_form')[0];
-            var form_data = new FormData(form); // get form data
-
-            // ajax post start 
-            $.ajax({
-                url: "{{ route('web.dashboard.ad.addNewImage') }}",
-                method: "POST",
-                processData: false,
-                contentType: false,
-                data: form_data,
-                success: function(response) {
-                    document.getElementById("add_images_btn").disabled = false;
-                    if (response.code === "false") {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: response.msg,
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        }) //display error msg
-
-
-                        $('.clear_form_error').html('');
-
-
-                    } else {
-                        // Refresh the page
-                        location.reload();
-
-                    }
-                },
-                error: function(error) {
-                    document.getElementById("add_images_btn").disabled = false;
-                    $('#image_1_error').html(error.responseJSON.errors
-                        .image_1);
-                    $('#image_2_error').html(error.responseJSON.errors
-                        .image_2);
-                    $('#image_3_error').html(error.responseJSON.errors
-                        .image_3);
-                    $('#image_4_error').html(error.responseJSON.errors
-                        .image_4);
-                    $('#image_5_error').html(error.responseJSON.errors
-                        .image_5);
-                    $('#image_6_error').html(error.responseJSON.errors
-                        .image_6);
-
-                }
-            });
-        })
     </script>
 @endsection

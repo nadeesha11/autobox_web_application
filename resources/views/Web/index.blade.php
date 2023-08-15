@@ -250,7 +250,9 @@
                                         <hr
                                             style="margin: 0 auto; color: #d9e0d9 !important; width: 100% !important; height: 4px !important;">
                                     </div>
-                                    <h3 style="color:white !important;" class="price">Rs. {{ $item->ad_price }}</h3>
+
+                                    <h3 style="color:white !important;" class="price">
+                                        Rs.{{ number_format($item->ad_price, 2, '.', '') }} </h3>
                                     <p style="margin-top: 3px !important; color:white !important;" class="price"><i
                                             style="font-size:20px; margin:10px;" class="fa">&#xf041;</i>
                                         {{ $item->ad_district }} {{ $item->ad_city }}</p>

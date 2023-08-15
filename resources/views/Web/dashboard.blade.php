@@ -37,8 +37,8 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Pages <span></span> My Account
+                    <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> My Dashboard
                 </div>
             </div>
         </div>
@@ -117,7 +117,8 @@
                                                     @else
                                                     @endif
                                                 </div>
-                                                <div class="text-center">
+                                                {{-- there should be become dealer option  --}}
+                                                {{-- <div class="text-center">
                                                     <div>
                                                         @if (isset($vendor_details->First_Name))
                                                             <a href="{{ route('web.dashboard.becomeDealer') }}"
@@ -130,7 +131,8 @@
                                                             </p>
                                                         @endif
                                                     </div>
-                                                </div>
+                                                </div> --}}
+                                                {{-- there should be become dealer option  --}}
                                                 <div>
                                                     <div>
                                                         @if (isset($vendor_details->email))

@@ -75,7 +75,7 @@
         <div class="page-header breadcrumb-wrap  mb-10">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span>All ads <span></span>Vehicle Types
                 </div>
             </div>
@@ -121,7 +121,8 @@
                                             <h5 style="color: #fff !important;" class="title">{{ $item->ad_title }}</h5>
                                             <hr
                                                 style="margin: 0 auto; color: #d9e0d9 !important; width: 100% !important; height: 4px !important;">
-                                            <h3 style="color: #fff !important;" class="price">Rs. {{ $item->ad_price }}
+                                            <h3 style="color: #fff !important;" class="price">Rs.
+                                                {{ number_format($item->ad_price, 2, '.', '') }}
                                             </h3>
                                             <p style="color: #fff !important;" style="margin-top: 3px !important;"
                                                 class="price"><i style="font-size:20px; margin:10px;"

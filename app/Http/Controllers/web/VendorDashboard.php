@@ -278,6 +278,9 @@ class VendorDashboard extends Controller
           }
      }
 
+
+
+
      public function imageUpdate(Request $request)
      {
 
@@ -330,20 +333,14 @@ class VendorDashboard extends Controller
 
      public function addNewImage(Request $request)
      {
-          return $request;
-          $request->validate([
-               'image_1' => 'mimes:jpeg,jpg',
-               'image_2' => 'mimes:jpeg,jpg',
-               'image_3' => 'mimes:jpeg,jpg',
-               'image_4' => 'mimes:jpeg,jpg',
-               'image_5' => 'mimes:jpeg,jpg',
-               'image_6' => 'mimes:jpeg,jpg',
-          ]);
 
-          if ($request->image_1) {
-               $image_1 = time() . rand(1, 1000) . '.' . $request->image_1->extension();
+
+
+
+          if ($request->hasFile('image_1')) {
+               $image_1 = time() . rand(1, 1000) . '.' . $request->file('image_1')->extension();
+               return $image_1;
                $image = Image::make($request->file('image_1'))->resize(484, 600);
-
                // Reduce image size until it reaches approximately 100KB
 
                // Add the watermark text to the image
@@ -365,8 +362,9 @@ class VendorDashboard extends Controller
                ]);
           }
 
-          if ($request->image_2) {
-               $image_2 = time() . rand(1, 1000) . '.' . $request->image_2->extension();
+          if ($request->hasFile('image_2')) {
+               $image_2 = time() . rand(1, 1000) . '.' . $request->file('image_2')->extension();
+               return $image_2;
                $image = Image::make($request->file('image_2'))->resize(484, 600);
 
                // Reduce image size until it reaches approximately 100KB
@@ -391,8 +389,9 @@ class VendorDashboard extends Controller
           }
 
 
-          if ($request->image_3) {
-               $image_3 = time() . rand(1, 1000) . '.' . $request->image_3->extension();
+          if ($request->hasFile('image_3')) {
+               $image_3 = time() . rand(1, 1000) . '.' . $request->file('image_3')->extension();
+               return $image_3;
                $image = Image::make($request->file('image_3'))->resize(484, 600);
 
                // Reduce image size until it reaches approximately 100KB
@@ -416,8 +415,9 @@ class VendorDashboard extends Controller
                ]);
           }
 
-          if ($request->image_4) {
-               $image_4 = time() . rand(1, 1000) . '.' . $request->image_4->extension();
+          if ($request->hasFile('image_4')) {
+               $image_4 = time() . rand(1, 1000) . '.' . $request->file('image_4')->extension();
+               return $image_4;
                $image = Image::make($request->file('image_4'))->resize(484, 600);
 
                // Reduce image size until it reaches approximately 100KB
@@ -441,8 +441,9 @@ class VendorDashboard extends Controller
                ]);
           }
 
-          if ($request->image_5) {
-               $image_5 = time() . rand(1, 1000) . '.' . $request->image_5->extension();
+          if ($request->hasFile('image_5')) {
+               $image_5 = time() . rand(1, 1000) . '.' . $request->file('image_5')->extension();
+               return $image_5;
                $image = Image::make($request->file('image_5'))->resize(484, 600);
 
                // Reduce image size until it reaches approximately 100KB
@@ -466,8 +467,9 @@ class VendorDashboard extends Controller
                ]);
           }
 
-          if ($request->image_6) {
-               $image_6 = time() . rand(1, 1000) . '.' . $request->image_6->extension();
+          if ($request->hasFile('image_6')) {
+               $image_6 = time() . rand(1, 1000) . '.' . $request->file('image_6')->extension();
+               return $image_6;
                $image = Image::make($request->file('image_6'))->resize(484, 600);
 
                // Reduce image size until it reaches approximately 100KB
@@ -489,12 +491,6 @@ class VendorDashboard extends Controller
                     'name' => $image_6,
                     'ads_id' => $request->ad_id
                ]);
-          }
-
-          if ($result) {
-               return response()->json(['code' => 'true']);
-          } else {
-               return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
           }
      }
 
