@@ -118,7 +118,7 @@
                                                     @endif
                                                 </div>
                                                 {{-- there should be become dealer option  --}}
-                                                {{-- <div class="text-center">
+                                                <div class="text-center">
                                                     <div>
                                                         @if (isset($vendor_details->First_Name))
                                                             <a href="{{ route('web.dashboard.becomeDealer') }}"
@@ -131,7 +131,7 @@
                                                             </p>
                                                         @endif
                                                     </div>
-                                                </div> --}}
+                                                </div>
                                                 {{-- there should be become dealer option  --}}
                                                 <div>
                                                     <div>

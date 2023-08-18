@@ -106,12 +106,37 @@ class VendorDashboard extends Controller
 
      public function become_dealer_create(Request $request)
      {
+
+          $vendorData = $request->session()->get('vendor_data');
           $request->validate([
                'company_logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-               'Company_Name' => 'required|max:25',
-               'Dealer_License_number' => 'required|max:25',
-               'dealer_location' => 'required'
+               'Company_Name' => 'required|max:100',
+               'address' => 'required|max:500',
+               'google_location' => 'required|url',
           ]);
+          try {
+
+               // Store image and get its path, then save the path in the database
+               $image_1 = time() . rand(1, 1000) . '.' . $request->company_logo->extension();
+               $image = Image::make($request->file('company_logo'))->resize(484, 600); // Create an instance of the image
+               $image->save(public_path("assets/myCustomThings/dealer/{$image_1}"));
+
+               $result = DB::table('dealer')->insert([
+                    'user_id' =>  $vendorData->id,
+                    'company_logo' => $image_1,
+                    'Company_Name' => $request->Company_Name,
+                    'address' => $request->address,
+                    'google_location' => $request->google_location,
+               ]);
+
+               if ($result) {
+                    return response()->json(['code' => 200, 'msg' => 'Become dealer success']);
+               } else {
+                    return response()->json(['code' => 400, 'msg' => 'Something went wrong']);
+               }
+          } catch (\Throwable $th) {
+               return response()->json(['code' => 500, 'msg' => $th->getMessage()]);
+          }
      }
 
      public function currentPackageDetails()
@@ -121,7 +146,6 @@ class VendorDashboard extends Controller
 
      public function updateVendorData(Request $request)
      {
-
           if ($request->hidden_single_type === 'First Name') {
                $rules['single_value'] = 'required|max:25';
           } elseif ($request->hidden_single_type === 'Last Name') {
@@ -139,7 +163,6 @@ class VendorDashboard extends Controller
           }
 
           $request->validate($rules);
-
 
           if ($request->hidden_single_type === 'First Name') { //update specific data
 

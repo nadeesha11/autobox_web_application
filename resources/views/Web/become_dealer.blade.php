@@ -21,7 +21,8 @@
                         <form id="become_dealer_form">
                             <div class="row">
                                 <div class="form-group col-md-12 col-lg-12 ">
-                                    <input name="company_logo" type="file" class="dropify" data-height="200" />
+                                    <input name="company_logo" type="file" class="dropify" data-height="200"
+                                        data-allowed-file-extensions="jpeg jpg png" />
                                     <span class="text-danger clear_form_error" id="company_logo_error"></span>
                                 </div>
                                 <div class="form-group col-md-6 col-lg-6">
@@ -29,220 +30,16 @@
                                         name="Company_Name" type="text" />
                                     <span class="text-danger clear_form_error" id="company_name_error"></span>
                                 </div>
-
                                 <div class="form-group col-md-6 col-lg-6">
-                                    <input value="" class="form-control" placeholder="Dealer License Number*"
-                                        name="Dealer_License_number" />
-                                    <span class="text-danger clear_form_error" id="Dealer_License_number_error"></span>
+                                    <input class="form-control" value="" placeholder="Enter Address" name="address"
+                                        type="text" />
+                                    <span class="text-danger clear_form_error" id="address_error"></span>
                                 </div>
-
                                 <div class="form-group col-md-6 col-lg-6">
-                                    <select name="dealer_location" style="height: 63px;"
-                                        class="form-select form-select mb-3" aria-label=".form-select-lg example">
-                                        <option value="" selected>Open this select menu</option>
-                                        @foreach ($cities as $item)
-                                            <option value="{{ $item->name_en }}">{{ $item->name_en }}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="text-danger clear_form_error" id="dealer_location_error"></span>
+                                    <input class="form-control" value="" placeholder="Enter Google Location Url"
+                                        name="google_location" type="text" />
+                                    <span class="text-danger clear_form_error" id="google_location_error"></span>
                                 </div>
-
-                                <div style=" padding: 10px !important; ">
-                                    <div
-                                        style="border: rgba(233, 225, 225, 0.986) 1px solid; padding: 10px !important;  border-radius: 5px;">
-                                        <p>Opening hours</p>
-                                        <div class="row">
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Monday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="Monday_checkbox" id="Monday_checkbox" value="">
-                                                        <label class="form-check-label"
-                                                            for="Monday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="08:30" name="monday_open_hour"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="17:30" name="monday_open_hour"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Tuesday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="Tuesday_checkbox" id="Tuesday_checkbox" value="">
-                                                        <label class="form-check-label"
-                                                            for="Tuesday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="08:30" name="Tuesday_opening"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="17:30" name="Tuesday_close"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Wednesday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="Wednesday_checkbox" id="Wednesday_checkbox"
-                                                            value="">
-                                                        <label class="form-check-label"
-                                                            for="Wednesday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="08:30" name="Wednesday_open"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="17:30" name="Wednesday_close"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Thursday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="Thursday_checkbox" id="Thursday_checkbox"
-                                                            value="">
-                                                        <label class="form-check-label"
-                                                            for="Thursday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="08:30" name="Thursday_open"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="17:30" name="Thursday_close"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Friday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            name="Friday_checkbox" id="Friday_checkbox" value="">
-                                                        <label class="form-check-label"
-                                                            for="Friday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="08:30" name="Friday_open"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="17:30" name="Friday_close"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Saturday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" checked type="checkbox"
-                                                            name="Saturday_checkbox" id="Saturday_checkbox"
-                                                            value="">
-                                                        <label class="form-check-label"
-                                                            for="Saturday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="" name="Saturday_open"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="" name="Saturday_close"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div
-                                                    class="col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <label for="Company_Name" class="col-form-label">Sunday *</label>
-                                                </div>
-
-                                                <div
-                                                    class="chek-form col-md-2 col-lg-2 d-flex align-items-center justify-content-center">
-                                                    <div class="custome-checkbox">
-                                                        <input class="form-check-input" checked type="checkbox"
-                                                            name="Sunday_checkbox" id="Sunday_checkbox" value="">
-                                                        <label class="form-check-label"
-                                                            for="Sunday_checkbox"><span>Closed</span></label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="" name="Sunday_open"
-                                                        type="time" />
-                                                </div>
-                                                <div class="col-md-4 col-lg-4">
-                                                    <input class="form-control" value="" name="Sunday_close"
-                                                        type="time" />
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
 
                                 <div class="col-md-12">
                                     <button type="button" id="become_dealer_btn"
@@ -257,6 +54,12 @@
             </div>
         </div>
     </main>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css"
+        integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
+        integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
         $(document).ready(function() {
@@ -304,7 +107,7 @@
                         document.getElementById("become_dealer_btn").disabled =
                             false; //enable button after click it
 
-                        if (response.code == "false") {
+                        if (response.code == 500) {
                             Swal.fire({
                                 title: 'Error!',
                                 text: response.msg,
@@ -312,8 +115,21 @@
                                 confirmButtonText: 'OK'
                             }) //display error msg
 
-                        } else {
-
+                        } else if (response.code == 400) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: response.msg,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            }) //display error msg
+                        } else if (response.code == 200) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: response.msg,
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }) //display error msg 
+                            window.location.href = "{{ route('web.dashboardIndex') }}";
                         }
 
                         $('.clear_input').val('');
@@ -325,10 +141,10 @@
                         // display validations in created slider 
                         $('#company_logo_error').html(error.responseJSON.errors.company_logo);
                         $('#company_name_error').html(error.responseJSON.errors.Company_Name);
-                        $('#Dealer_License_number_error').html(error.responseJSON.errors
-                            .Dealer_License_number);
-                        $('#dealer_location_error').html(error.responseJSON.errors
-                            .dealer_location);
+                        $('#address_error').html(error.responseJSON.errors
+                            .address);
+                        $('#google_location_error').html(error.responseJSON.errors
+                            .google_location);
                         document.getElementById("become_dealer_btn").disabled =
                             false; //enable button after click it
                     }
