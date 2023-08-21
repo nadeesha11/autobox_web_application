@@ -48,6 +48,11 @@ Route::post('/Web/dashBoard/getCity', [VendorDashboard::class, 'getCity'])->name
 Route::post('/Web/dashBoard/basicFormDetailsCreate', [VendorDashboard::class, 'createBasicForm'])->name('web.dashboard.basicFormDetailsCreate'); // dashboard basicFormDetailsCreate
 Route::get('/Web/dashBoard/logout', [VendorDashboard::class, 'logout'])->name('web.vendor.logout'); // web logout
 Route::get('/Web/dashBoard/becomeDealer', [VendorDashboard::class, 'becomeDealer'])->name('web.dashboard.becomeDealer'); // web dashboard
+Route::get('/Web/dashBoard/becomeDealer/edit', [VendorDashboard::class, 'becomeDealerEdit'])->name('web.dashboard.becomeDealer.edit'); // web dashboard edit
+Route::post('/Web/dashBoard/updateDealer', [VendorDashboard::class, 'updateDealer'])->name('admin.dealer.update'); // dealer update
+
+// admin.dealer.update
+
 Route::post('/Web/dashBoard/becomeDealer/Create', [VendorDashboard::class, 'become_dealer_create'])->name('web.dashboard.become_dealer'); // dashboard dealer create
 Route::post('/Web/dashBoard/updateVendorData', [VendorDashboard::class, 'updateVendorData'])->name('web.vendorData.update'); // web vendor dashboard update
 Route::get('/Web/dashBoard/adsmanagement', [VendorDashboard::class, 'adsmanagement'])->name('vendor.dashboard.adsmanagement'); // web dashboard ads management

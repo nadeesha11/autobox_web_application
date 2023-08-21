@@ -105,7 +105,7 @@
                     data: form_ajax,
                     success: function(response) {
                         document.getElementById("become_dealer_btn").disabled =
-                            false; //enable button after click it
+                            true; //enable button after click it
 
                         if (response.code == 500) {
                             Swal.fire({

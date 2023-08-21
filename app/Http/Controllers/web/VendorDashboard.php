@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,9 +25,94 @@ class VendorDashboard extends Controller
                ->select('packages.*', 'assign_packages.*')
                ->first();
 
+          $vendorData = session('vendor_data');
+          $check_is_this_dealer = DB::table('dealer')->where('user_id', $vendorData->id)->first();
+
+          if ($check_is_this_dealer) { // check this user dealer or not
+               $dealer = "true";
+          } else {
+               $dealer = "false";
+          }
+
           $vendor_details = DB::table('users')->where('id', session('vendor_data')->id)->first();
           $district = DB::table('districts')->get(['name_en', 'id']);
-          return view('Web.dashboard', compact('district', 'vendor_details', 'current_package_details'));
+          return view('Web.dashboard', compact('district', 'vendor_details', 'current_package_details', 'dealer'));
+     }
+
+     public function updateDealer(Request $request)
+     {
+          if ($request->hidden_single_type === 'Company_Name') {
+               $request->validate([
+                    'single_value' => 'required|max:100'
+               ]);
+          } else if ($request->hidden_single_type === 'address') {
+               $request->validate([
+                    'single_value' => 'required|max:500'
+               ]);
+          } else if ($request->hidden_single_type === 'google_location') {
+               $request->validate([
+                    'single_value' => 'required|url'
+               ]);
+          } else if ($request->hidden_single_type === 'company_logo') {
+               $request->validate([
+                    'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+               ]);
+          }
+          try {
+               if ($request->hidden_single_type === 'Company_Name') {
+                    $result = DB::table('dealer')->where('id', $request->hidden_id)->update(
+                         ['Company_Name' => $request->single_value]
+                    );
+                    if ($result) {
+                         return response()->json(['code' => 'true']);
+                    } else {
+                         return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+                    }
+               } else if ($request->hidden_single_type === 'address') {
+                    $result = DB::table('dealer')->where('id', $request->hidden_id)->update(
+                         ['address' => $request->single_value]
+                    );
+                    if ($result) {
+                         return response()->json(['code' => 'true']);
+                    } else {
+                         return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+                    }
+               } else if ($request->hidden_single_type === 'google_location') {
+                    $result = DB::table('dealer')->where('id', $request->hidden_id)->update(
+                         ['google_location' => $request->single_value]
+                    );
+                    if ($result) {
+                         return response()->json(['code' => 'true']);
+                    } else {
+                         return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+                    }
+               } else if ($request->hidden_single_type === 'company_logo') {
+                    $exist_image = DB::table('dealer')->where('id', $request->hidden_id)->pluck('company_logo')->first();
+
+                    // delete current image 
+                    $image_path = public_path('assets/myCustomThings/dealer/' . $exist_image);
+                    if (File::exists($image_path)) {
+                         File::delete($image_path);
+                    }
+
+                    // Store image and get its path, then save the path in the database
+                    $image_1 = time() . rand(1, 1000) . '.' . $request->image->extension();
+                    $image = Image::make($request->file('image'))->resize(484, 600); // Create an instance of the image
+                    $image->save(public_path("assets/myCustomThings/dealer/{$image_1}"));
+
+                    $result = DB::table('dealer')->where('id', $request->hidden_id)->update([
+                         'company_logo' => $image_1
+                    ]);
+
+                    if ($result) {
+                         return response()->json(['code' => 'true']);
+                    } else {
+                         return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+                    }
+               }
+          } catch (\Throwable $th) {
+               return response()->json(['code' => 500, 'msg' => $th->getMessage()]);
+          }
      }
 
      public function getCity(Request $request)
@@ -104,6 +190,13 @@ class VendorDashboard extends Controller
           return view('Web.become_dealer', compact('cities'));
      }
 
+     public function becomeDealerEdit()
+     {
+          $vendor_data = session('vendor_data'); //need to get current vendor details because check unique values except current values
+          $dealerData = DB::table('dealer')->where('user_id', $vendor_data->id)->first(); //get dealer data
+          return view('Web.editDealer', compact('dealerData'));
+     }
+
      public function become_dealer_create(Request $request)
      {
 
@@ -113,6 +206,7 @@ class VendorDashboard extends Controller
                'Company_Name' => 'required|max:100',
                'address' => 'required|max:500',
                'google_location' => 'required|url',
+
           ]);
           try {
 
@@ -127,6 +221,7 @@ class VendorDashboard extends Controller
                     'Company_Name' => $request->Company_Name,
                     'address' => $request->address,
                     'google_location' => $request->google_location,
+                    'created_at' => Carbon::now(),
                ]);
 
                if ($result) {
@@ -301,9 +396,6 @@ class VendorDashboard extends Controller
           }
      }
 
-
-
-
      public function imageUpdate(Request $request)
      {
 
@@ -356,9 +448,6 @@ class VendorDashboard extends Controller
 
      public function addNewImage(Request $request)
      {
-
-
-
 
           if ($request->hasFile('image_1')) {
                $image_1 = time() . rand(1, 1000) . '.' . $request->file('image_1')->extension();

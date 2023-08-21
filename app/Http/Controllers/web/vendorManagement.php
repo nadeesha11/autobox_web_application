@@ -34,8 +34,6 @@ class vendorManagement extends Controller
             // check remember me token clicked or not start
             if (isset($request->checkbox)) {
 
-
-
                 Cookie::queue('autobox_vendor_username', $request->name, 1440);
                 Cookie::queue('autobox_vendor_password', $request->password, 1440);
             } else {

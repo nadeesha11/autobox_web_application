@@ -1,5 +1,24 @@
 @extends('Web.Layout.Layout')
 @section('content')
+    <style>
+        .dealer-container {
+            display: flex;
+            align-items: center;
+            /* Vertically align items */
+        }
+
+        .dealer-image {
+            height: 55px;
+            width: 55px;
+            object-fit: cover;
+            margin: 5px;
+        }
+
+        .company-name {
+            margin-left: 10px;
+            /* Add space between image and Company Name */
+        }
+    </style>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
@@ -121,16 +140,25 @@
                                                 </ul>
                                             </div>
                                         </div>
+                                        <div class="col-sm-12  col-md-6 col-lg-6">
+                                            <div style="margin-top: 30px !important;" class="font-xs card">
+                                                <div class="dealer-container">
+                                                    <img style="border-radius: 4px !important;" class="dealer-image"
+                                                        src="{{ asset('assets/myCustomThings/dealer/' . $member_details->company_logo) }}"
+                                                        alt="">
+                                                    <h6 class="company-name">{{ $member_details->Company_Name }}</h6>
+
+                                                </div>
+                                                <p class="company-name">Member Since:
+                                                    {{ \Carbon\Carbon::parse($member_details->created_at)->format('Y-m-d') }}
+                                                </p>
+
+
+
+                                            </div>
+                                        </div>
                                     </div>
-
-
-
-
-
-
-
                                 </div>
-
 
                                 <!-- Detail Info -->
                             </div>
@@ -142,18 +170,6 @@
                                         <a class="nav-link active" id="Description-tab" data-bs-toggle="tab"
                                             href="#Description">Description</a>
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
-                                            href="#Additional-info">Additional info</a>
-                                    </li> --}}
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Vendor-info-tab" data-bs-toggle="tab"
-                                            href="#Vendor-info">Vendor</a>
-                                    </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews
-                                            (3)</a>
-                                    </li> --}}
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active" id="Description">
@@ -449,7 +465,7 @@
                         </div>
                         <div class="row mt-60">
                             <div class="col-12">
-                                <h2 class="section-title style-1 mb-30">Related products</h2>
+                                <h2 class="section-title style-1 mb-30">Member Ads</h2>
                             </div>
                             <div class="col-12">
                                 <div class="row related-products">

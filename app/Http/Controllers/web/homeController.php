@@ -33,6 +33,9 @@ class homeController extends Controller
 
     public function detailed($id)
     {
+        $customer_id = DB::table('ads')->where('id', $id)->pluck('ads_customers_id')->first();
+        $member_details = DB::table('dealer')->where('user_id', $customer_id)->first();
+
         $detailed_ads = DB::table('ads')
             ->join('ads_images', 'ads.id', '=', 'ads_images.ads_id')
             ->join('vehicle_types', 'ads.vehicle_types_id', '=', 'vehicle_types.id')
@@ -43,7 +46,7 @@ class homeController extends Controller
             ->select('ads.*', 'ads_images.*', 'vehicle_types.vt_name', 'brand.brand_name', 'model.model_name', 'users.First_Name', 'users.Last_Name', 'users.email', 'users.phone', 'users.Fb_link', 'users.Twitter_link', 'users.Linkedin_link', 'users.Youtube_link', 'users.district', 'users.city')
             ->get();
 
-        return view('Web.detailed_ad', compact('detailed_ads'));
+        return view('Web.detailed_ad', compact('detailed_ads', 'member_details'));
     }
 
     public function getBrands($id)

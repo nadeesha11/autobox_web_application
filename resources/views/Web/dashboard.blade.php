@@ -117,22 +117,36 @@
                                                     @else
                                                     @endif
                                                 </div>
-                                                {{-- there should be become dealer option  --}}
-                                                <div class="text-center">
-                                                    <div>
-                                                        @if (isset($vendor_details->First_Name))
-                                                            <a href="{{ route('web.dashboard.becomeDealer') }}"
-                                                                class="btn btn-primary">Become
-                                                                Dealer</a>
-                                                        @else
-                                                            <button disabled class="btn btn-primary">Become
-                                                                Dealer</button>
-                                                            <p style="font-size: 10px;">You need to fill basic details first
-                                                            </p>
-                                                        @endif
+
+                                                {{-- check is this dealer or not  --}}
+                                                @if ($dealer === 'true')
+                                                    <div class="text-center">
+
+                                                        <a href="{{ route('web.dashboard.becomeDealer.edit') }}"
+                                                            class="btn btn-primary">Edit
+                                                            Dealer Details</a>
+
                                                     </div>
-                                                </div>
-                                                {{-- there should be become dealer option  --}}
+                                                @else
+                                                    {{-- there should be become dealer option  --}}
+                                                    <div class="text-center">
+                                                        <div>
+                                                            @if (isset($vendor_details->First_Name))
+                                                                <a href="{{ route('web.dashboard.becomeDealer') }}"
+                                                                    class="btn btn-primary">Become
+                                                                    Dealer</a>
+                                                            @else
+                                                                <button disabled class="btn btn-primary">Become
+                                                                    Dealer</button>
+                                                                <p style="font-size: 10px;">You need to fill basic details
+                                                                    first
+                                                                </p>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    {{-- there should be become dealer option  --}}
+                                                @endif
+
                                                 <div>
                                                     <div>
                                                         @if (isset($vendor_details->email))
