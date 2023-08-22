@@ -99,6 +99,7 @@ Route::get('/Web/dashBoard/Ad/Success', [CreateAdController::class, 'display_suc
 
 Route::get('/', [homeController::class, 'index'])->name('web.home'); // web home
 Route::get('/Detailed{id}', [homeController::class, 'detailed'])->name('web.detailed_ad'); // web ad detailed
+Route::get('/Shop{id}', [homeController::class, 'memberShop'])->name('web.memberShop'); // web ad member ads
 
 Route::get("/PrivacyPolicy", function () { //return services
   return "PrivacyPolicy";

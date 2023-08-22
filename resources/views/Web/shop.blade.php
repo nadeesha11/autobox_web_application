@@ -76,7 +76,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span>All ads
+                    <span></span>Shop
                 </div>
             </div>
         </div>
@@ -137,25 +137,43 @@
                     <!--product grid-->
                     {!! $filterd_ads->withQueryString()->links('pagination::bootstrap-5') !!}
                 </div>
-
                 <div style="margin-top: 5px !important;" class="col-lg-1-5 primary-sidebar sticky-sidebar">
                     <div class="sidebar-widget widget-category-2 mb-50">
-                        <h5 class="section-title style-1 mb-30">Category</h5>
-                        <ul>
-                            @foreach ($category as $vehicleType)
-                                <li>
-                                    <a href="{{ route('web.allads.vehicleType', ['id' => $vehicleType->id]) }}">
-                                        <img src="{{ asset('assets/myCustomThings/new_vehicle_image/' . $vehicleType->vt_icon) }}"
-                                            alt="" />
-                                        {{ $vehicleType->vt_name }}
-                                    </a>
-                                    <span class="count">
-                                        {{ count($vehicleType->getBrands) }}
+                        <div class="col-sm-12  col-md-12 col-lg-12">
+                            <div style="margin-top: 30px !important;" class="font-xs card">
+                                <div class="dealer-container">
+                                    <div class="text-center mt-3 mb-3">
+                                        <img style="border-radius: 4px !important; height:150px !important; width:150px !important; "
+                                            class="dealer-image"
+                                            src="{{ asset('assets/myCustomThings/dealer/' . $member_details->company_logo) }}"
+                                            alt="">
+                                    </div>
 
+                                    <h6 class="company-name p-2">{{ $member_details->Company_Name }}</h6>
+                                </div>
+                                <p class="company-name p-2"><span style="color: black !important;">Member
+                                        Since</span>:
+                                    {{ \Carbon\Carbon::parse($member_details->created_at)->format('Y-m-d') }}
+                                </p>
+                            </div>
+                            <div style="margin-top: 10px !important;" class="font-xs card">
+                                <p class="company-name p-2"><span style="color: black !important;">
+                                        Address:
                                     </span>
-                                </li>
-                            @endforeach
-                        </ul>
+                                    {{ $member_details->address }}
+                                </p>
+                            </div>
+                            <div style="margin-top: 10px !important; padding:10px !important;" class="font-xs card">
+                                <a class="m-2" target="_blank" href="route('{{ $member_details->google_location }}')">
+                                    Google Location</a>
+                            </div>
+                            {{-- <div style="margin-top: 10px !important; padding:10px !important;" class="font-xs card">
+                                <a class="m-2" target="_blank"
+                                    href="{{ route('web.memberShop', ['id' => $member_details->user_id]) }}">
+                                    Visit Shop</a>
+                            </div> --}}
+                        </div>
+
                     </div>
                 </div>
             </div>

@@ -140,23 +140,42 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="col-sm-12  col-md-6 col-lg-6">
-                                            <div style="margin-top: 30px !important;" class="font-xs card">
-                                                <div class="dealer-container">
-                                                    <img style="border-radius: 4px !important;" class="dealer-image"
-                                                        src="{{ asset('assets/myCustomThings/dealer/' . $member_details->company_logo) }}"
-                                                        alt="">
-                                                    <h6 class="company-name">{{ $member_details->Company_Name }}</h6>
-
+                                        @if ($check_member_->isEmpty())
+                                        @else
+                                            <div class="col-sm-12  col-md-6 col-lg-6">
+                                                <div style="margin-top: 30px !important;" class="font-xs card">
+                                                    <div class="dealer-container">
+                                                        <img style="border-radius: 4px !important;" class="dealer-image"
+                                                            src="{{ asset('assets/myCustomThings/dealer/' . $member_details->company_logo) }}"
+                                                            alt="">
+                                                        <h6 class="company-name">{{ $member_details->Company_Name }}</h6>
+                                                    </div>
+                                                    <p class="company-name"><span style="color: black !important;">Member
+                                                            Since</span>:
+                                                        {{ \Carbon\Carbon::parse($member_details->created_at)->format('Y-m-d') }}
+                                                    </p>
                                                 </div>
-                                                <p class="company-name">Member Since:
-                                                    {{ \Carbon\Carbon::parse($member_details->created_at)->format('Y-m-d') }}
-                                                </p>
-
-
-
+                                                <div style="margin-top: 10px !important;" class="font-xs card">
+                                                    <p class="company-name"><span style="color: black !important;">
+                                                            Address:
+                                                        </span>
+                                                        {{ $member_details->address }}
+                                                    </p>
+                                                </div>
+                                                <div style="margin-top: 10px !important; padding:10px !important;"
+                                                    class="font-xs card">
+                                                    <a target="_blank"
+                                                        href="route('{{ $member_details->google_location }}')">
+                                                        Google Location</a>
+                                                </div>
+                                                <div style="margin-top: 10px !important; padding:10px !important;"
+                                                    class="font-xs card">
+                                                    <a target="_blank"
+                                                        href="{{ route('web.memberShop', ['id' => $member_details->user_id]) }}">
+                                                        Visit Shop</a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -177,449 +196,69 @@
                                             {!! $detailed_ads[0]->ad_description !!}
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="Additional-info">
-                                        <table class="font-md">
-                                            <tbody>
-                                                <tr class="stand-up">
-                                                    <th>Stand Up</th>
-                                                    <td>
-                                                        <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="folded-wo-wheels">
-                                                    <th>Folded (w/o wheels)</th>
-                                                    <td>
-                                                        <p>32.5″L x 18.5″W x 16.5″H</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="folded-w-wheels">
-                                                    <th>Folded (w/ wheels)</th>
-                                                    <td>
-                                                        <p>32.5″L x 24″W x 18.5″H</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="door-pass-through">
-                                                    <th>Door Pass Through</th>
-                                                    <td>
-                                                        <p>24</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="frame">
-                                                    <th>Frame</th>
-                                                    <td>
-                                                        <p>Aluminum</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="weight-wo-wheels">
-                                                    <th>Weight (w/o wheels)</th>
-                                                    <td>
-                                                        <p>20 LBS</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="weight-capacity">
-                                                    <th>Weight Capacity</th>
-                                                    <td>
-                                                        <p>60 LBS</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="width">
-                                                    <th>Width</th>
-                                                    <td>
-                                                        <p>24″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="handle-height-ground-to-handle">
-                                                    <th>Handle height (ground to handle)</th>
-                                                    <td>
-                                                        <p>37-45″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="wheels">
-                                                    <th>Wheels</th>
-                                                    <td>
-                                                        <p>12″ air / wide track slick tread</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="seat-back-height">
-                                                    <th>Seat back height</th>
-                                                    <td>
-                                                        <p>21.5″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="head-room-inside-canopy">
-                                                    <th>Head room (inside canopy)</th>
-                                                    <td>
-                                                        <p>25″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="pa_color">
-                                                    <th>Color</th>
-                                                    <td>
-                                                        <p>Black, Blue, Red, White</p>
-                                                    </td>
-                                                </tr>
-                                                <tr class="pa_size">
-                                                    <th>Size</th>
-                                                    <td>
-                                                        <p>M, S</p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                     <div class="tab-pane fade" id="Vendor-info">
-
-
-
-
                                     </div>
                                     <div class="tab-pane fade" id="Reviews">
-                                        <!--Comments-->
-                                        <div class="comments-area">
-                                            <div class="row">
-                                                <div class="col-lg-8">
-                                                    <h4 class="mb-30">Customer questions & answers</h4>
-                                                    <div class="comment-list">
-                                                        <div class="single-comment justify-content-between d-flex mb-30">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/blog/author-2.png"
-                                                                        alt="" />
-                                                                    <a href="#"
-                                                                        class="font-heading text-brand">Sienna</a>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="d-flex justify-content-between mb-10">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <span class="font-xs text-muted">December 4,
-                                                                                2022 at 3:12 pm </span>
-                                                                        </div>
-                                                                        <div class="product-rate d-inline-block">
-                                                                            <div class="product-rating"
-                                                                                style="width: 100%">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p class="mb-10">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit. Delectus, suscipit
-                                                                        exercitationem accusantium obcaecati quos voluptate
-                                                                        nesciunt facilis itaque modi commodi dignissimos
-                                                                        sequi repudiandae minus ab deleniti totam officia id
-                                                                        incidunt? <a href="#"
-                                                                            class="reply">Reply</a></p>
-                                                                </div>
-                                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- 
+                        @if ($check_member_->isEmpty())
+                        @else
+                            <div class="row mt-60">
+                                <div class="col-12">
+                                    <h2 class="section-title style-1 mb-30">
+                                        More ads from {{ $member_details->Company_Name }}
+                                    </h2>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row related-products">
+                                        @foreach ($more_ads_from_member as $item)
+                                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                                <div class="product-cart-wrap hover-up">
+                                                    <div class="product-img-action-wrap">
+                                                        <div class="product-img product-img-zoom">
+                                                            <a href="{{ route('web.detailed_ad', ['id' => $item->id]) }}"
+                                                                tabindex="0">
+                                                                <img class="default-img"
+                                                                    style="height: 300px; width: 100%; object-fit: cover !important;"
+                                                                    src="{{ asset('assets/myCustomThings/vehicleTypes/' . $item->name) }}" />
+                                                            </a>
                                                         </div>
+                                                    </div>
+                                                    <div class="product-info "
+                                                        style=" background-color:#00A791 !important;">
+                                                        <p style="color: white !important;" class="category">
+                                                            {{ $item->vt_name }}</p>
+                                                        <p style="color: white !important;" class="category">Ad number :
+                                                            {{ $item->ad_number }}</p>
+                                                        <h5 style="color: white !important;" class="title">
+                                                            {{ $item->ad_title }}</h5>
                                                         <div
-                                                            class="single-comment justify-content-between d-flex mb-30 ml-30">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/blog/author-3.png"
-                                                                        alt="" />
-                                                                    <a href="#"
-                                                                        class="font-heading text-brand">Brenna</a>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="d-flex justify-content-between mb-10">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <span class="font-xs text-muted">December 4,
-                                                                                2022 at 3:12 pm </span>
-                                                                        </div>
-                                                                        <div class="product-rate d-inline-block">
-                                                                            <div class="product-rating"
-                                                                                style="width: 80%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p class="mb-10">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit. Delectus, suscipit
-                                                                        exercitationem accusantium obcaecati quos voluptate
-                                                                        nesciunt facilis itaque modi commodi dignissimos
-                                                                        sequi repudiandae minus ab deleniti totam officia id
-                                                                        incidunt? <a href="#"
-                                                                            class="reply">Reply</a></p>
-                                                                </div>
-                                                            </div>
+                                                            style="text-align: center !important; margin-top:4px !important;">
+                                                            <hr
+                                                                style="margin: 0 auto; color: #d9e0d9 !important; width: 100% !important; height: 4px !important;">
                                                         </div>
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/blog/author-4.png"
-                                                                        alt="" />
-                                                                    <a href="#"
-                                                                        class="font-heading text-brand">Gemma</a>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="d-flex justify-content-between mb-10">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <span class="font-xs text-muted">December 4,
-                                                                                2022 at 3:12 pm </span>
-                                                                        </div>
-                                                                        <div class="product-rate d-inline-block">
-                                                                            <div class="product-rating"
-                                                                                style="width: 80%"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p class="mb-10">Lorem ipsum dolor sit amet,
-                                                                        consectetur adipisicing elit. Delectus, suscipit
-                                                                        exercitationem accusantium obcaecati quos voluptate
-                                                                        nesciunt facilis itaque modi commodi dignissimos
-                                                                        sequi repudiandae minus ab deleniti totam officia id
-                                                                        incidunt? <a href="#"
-                                                                            class="reply">Reply</a></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <h3 style="color: white !important;" class="price">Rs.
+                                                            {{ number_format($item->ad_price, 2, '.', '') }}
+                                                        </h3>
+                                                        <p style="color: white !important;"
+                                                            style="margin-top: 3px !important;" class="price"><i
+                                                                style="font-size:20px; margin:10px;"
+                                                                class="fa">&#xf041;</i>
+                                                            {{ $item->ad_district }} {{ $item->ad_city }} </p>
+                                                        <p style="color: #fff !important;" class="category">
+                                                            {{ $item->created_at }}</p>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <h4 class="mb-30">Customer reviews</h4>
-                                                    <div class="d-flex mb-30">
-                                                        <div class="product-rate d-inline-block mr-15">
-                                                            <div class="product-rating" style="width: 90%"></div>
-                                                        </div>
-                                                        <h6>4.8 out of 5</h6>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>5 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 50%"
-                                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%
-                                                        </div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>4 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 25%"
-                                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
-                                                        </div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>3 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 45%"
-                                                            aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%
-                                                        </div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>2 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 65%"
-                                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%
-                                                        </div>
-                                                    </div>
-                                                    <div class="progress mb-30">
-                                                        <span>1 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 85%"
-                                                            aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%
-                                                        </div>
-                                                    </div>
-                                                    <a href="#" class="font-xs text-muted">How are ratings
-                                                        calculated?</a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!--comment form-->
-                                        <div class="comment-form">
-                                            <h4 class="mb-15">Add a review</h4>
-                                            <div class="product-rate d-inline-block mb-30"></div>
-                                            <div class="row">
-                                                <div class="col-lg-8 col-md-12">
-                                                    <form class="form-contact comment_form" action="#"
-                                                        id="commentForm">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                                                        placeholder="Write Comment"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="name"
-                                                                        id="name" type="text"
-                                                                        placeholder="Name" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="email"
-                                                                        id="email" type="email"
-                                                                        placeholder="Email" />
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="website"
-                                                                        id="website" type="text"
-                                                                        placeholder="Website" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit"
-                                                                class="button button-contactForm">Submit Review</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row mt-60">
-                            <div class="col-12">
-                                <h2 class="section-title style-1 mb-30">Member Ads</h2>
-                            </div>
-                            <div class="col-12">
-                                <div class="row related-products">
-                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                        <div class="product-cart-wrap hover-up">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom">
-                                                    <a href="shop-product-right.html" tabindex="0">
-                                                        <img class="default-img" src="assets/imgs/shop/product-2-1.jpg"
-                                                            alt="" />
-                                                        <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg"
-                                                            alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Quick view" class="action-btn small hover-up"
-                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                            class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                                        href="shop-wishlist.html" tabindex="0"><i
-                                                            class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn small hover-up"
-                                                        href="shop-compare.html" tabindex="0"><i
-                                                            class="fi-rs-shuffle"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="hot">Hot</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <h2><a href="shop-product-right.html" tabindex="0">some ad title 1
-                                                    </a></h2>
-                                                img
-                                                <div class="product-price">
-                                                    <span>$238.85 </span>
+                        @endif --}}
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                        <div class="product-cart-wrap hover-up">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom">
-                                                    <a href="shop-product-right.html" tabindex="0">
-                                                        <img class="default-img" src="assets/imgs/shop/product-3-1.jpg"
-                                                            alt="" />
-                                                        <img class="hover-img" src="assets/imgs/shop/product-4-2.jpg"
-                                                            alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Quick view" class="action-btn small hover-up"
-                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                            class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                                        href="shop-wishlist.html" tabindex="0"><i
-                                                            class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn small hover-up"
-                                                        href="shop-compare.html" tabindex="0"><i
-                                                            class="fi-rs-shuffle"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="sale">-12%</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <h2><a href="shop-product-right.html" tabindex="0">Some ad title 2
-                                                    </a></h2>
-                                                img
-                                                <div class="product-price">
-                                                    <span>$138.85 </span>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                        <div class="product-cart-wrap hover-up">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom">
-                                                    <a href="shop-product-right.html" tabindex="0">
-                                                        <img class="default-img" src="assets/imgs/shop/product-4-1.jpg"
-                                                            alt="" />
-                                                        <img class="hover-img" src="assets/imgs/shop/product-4-2.jpg"
-                                                            alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Quick view" class="action-btn small hover-up"
-                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                            class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                                        href="shop-wishlist.html" tabindex="0"><i
-                                                            class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn small hover-up"
-                                                        href="shop-compare.html" tabindex="0"><i
-                                                            class="fi-rs-shuffle"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="new">New</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <h2><a href="shop-product-right.html" tabindex="0">Some ad title 3
-                                                    </a></h2>
-                                                img
-                                                <div class="product-price">
-                                                    <span>$738.85 </span>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6 d-lg-block d-none">
-                                        <div class="product-cart-wrap hover-up mb-0">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom">
-                                                    <a href="shop-product-right.html" tabindex="0">
-                                                        <img class="default-img" src="assets/imgs/shop/product-5-1.jpg"
-                                                            alt="" />
-                                                        <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg"
-                                                            alt="" />
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Quick view" class="action-btn small hover-up"
-                                                        data-bs-toggle="modal" data-bs-target="#quickViewModal"><i
-                                                            class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up"
-                                                        href="shop-wishlist.html" tabindex="0"><i
-                                                            class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn small hover-up"
-                                                        href="shop-compare.html" tabindex="0"><i
-                                                            class="fi-rs-shuffle"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="hot">Hot</span>
-                                                </div>
-                                            </div>
-                                            <div class="product-content-wrap">
-                                                <h2><a href="shop-product-right.html" tabindex="0">Some ad title 4
-                                                    </a></h2>
-                                                img
-                                                <div class="product-price">
-                                                    <span>$89.8 </span>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
