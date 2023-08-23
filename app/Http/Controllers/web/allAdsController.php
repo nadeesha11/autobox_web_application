@@ -23,8 +23,6 @@ class allAdsController extends Controller
             ->paginate(12);
         $totalCount = $filterd_ads->total();
         $category = vehicle_type::with('getBrands')->where('vt_status', 1)->get();
-
-
         return view('Web.allAds', compact('filterd_ads', 'totalCount', 'category'));
     }
 

@@ -88,9 +88,7 @@
                                                     <li class="mb-5">Model: <span
                                                             class="text-brand">{{ $detailed_ads[0]->model_name }}</span>
                                                     </li>
-                                                    <li class="mb-5">Accessory type: <span
-                                                            class="text-brand">{{ $detailed_ads[0]->ads_parts_accessory_type }}</span>
-                                                    </li>
+
                                                     <li class="mb-5">District: <span
                                                             class="text-brand">{{ $detailed_ads[0]->district }}</span>
                                                     </li>
@@ -109,7 +107,8 @@
                                                     <li class="mb-5">Email:<span class="text-brand">
                                                             {{ $detailed_ads[0]->email }}</span></li>
                                                     <li class="mb-5">Phone: <span
-                                                            class="text-brand">{{ $detailed_ads[0]->phone }}</span></li>
+                                                            class="text-brand">{{ '+94' . $detailed_ads[0]->phone }}</span>
+                                                    </li>
 
                                                 </ul>
                                             </div>
@@ -203,7 +202,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- 
+
                         @if ($check_member_->isEmpty())
                         @else
                             <div class="row mt-60">
@@ -214,7 +213,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="row related-products">
-                                        @foreach ($more_ads_from_member as $item)
+                                        @foreach ($more_ads as $item)
                                             <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                                 <div class="product-cart-wrap hover-up">
                                                     <div class="product-img-action-wrap">
@@ -254,10 +253,11 @@
                                                 </div>
                                             </div>
                                         @endforeach
+
                                     </div>
                                 </div>
                             </div>
-                        @endif --}}
+                        @endif
 
                     </div>
                 </div>

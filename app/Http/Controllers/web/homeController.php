@@ -46,19 +46,21 @@ class homeController extends Controller
             ->select('ads.*', 'ads_images.*', 'vehicle_types.vt_name', 'brand.brand_name', 'model.model_name', 'users.First_Name', 'users.Last_Name', 'users.email', 'users.phone', 'users.Fb_link', 'users.Twitter_link', 'users.Linkedin_link', 'users.Youtube_link', 'users.district', 'users.city')
             ->get();
 
-        // $more_ads_from_member = DB::table('ads')
-        //     ->join('ads_images', 'ads.id', '=', 'ads_images.ads_id')
-        //     ->join('vehicle_types', 'ads.vehicle_types_id', '=', 'vehicle_types.id')
-        //     ->join('brand', 'ads.brands_id', '=', 'brand.id')
-        //     ->join('users', 'ads.ads_customers_id', '=', 'users.id')
-        //     ->join('model', 'ads.models_id', '=', 'model.id')
-        //     ->where('ads.ads_customers_id', $customer_id)
-        //     ->select('ads.*', 'ads_images.*', 'vehicle_types.vt_name', 'brand.brand_name', 'model.model_name', 'users.First_Name', 'users.Last_Name', 'users.email', 'users.phone', 'users.Fb_link', 'users.Twitter_link', 'users.Linkedin_link', 'users.Youtube_link', 'users.district', 'users.city')
-        //     ->orderBy('ads.created_at', 'desc')
-        //     ->limit(4)
-        //     ->get();
+        $more_ads = DB::table('ads')
+            ->leftJoin('ads_images', function ($join) {
+                $join->on('ads.id', '=', 'ads_images.ads_id')
+                    ->whereRaw('ads_images.id = (SELECT id FROM ads_images WHERE ads_id = ads.id LIMIT 1)');
+            })
+            ->join('vehicle_types', 'vehicle_types.id', '=', 'ads.vehicle_types_id')
+            ->orderBy('ads.created_at', 'desc')
+            ->where('ads_customers_id', $customer_id)
+            ->inRandomOrder() // Add this line to get random records
+            ->take(4)
+            ->select('ads_images.name', 'ads.ad_title', 'ads.ad_price', 'ads.ad_title', 'ads.id', 'vehicle_types.vt_name', 'ads.ad_district', 'ads.ad_city', 'ads.created_at', 'ads.ad_number', 'ads.is_top_id')
+            ->get();
 
-        return view('Web.detailed_ad', compact('detailed_ads', 'member_details', 'check_member_'));
+
+        return view('Web.detailed_ad', compact('detailed_ads', 'member_details', 'check_member_', 'more_ads'));
     }
 
     public function memberShop($id)

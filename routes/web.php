@@ -17,6 +17,7 @@ use App\Http\Controllers\web\allAdsController;
 use App\Http\Controllers\web\CreateAdController;
 use App\Http\Controllers\web\garageController;
 use App\Http\Controllers\web\homeController;
+use App\Http\Controllers\web\inqueryController;
 use App\Http\Controllers\web\topAdsManagementController;
 use App\Http\Controllers\web\vendorManagement;
 use App\Http\Controllers\web\VendorDashboard;
@@ -51,7 +52,9 @@ Route::get('/Web/dashBoard/becomeDealer', [VendorDashboard::class, 'becomeDealer
 Route::get('/Web/dashBoard/becomeDealer/edit', [VendorDashboard::class, 'becomeDealerEdit'])->name('web.dashboard.becomeDealer.edit'); // web dashboard edit
 Route::post('/Web/dashBoard/updateDealer', [VendorDashboard::class, 'updateDealer'])->name('admin.dealer.update'); // dealer update
 
-// admin.dealer.update
+Route::get('/Web/inquery', [inqueryController::class, 'index'])->name('web.ads_inquery'); // web new ad inquery
+Route::post('/Web/inquery/create', [inqueryController::class, 'create'])->name('web.create.adsInquery'); // web create new ad inquery
+Route::get('/Web/inquery/display', [inqueryController::class, 'display'])->name('web.inqueryAds'); // web new ad display inquery
 
 Route::post('/Web/dashBoard/becomeDealer/Create', [VendorDashboard::class, 'become_dealer_create'])->name('web.dashboard.become_dealer'); // dashboard dealer create
 Route::post('/Web/dashBoard/updateVendorData', [VendorDashboard::class, 'updateVendorData'])->name('web.vendorData.update'); // web vendor dashboard update

@@ -26,7 +26,12 @@ class VendorDashboard extends Controller
                ->first();
 
           $vendorData = session('vendor_data');
-          $check_is_this_dealer = DB::table('dealer')->where('user_id', $vendorData->id)->first();
+          $check_is_this_dealer = DB::table('dealer')->where('user_id', $vendorData->id)->first(); //check is this dealer
+
+          $vendor_has_premium = DB::table('assign_packages') //check vendor has primium packages or not 
+               ->where('customer_id', $vendorData->id)
+               ->where('package_id', '!=', 5) // Exclude rows with package_id equal to 5
+               ->exists();
 
           if ($check_is_this_dealer) { // check this user dealer or not
                $dealer = "true";
@@ -36,7 +41,7 @@ class VendorDashboard extends Controller
 
           $vendor_details = DB::table('users')->where('id', session('vendor_data')->id)->first();
           $district = DB::table('districts')->get(['name_en', 'id']);
-          return view('Web.dashboard', compact('district', 'vendor_details', 'current_package_details', 'dealer'));
+          return view('Web.dashboard', compact('district', 'vendor_details', 'current_package_details', 'dealer', 'vendor_has_premium'));
      }
 
      public function updateDealer(Request $request)

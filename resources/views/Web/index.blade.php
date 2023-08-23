@@ -272,6 +272,26 @@
             </div>
         </section>
 
+        <section class="newsletter mb-15 wow animate__animated animate__fadeIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="position-relative newsletter-inner">
+                            <div class="newsletter-content">
+                                <h2 class="mb-20">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore fuga asperiores hic
+                                    obcaecati.
+                                </h2>
+                                <p class="mb-45"> Lorem ipsum dolor sit, amet consectetur adipisicing elit <span
+                                        class="text-brand"> <a href="{{ route('web.ads_inquery') }}">Here</a>
+                                    </span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col">

@@ -69,15 +69,23 @@
                                                 role="tab" aria-controls="orders" aria-selected="false"><i
                                                     class="fi-rs-shopping-bag mr-10"></i>Package Details</a>
                                         </li>
-                                        <li class="nav-item">
 
+                                        @if ($vendor_has_premium)
+                                            {{-- error  --}}
+                                            <li class="nav-item ">
+                                                <a class="nav-link  " href="{{ route('web.inqueryAds') }}"><i
+                                                        class="fi-rs-shopping-bag mr-10"></i>Inquery Ads</a>
+                                            </li>
+                                        @else
+                                        @endif
+
+                                        <li class="nav-item">
                                             <a class="nav-link" id="track-orders-tab"
                                                 href="{{ route('vendor.dashboard.adsmanagement') }}"><i
                                                     class="fi-rs-shopping-cart-check mr-10"></i>Ads
                                                 Management</a>
                                         </li>
                                         <li class="nav-item">
-
                                             <a class="nav-link" id="track-orders-tab"
                                                 href="{{ route('web.dashboard.index') }}"><i class="fa fa-car"
                                                     aria-hidden="true"></i> Garage Management</a>
@@ -269,24 +277,17 @@
                                                                         class="fa fa-pencil" aria-hidden="true"></i></a>
                                                             @endif
                                                         @endif
-
                                                         </td>
                                                         </tr>
                                                     </div>
-
-
                                                 </div>
                                                 {{-- chnaged ui end --}}
-
-
-
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="myPackages" role="tabpanel"
                                         aria-labelledby="orders-tab">
-
                                         <div class="card">
                                             <div class="card-header">
                                                 <h3 class="mb-0">My Packages</h3>
@@ -335,8 +336,6 @@
                                                                         <td>{{ $current_package_details->image_count }}
                                                                         </td>
                                                                     </tr>
-
-
                                                                 </tbody>
                                                             </table>
                                                         @else
@@ -344,7 +343,6 @@
                                                                 package not activated
                                                             </div>
                                                         @endif
-
 
                                                     </div>
                                                 </div>
@@ -385,6 +383,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="tab-pane fade" id="address" role="tabpanel"
                                         aria-labelledby="address-tab">
                                         <div class="row">
