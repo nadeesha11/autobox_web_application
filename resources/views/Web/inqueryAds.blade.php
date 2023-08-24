@@ -80,7 +80,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span>inquery ads
+                    <span></span> <a href="#"> inquery ads</a>
                 </div>
             </div>
         </div>

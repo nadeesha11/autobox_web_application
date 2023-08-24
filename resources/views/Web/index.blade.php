@@ -219,6 +219,10 @@
                     Toyota, Nissan, Honda, and Suzuki</h3>
 
                 <div class="row product-grid">
+                    @if (count($latest_ads) > 0)
+                    @else
+                        <h6 class="text-center">There is no records</h6>
+                    @endif
                     @foreach ($latest_ads as $item)
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div style="margin: 13px;" class="product-card"

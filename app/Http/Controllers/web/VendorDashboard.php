@@ -316,8 +316,8 @@ class VendorDashboard extends Controller
                ->join('vehicle_types', 'vehicle_types.id', '=', 'ads.vehicle_types_id')
                ->orderBy('ads.created_at', 'desc')
                ->select('ads_images.name', 'ads.ad_price', 'ads.ad_title', 'ads.id', 'vehicle_types.vt_name', 'ads.ad_district', 'ads.ad_city', 'ads.created_at', 'ads.ad_number', 'ads.ad_expire_date', 'ads.top_ad_expire_date', 'ads.is_top_id')
-               ->get();
-
+               ->paginate(2, ['*'], 'my_ads');
+          $myads_RecordsCount = $my_ads->total(); // Get the total count of all records that match the conditions (need paginate values to be differebt because one pagination affect to next pagination)
 
           $my_deactivate_ads = DB::table('ads') //get vendor active ads
                ->where('ads_customers_id', session('vendor_data')->id)
@@ -332,9 +332,10 @@ class VendorDashboard extends Controller
                ->join('vehicle_types', 'vehicle_types.id', '=', 'ads.vehicle_types_id')
                ->orderBy('ads.created_at', 'desc')
                ->select('ads_images.name', 'ads.ad_price', 'ads.ad_title', 'ads.id', 'vehicle_types.vt_name', 'ads.ad_district', 'ads.ad_city', 'ads.created_at', 'ads.ad_number', 'ads.ad_expire_date', 'ads.top_ad_expire_date', 'ads.is_top_id', 'ads.adminStatus')
-               ->get();
+               ->paginate(2, ['*'], 'my_deactivate_ads');
+          $my_deactivate_ads_RecordsCount = $my_deactivate_ads->total(); // Get the total count of all records that match the conditions (need paginate values to be differebt because one pagination affect to next pagination)
 
-          return view('Web.vendorAdsDisplay', compact(['my_ads', 'my_deactivate_ads']));
+          return view('Web.vendorAdsDisplay', compact(['my_ads', 'my_deactivate_ads', 'myads_RecordsCount', 'my_deactivate_ads_RecordsCount']));
      }
 
      public function adEdit($id)
@@ -356,7 +357,7 @@ class VendorDashboard extends Controller
      {
 
           if ($request->hidden_single_type === 'Title') {
-               $rules['input'] = 'required|max:60';
+               $rules['input'] = 'required|max:160';
           } elseif ($request->hidden_single_type === 'Price') {
                $rules['input'] = 'required|numeric';
           } elseif ($request->hidden_single_type === 'Description') {
@@ -367,27 +368,31 @@ class VendorDashboard extends Controller
 
           $request->validate($rules);
 
-          if ($request->hidden_single_type === 'Title') { //update specific data
-               $check = DB::table('ads')->where('id', $request->id)->update([
-                    'ad_title' => $request->input
-               ]);
-          } elseif ($request->hidden_single_type === 'Price') {
-               $check = DB::table('ads')->where('id', $request->id)->update([
-                    'ad_price' => $request->input
-               ]);
-          } elseif ($request->hidden_single_type === 'Description') {
-               $check = DB::table('ads')->where('id', $request->id)->update([
-                    'ad_description' => $request->input
-               ]);
-          } elseif ($request->hidden_single_type === 'Condition') {
-               $check = DB::table('ads')->where('id', $request->id)->update([
-                    'ads_condition' => $request->input
-               ]);
-          }
-          if ($check) {
-               return response()->json(['code' => 'true']);
-          } else {
-               return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+          try {
+               if ($request->hidden_single_type === 'Title') { //update specific data
+                    $check = DB::table('ads')->where('id', $request->id)->update([
+                         'ad_title' => $request->input
+                    ]);
+               } elseif ($request->hidden_single_type === 'Price') {
+                    $check = DB::table('ads')->where('id', $request->id)->update([
+                         'ad_price' => $request->input
+                    ]);
+               } elseif ($request->hidden_single_type === 'Description') {
+                    $check = DB::table('ads')->where('id', $request->id)->update([
+                         'ad_description' => $request->input
+                    ]);
+               } elseif ($request->hidden_single_type === 'Condition') {
+                    $check = DB::table('ads')->where('id', $request->id)->update([
+                         'ads_condition' => $request->input
+                    ]);
+               }
+               if ($check) {
+                    return response()->json(['code' => 'true']);
+               } else {
+                    return response()->json(['code' => 'false', 'msg' => "Something went wrong."]);
+               }
+          } catch (\Throwable $th) {
+               return response()->json(['code' => 'false', 'msg' => $th->getMessage()]);
           }
      }
 
@@ -431,19 +436,15 @@ class VendorDashboard extends Controller
                     $font->valign('middle'); // Set the text vertical alignment
                     $font->angle(0); // Set the text rotation angle
                });
-
                // Save the image
                $image->save(public_path("assets/myCustomThings/vehicleTypes/{$image_1}"));
-
                // resize image end
-
                $result = DB::table('ads_images')->where('id', $request->id)->update([
                     'name' => $image_1,
                ]);
           } catch (Exception $e) {
                return $e;
           }
-
           if ($result) {
                return response()->json(['code' => 'true']);
           } else {

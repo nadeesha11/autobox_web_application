@@ -31,8 +31,9 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Dashboard <span></span> Buy Top Ads
+                    <a href="{{ route('web.dashboardIndex') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <span></span> <a href="{{ route('web.dashboardIndex') }}">Dashboard</a> <span></span> <a
+                        href="#">Buy Top Ads</a>
                 </div>
             </div>
         </div>

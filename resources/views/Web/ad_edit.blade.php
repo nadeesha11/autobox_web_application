@@ -63,7 +63,9 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Dashboard <span></span> ads <span></span> edit
+                    <span></span> <a href="{{ route('web.dashboardIndex') }}">Dashboard</a> <span></span> <a
+                        href="{{ route('vendor.dashboard.adsmanagement') }}">ads</a> <span></span>
+                    <a href="#">edit</a>
                 </div>
             </div>
         </div>
@@ -105,9 +107,9 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <p style="color: #000000 !important;">Description :</p> <br> {!! $ad_edit->ad_description !!} <a
-                                        class="ml-2"
-                                        onclick="editDescription('Description','{{ $ad_edit->ad_description }}')"
+                                    <p style="color: #000000 !important;">Description :</p> <br> <span id="adDescription">
+                                        {!! $ad_edit->ad_description !!}</span> <a class="ml-2"
+                                        onclick="editDescription('Description',document.getElementById('adDescription').innerHTML)"
                                         href="#">edit</a>
                                 </td>
                             </tr>
@@ -177,7 +179,8 @@
                     <div class="modal-body">
                         <form id="update_single_values_form">
                             <div class="mb-3">
-                                <input type="hidden" id="image_edit_id" name="id" class="clear_input">
+                                <input type="hidden" id="image_edit_id" value="{{ $id }}" name="id"
+                                    class="clear_input">
                                 <input type="hidden" id="hidden_single_type" name="hidden_single_type" class="clear_input">
                                 <label id="change_title_input" class="form-label"></label>
                                 <input type="text" name="input" style="border-color: #37B093 !important; "
@@ -356,7 +359,6 @@
             }).summernote('code', value); // Set the content
 
             $('.clear_form_error').html('');
-
             $('#hidden_single_type_edit').val(input_type)
 
             var modalTitle = document.getElementById("modal_title_desc");
@@ -425,6 +427,7 @@
         })
 
         $('#update_textarea_btn').click(function() {
+            console.log("this is text area");
             document.getElementById("update_textarea_btn").disabled = true;
             $('.clear_form_error').html('');
 
@@ -459,6 +462,8 @@
                         location.reload();
 
                     }
+
+                    console.log(response);
                 },
                 error: function(error) {
                     document.getElementById("update_textarea_btn").disabled = false;
@@ -559,7 +564,6 @@
         })
 
         function editImage(imageName, imageId) {
-
 
             $('#edit_image_single_modal').modal('show')
             $('#image_edit_id_single').val(imageId)

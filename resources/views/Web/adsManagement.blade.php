@@ -19,7 +19,8 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Dashboard <span></span> Buy Ads
+                    <span></span> <a href="{{ route('web.dashboardIndex') }}">Dashboard</a> <span></span> <a
+                        href="#">Buy Ads</a>
                 </div>
             </div>
         </div>

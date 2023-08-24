@@ -63,21 +63,32 @@
             color: rgb(223, 213, 213) !important;
         }
 
-        .header-style-1.header-height-2 {
-            background-color: #032234 !important;
-        }
+
 
         .hero-slider-1 .single-hero-slider.rectangle .slider-content {
             left: 35% !important;
         }
 
+        .header-style-1.header-style-5 .header-bottom-bg-color {
+            background-color: white !important;
+            /* padding: 5px !important; */
+
+        }
+
         @media (max-width: 992px) {
             .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-top {
-                padding-top: 40px !important;
+                padding: 40px !important;
             }
 
             .sticky-bar.stick {
-                padding-top: 40px !important;
+                padding: 40px 0 40px 0 !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .header-style-1.header-height-2 {
+                background-color: #032234 !important;
+                /* display: none; */
             }
         }
     </style>
@@ -194,8 +205,8 @@
         </div>
 
     </div>
-    <header class="header-area header-style-1 header-style-5 header-height-2">
-        <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
+    <header class="header-area header-style-1 header-style-5 header-height-2 custom_height_">
+        <div class="header-middle header-middle-ptb-1 d-none d-xl-block">
             <div class="container">
                 <div class="header-wrap">
                     <div class="logo logo-width-1">
@@ -288,36 +299,36 @@
         </div>
 
 
-        <div class="header-bottom header-bottom-bg-color sticky-bar">
+        <div class="header-bottom header-bottom-bg-color sticky-bar custom_height_">
 
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
-                    <div class="logo logo-width-1 d-block d-lg-none">
+                    <div class="logo logo-width-1 d-block d-xl-none">
                         <div style="display: inline !important;">
 
                             {{-- post ad buttons for different purpose   --}}
                             @if (session('vendor_data'))
                                 @if (session('vendor_data')->phone)
                                     <button onclick="window.location.href = '{{ route('web.dashboard.create_ad') }}';"
-                                        style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important;"
+                                        style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important; margin:8px 0 8px 0 !important;"
                                         class="btn btn-warning"> <i class="fa-solid fa-car"></i> POST
                                         ADD</button>
                                 @else
                                     <button onclick="alert('Please update your account');"
-                                        style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important;"
+                                        style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important; margin:8px 0 8px 0 !important;"
                                         class="btn btn-warning"> <i class="fa-solid fa-car"></i> POST
                                         ADD</button>
                                 @endif
                             @else
                                 <button onclick="window.location.href = '{{ route('web.vendor.login') }}';"
-                                    style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important;"
+                                    style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important; margin:8px 0 8px 0 !important;"
                                     class="btn btn-warning"> <i class="fa-solid fa-car"></i> POST
                                     ADD</button>
                             @endif
 
                         </div>
                         <div style="display: inline !important;"> <button onclick="window.location.href = '';"
-                                style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important;"
+                                style="background-color: #37B093 !important; color:rgb(255, 255, 255) ; font-size:9px !important; padding:5px !important; margin:8px 0 8px 0 !important;"
                                 class="btn btn-warning"> FIND GARAGE</button>
                         </div>
 
@@ -599,7 +610,7 @@
                         <img src="assets/imgs/theme/icons/icon-headphone-white.svg" alt="hotline" />
                         <p>1900 - 888<span>24/7 Support Center</span></p>
                     </div>
-                    <div class="header-action-icon-2 d-block d-lg-none">
+                    <div class="header-action-icon-2 d-block d-xl-none">
                         <div class="burger-icon burger-icon-white">
                             <span class="burger-icon-top"></span>
                             <span class="burger-icon-mid"></span>
@@ -760,8 +771,6 @@
     @yield('content')
 
     <footer style="background-color: #032234; " class="main">
-
-
         <section class="section-padding footer-mid">
             <div class="container pt-15 pb-20">
                 <div class="row">

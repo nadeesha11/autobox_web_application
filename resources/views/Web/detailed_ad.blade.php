@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> <a href="shop-grid-right.html">ad detailed</a>
+                    <span></span> <a href="#">ad detailed</a>
                 </div>
             </div>
         </div>

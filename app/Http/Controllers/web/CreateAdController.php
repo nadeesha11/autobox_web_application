@@ -56,7 +56,7 @@ class CreateAdController extends Controller
     public function create_ad(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:60',
+            'title' => 'required|max:160',
             'price' => 'required|numeric',
             'vehicle_type' => 'required',
             'brand_id' => 'required',

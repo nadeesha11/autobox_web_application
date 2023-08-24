@@ -18,7 +18,7 @@ class FakeDataSeeder extends Seeder
         $faker = Faker::create();
 
         // Generate 10 fake users
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 20; $i++) {
 
             $insertId = DB::table('ads')->insertGetId([
 
@@ -47,7 +47,7 @@ class FakeDataSeeder extends Seeder
 
 
             DB::table('ads_images')->insert([
-                'name' => '1690285481184.jpg',
+                'name' => '1692872309705.jpg',
                 'ads_id' => $insertId,
 
             ]);

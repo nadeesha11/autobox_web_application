@@ -4,7 +4,8 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('web.home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                <span></span> Dashboard <span></span> My ads
+                <span></span> <a href="{{ route('web.dashboardIndex') }}">Dashboard</a> <span></span> <a href="#">My
+                    ads</a>
             </div>
         </div>
     </div>
@@ -23,11 +24,12 @@
             @endif
 
             <div class="col-lg-6">
-                <div style="padding: 10px !important; background-color:rgb(236, 247, 243) !important;"
+                <div data-item="8" data-item-show="4"
+                    style="padding: 10px !important; background-color:rgb(236, 247, 243) !important;"
                     class="product-list mb-50">
                     <div style="padding: 10px !important;" class="shop-product-fillter">
                         <div class="totall-product">
-                            <p>There are <strong class="text-brand">{{ count($my_ads) }}
+                            <p>There are <strong class="text-brand">{{ $myads_RecordsCount }}
                                 </strong>active ads !</p>
                         </div>
                     </div>
@@ -98,14 +100,16 @@
                         </div>
                     @endforeach
                 </div>
+                {!! $my_ads->appends(['my_ads_page' => $my_ads->currentPage()])->links('pagination::bootstrap-5') !!}
             </div>
 
             <div class="col-lg-6">
-                <div style="padding: 10px !important; background-color:rgb(236, 247, 243) !important;"
+                <div data-item="8" data-item-show="4"
+                    style="padding: 10px !important; background-color:rgb(236, 247, 243) !important;"
                     class="product-list mb-50">
                     <div style="padding: 10px !important;" class="shop-product-fillter">
                         <div class="totall-product">
-                            <p>There are <strong class="text-brand">{{ count($my_deactivate_ads) }}
+                            <p>There are <strong class="text-brand">{{ $my_deactivate_ads_RecordsCount }}
                                 </strong>deactive ads !</p>
                         </div>
                     </div>
@@ -166,7 +170,8 @@
                                 </h2>
                                 <h2>
                                     @if ($ad->is_top_id === 1)
-                                        <p style="color: rgb(0, 0, 0) !important;" href="shop-product-right.html"><span>Top
+                                        <p style="color: rgb(0, 0, 0) !important;" href="shop-product-right.html">
+                                            <span>Top
                                                 Ad
                                                 expire date : {{ $ad->top_ad_expire_date }}
                                             </span>
@@ -177,6 +182,7 @@
                         </div>
                     @endforeach
                 </div>
+                {!! $my_deactivate_ads->appends(['my_deactivate_ads_page' => $my_deactivate_ads->currentPage()])->links('pagination::bootstrap-5') !!}
             </div>
 
 

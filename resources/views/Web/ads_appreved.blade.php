@@ -7,7 +7,8 @@
                     <div class="col-xl-8 col-lg-10 col-md-12 m-auto text-center">
 
                         <p class="mb-20"><img style="height: 200px !important; width: 200px !important;  "
-                                src="https://i.ibb.co/hZmCNgS/award.gif" alt="" class="hover-up" />
+                                src="https://i.ibb.co/64ZL9fk/meteor-rain.gif" alt="" class="hover-up" />
+
                         </p>
                         <h1 class="display-2 mb-30">Your ad published</h1>
                         <p class="font-lg text-grey-700 mb-30">

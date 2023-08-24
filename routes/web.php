@@ -66,7 +66,6 @@ Route::post('/Web/dashBoard/adsmanagement/imageUpdate', [VendorDashboard::class,
 Route::post('/Web/dashBoard/adsmanagement/addNewImage', [VendorDashboard::class, 'addNewImage'])->name('web.dashboard.ad.addNewImage'); // ad new images
 Route::get('web/vendorAds/delete/{id}', [VendorDashboard::class, 'deleteVendorAd'])->name('vendor.dashboard.deleteVendorAd'); // web dashboard ads management
 
-
 // garage routes for vendor 
 Route::get('/Web/dashBoard/garage', [garageController::class, 'index'])->name('web.dashboard.index'); // web garage display
 Route::post('/Web/dashBoard/garage/create', [garageController::class, 'create'])->name('web.garage.create'); // web garage create
