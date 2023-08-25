@@ -141,6 +141,10 @@ Route::get('/google/login', [vendorManagement::class, 'providerFacebook'])->name
 Route::get('/google/callback', [vendorManagement::class, 'handleCallbackFacebook'])->name('google.callback'); // facebook redirect
 // google login end 
 
+Route::get('/forgetPassword', [vendorManagement::class, 'forgetPasswordVendor'])->name('forgetPassword.vendor'); // vendor forget password
+Route::post('/forgetMail', [vendorManagement::class, 'forgetPasswordMail'])->name('web.forgetPassword.mail'); // vendor forget password set mail
+Route::get('/forgetPasswordToken/Vendor/{token}', [vendorManagement::class, 'showResetForm'])->name("forget_password_link.email.web"); //token 
+Route::post('/resetPasswordVendor', [vendorManagement::class, 'resetPassword'])->name('vendor.resetPassword'); // vendor reset password
 // web routes end 
 
 // admin panel routes start 

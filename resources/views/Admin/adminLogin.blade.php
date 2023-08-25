@@ -25,6 +25,10 @@
     body {
         min-height: 90vh !important;
     }
+
+    div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark {
+        display: none !important;
+    }
 </style>
 
 <body>

@@ -60,10 +60,7 @@
 
                                                     <div class="login_footer form-group mb-50">
                                                         <div class="chek-form">
-                                                            <!--<div class="custome-checkbox">-->
-                                                            <!--  <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" />-->
-                                                            <!--  <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>-->
-                                                            <!--</div>-->
+
                                                         </div>
                                                         <a href="page-privacy-policy.html"><i
                                                                 class="fi-rs-book-alt mr-5 text-muted"></i>terms &
@@ -73,11 +70,8 @@
                                                         <a class="btn btn-danger" id="submit">Create</a>
                                                     </div>
                                                 </form>
-
                                             </div>
-
                                             <div class="d-none d-md-block col-lg-2 col-md-2"></div>
-
                                         </div>
 
                                     </div>
@@ -139,7 +133,7 @@
                             }) //display error msg
 
                         } else {
-                            window.location.href = "{{ route('web.dashboardIndex') }}";
+                            window.location.href = "{{ route('web.vendor.login') }}";
                         }
 
                         $('.clear_input').val('');

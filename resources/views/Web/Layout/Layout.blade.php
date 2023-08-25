@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Nest - Multipurpose eCommerce HTML Template</title>
+    <title>AutoBox</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -63,8 +63,6 @@
             color: rgb(223, 213, 213) !important;
         }
 
-
-
         .hero-slider-1 .single-hero-slider.rectangle .slider-content {
             left: 35% !important;
         }
@@ -73,6 +71,10 @@
             background-color: white !important;
             /* padding: 5px !important; */
 
+        }
+
+        div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark {
+            display: none !important;
         }
 
         @media (max-width: 992px) {

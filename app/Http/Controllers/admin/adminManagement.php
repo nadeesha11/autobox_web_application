@@ -58,6 +58,7 @@ class adminManagement extends Controller
     $request->validate([
       'mail' => 'required|email|exists:users,email|max:100',
     ]);
+
     $token = \Str::random(64);
     $query = DB::table('password_reset_tokens')->where('email', $request->mail);
     if ($query->exists()) {
@@ -94,6 +95,7 @@ class adminManagement extends Controller
 
   public function resetPassword(Request $request)
   {
+
     $check_expired = DB::table('password_reset_tokens')->where(['token' => $request->token])->first();
     $check_time = Carbon::parse($check_expired->expired_at);
     $current_time = Carbon::now();

@@ -40,6 +40,11 @@
 </head>
 
 <body>
+    <style>
+        div:where(.swal2-icon).swal2-error.swal2-icon-show .swal2-x-mark {
+            display: none !important;
+        }
+    </style>
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">

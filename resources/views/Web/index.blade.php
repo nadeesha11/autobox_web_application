@@ -289,7 +289,8 @@
                                     Discover a wide range of auto parts for your vehicle. You have the option to search our
                                     catalog or simply upload an image or the name of the spare part to place your order.
                                 </p>
-                                <a class="btn btn-primary btn-lg" href="{{ route('web.ads_inquery') }}">
+                                <a style="background-color: #37B093 !important;" class="btn btn-primary btn-lg"
+                                    href="{{ route('web.ads_inquery') }}">
                                     Place Your Order <i class="fas fa-arrow-right ml-2"></i>
                                     <!-- Added right arrow icon -->
                                 </a>

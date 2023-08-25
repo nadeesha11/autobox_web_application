@@ -69,7 +69,8 @@
                                                             me</span></label>
                                                 </div>
                                             </div>
-                                            <a class="text-muted" href="#">Forgot password?</a>
+                                            <a class="text-muted" href="{{ route('forgetPassword.vendor') }}">Forgot
+                                                password?</a>
                                         </div>
                                         <div class="form-group text-center">
                                             <button id="login_btn" class="btn btn-heading btn-block hover-up"
