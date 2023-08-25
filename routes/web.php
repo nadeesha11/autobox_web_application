@@ -37,43 +37,64 @@ use Illuminate\Support\Facades\Route;
 
 // web routes start 
 
-// dashboard start 
-Route::get('/Web/dashBoard', [VendorDashboard::class, 'index'])->name('web.dashboardIndex'); // web dashboard
+//protected routes to web
+Route::group(['middleware' => ['vendorCheck']], function () {
 
+  Route::get('/Web/dashBoard', [VendorDashboard::class, 'index'])->name('web.dashboardIndex'); // web dashboard
+
+  // garage routes for vendor 
+  Route::get('/Web/dashBoard/garage', [garageController::class, 'index'])->name('web.dashboard.index'); // web garage display
+  Route::post('/Web/dashBoard/garage/create', [garageController::class, 'create'])->name('web.garage.create'); // web garage create
+  Route::get('/Web/dashBoard/garage/recieveData', [garageController::class, 'recieveData'])->name('web.garage.recieveData'); // web garage recieveData
+  Route::get('web/garage/{id}/delete', [garageController::class, 'delete'])->name('web.garage.delete'); // web garage delete
+  Route::get('web/garage/{id}/more', [garageController::class, 'more'])->name('web.garage.more'); // web garage more
+  Route::get('web/dashboard/garage/editPage/{id}', [garageController::class, 'nextPage'])->name('web.garage.nextPage'); // web garage edit for new page
+  Route::post('/Web/dashBoard/garage/update', [garageController::class, 'update'])->name('web.garage.update'); // web garage update
+
+  Route::post('/Web/dashBoard/getCity', [VendorDashboard::class, 'getCity'])->name('web.dashboard.getCity'); // web get city
+  Route::post('/Web/dashBoard/basicFormDetailsCreate', [VendorDashboard::class, 'createBasicForm'])->name('web.dashboard.basicFormDetailsCreate'); // dashboard basicFormDetailsCreate
+
+  Route::get('/Web/dashBoard/becomeDealer', [VendorDashboard::class, 'becomeDealer'])->name('web.dashboard.becomeDealer'); // web dashboard
+  Route::get('/Web/dashBoard/becomeDealer/edit', [VendorDashboard::class, 'becomeDealerEdit'])->name('web.dashboard.becomeDealer.edit'); // web dashboard edit
+  Route::post('/Web/dashBoard/updateDealer', [VendorDashboard::class, 'updateDealer'])->name('admin.dealer.update'); // dealer update
+
+  Route::get('/Web/inquery/display', [inqueryController::class, 'display'])->name('web.inqueryAds'); // web new ad display inquery
+
+  Route::post('/Web/dashBoard/becomeDealer/Create', [VendorDashboard::class, 'become_dealer_create'])->name('web.dashboard.become_dealer'); // dashboard dealer create
+  Route::post('/Web/dashBoard/updateVendorData', [VendorDashboard::class, 'updateVendorData'])->name('web.vendorData.update'); // web vendor dashboard update
+  Route::get('/Web/dashBoard/adsmanagement', [VendorDashboard::class, 'adsmanagement'])->name('vendor.dashboard.adsmanagement'); // web dashboard ads management
+  Route::get('/Web/dashBoard/adsmanagement/edit{id}', [VendorDashboard::class, 'adEdit'])->name('web.dashboard.ad.edit'); // web dashboard ads edit
+  Route::post('/Web/dashBoard/adsmanagement/update', [VendorDashboard::class, 'adUpdate'])->name('web.dashboard.ad.update'); // ad update
+  Route::get('/Web/dashBoard/adsmanagement/delete{id}', [VendorDashboard::class, 'adDelete'])->name('web.dashboard.ad.delete'); // web ad delete
+  Route::post('/Web/dashBoard/adsmanagement/imageUpdate', [VendorDashboard::class, 'imageUpdate'])->name('web.dashboard.ad.imageEdit'); // ad image update
+  Route::post('/Web/dashBoard/adsmanagement/addNewImage', [VendorDashboard::class, 'addNewImage'])->name('web.dashboard.ad.addNewImage'); // ad new images
+  Route::get('web/vendorAds/delete/{id}', [VendorDashboard::class, 'deleteVendorAd'])->name('vendor.dashboard.deleteVendorAd'); // web dashboard ads management
+
+  Route::get('Web/Vendor/ads', [adsManagementController::class, 'index'])->name('web.dashboard.adsPackages'); // web vendor ads packages index
+  Route::get('Web/Vendor/topAds', [topAdsManagementController::class, 'index'])->name('web.dashboard.topAdsPackages'); // web vendor Top ads packages index
+
+  Route::get('Web/Vendor/ActivatePackage/{id}', [ActivatePackagesController::class, 'index'])->name('web.dashboard.activatePackage'); // web package activate
+  Route::get('Web/Vendor/CurrentPackage', [VendorDashboard::class, 'currentPackageDetails'])->name('web.dahsboard.currentPackage'); // web package activate details
+
+  Route::get('Web/Vendor/CreateAd', [CreateAdController::class, 'index'])->name('web.dashboard.create_ad'); // vendor create ad
+  Route::post('/Web/dashBoard/getBrands', [CreateAdController::class, 'getBrands'])->name('web.dashboard.vehicle_type'); // web get brands
+  Route::post('/Web/dashBoard/getModels', [CreateAdController::class, 'getModels'])->name('web.dashboard.vehicle_model'); // web get model
+  Route::post('/Web/dashBoard/createSession', [CreateAdController::class, 'createSession'])->name('web.dashboard.change_location.createSession'); // web get model
+  Route::post('/Web/dashBoard/createad', [CreateAdController::class, 'create_ad'])->name('web.vendor_dashboard.create_ad'); // web create ad
+  Route::get('/Web/dashBoard/Ad/Success', [CreateAdController::class, 'display_success_ad'])->name('web.dash.ad.created'); // add created
+});
+//protected routes to web
+
+// web routes 
 Route::get('/Web/FindGarage', [garageController::class, 'displayAllGarages'])->name('web.garage.findMyGarage'); // web findMygarage
 Route::get('/Web/FindGarageDetailed/{id}', [garageController::class, 'displayGarageDetailed'])->name('web.garage.detailed'); // web findMygarage detailed
 Route::post('/Web/FindGarage/searchGarage', [garageController::class, 'searchGarage'])->name('web.search.garageDisplay'); // web search garage
 Route::get('/display/garage/results', [garageController::class, 'displayGarageResults'])->name('web.display.garage.results');
 
-Route::post('/Web/dashBoard/getCity', [VendorDashboard::class, 'getCity'])->name('web.dashboard.getCity'); // web get city
-Route::post('/Web/dashBoard/basicFormDetailsCreate', [VendorDashboard::class, 'createBasicForm'])->name('web.dashboard.basicFormDetailsCreate'); // dashboard basicFormDetailsCreate
 Route::get('/Web/dashBoard/logout', [VendorDashboard::class, 'logout'])->name('web.vendor.logout'); // web logout
-Route::get('/Web/dashBoard/becomeDealer', [VendorDashboard::class, 'becomeDealer'])->name('web.dashboard.becomeDealer'); // web dashboard
-Route::get('/Web/dashBoard/becomeDealer/edit', [VendorDashboard::class, 'becomeDealerEdit'])->name('web.dashboard.becomeDealer.edit'); // web dashboard edit
-Route::post('/Web/dashBoard/updateDealer', [VendorDashboard::class, 'updateDealer'])->name('admin.dealer.update'); // dealer update
 
 Route::get('/Web/inquery', [inqueryController::class, 'index'])->name('web.ads_inquery'); // web new ad inquery
 Route::post('/Web/inquery/create', [inqueryController::class, 'create'])->name('web.create.adsInquery'); // web create new ad inquery
-Route::get('/Web/inquery/display', [inqueryController::class, 'display'])->name('web.inqueryAds'); // web new ad display inquery
-
-Route::post('/Web/dashBoard/becomeDealer/Create', [VendorDashboard::class, 'become_dealer_create'])->name('web.dashboard.become_dealer'); // dashboard dealer create
-Route::post('/Web/dashBoard/updateVendorData', [VendorDashboard::class, 'updateVendorData'])->name('web.vendorData.update'); // web vendor dashboard update
-Route::get('/Web/dashBoard/adsmanagement', [VendorDashboard::class, 'adsmanagement'])->name('vendor.dashboard.adsmanagement'); // web dashboard ads management
-Route::get('/Web/dashBoard/adsmanagement/edit{id}', [VendorDashboard::class, 'adEdit'])->name('web.dashboard.ad.edit'); // web dashboard ads edit
-Route::post('/Web/dashBoard/adsmanagement/update', [VendorDashboard::class, 'adUpdate'])->name('web.dashboard.ad.update'); // ad update
-Route::get('/Web/dashBoard/adsmanagement/delete{id}', [VendorDashboard::class, 'adDelete'])->name('web.dashboard.ad.delete'); // web ad delete
-Route::post('/Web/dashBoard/adsmanagement/imageUpdate', [VendorDashboard::class, 'imageUpdate'])->name('web.dashboard.ad.imageEdit'); // ad image update
-Route::post('/Web/dashBoard/adsmanagement/addNewImage', [VendorDashboard::class, 'addNewImage'])->name('web.dashboard.ad.addNewImage'); // ad new images
-Route::get('web/vendorAds/delete/{id}', [VendorDashboard::class, 'deleteVendorAd'])->name('vendor.dashboard.deleteVendorAd'); // web dashboard ads management
-
-// garage routes for vendor 
-Route::get('/Web/dashBoard/garage', [garageController::class, 'index'])->name('web.dashboard.index'); // web garage display
-Route::post('/Web/dashBoard/garage/create', [garageController::class, 'create'])->name('web.garage.create'); // web garage create
-Route::get('/Web/dashBoard/garage/recieveData', [garageController::class, 'recieveData'])->name('web.garage.recieveData'); // web garage recieveData
-Route::get('web/garage/{id}/delete', [garageController::class, 'delete'])->name('web.garage.delete'); // web garage delete
-Route::get('web/garage/{id}/more', [garageController::class, 'more'])->name('web.garage.more'); // web garage more
-Route::get('web/dashboard/garage/editPage/{id}', [garageController::class, 'nextPage'])->name('web.garage.nextPage'); // web garage edit for new page
-Route::post('/Web/dashBoard/garage/update', [garageController::class, 'update'])->name('web.garage.update'); // web garage update
 
 Route::get('/Web/AllAds', [allAdsController::class, 'view'])->name('web.allads.view'); // web all ads display view
 Route::get('AllAds/Type{id}', [allAdsController::class, 'viewType'])->name('web.allads.vehicleType'); //view vehicletype
@@ -84,20 +105,7 @@ Route::post('Web/Vendor/Login', [vendorManagement::class, 'login'])->name('web.l
 Route::get('/Vendor/Login', [vendorManagement::class, 'index'])->name('web.vendor.login'); // web vendor login index
 Route::get('/Vendor/Register', [vendorManagement::class, 'registerIndex'])->name('web.vendor.register'); // web vendor register
 Route::post('/Vendor/Create', [vendorManagement::class, 'create'])->name('web.vendor.create'); // web vendor create
-
-Route::get('Web/Vendor/ads', [adsManagementController::class, 'index'])->name('web.dashboard.adsPackages'); // web vendor ads packages index
-Route::get('Web/Vendor/topAds', [topAdsManagementController::class, 'index'])->name('web.dashboard.topAdsPackages'); // web vendor Top ads packages index
-
-Route::get('Web/Vendor/ActivatePackage/{id}', [ActivatePackagesController::class, 'index'])->name('web.dashboard.activatePackage'); // web package activate
-Route::get('Web/Vendor/CurrentPackage', [VendorDashboard::class, 'currentPackageDetails'])->name('web.dahsboard.currentPackage'); // web package activate details
-
-Route::get('Web/Vendor/CreateAd', [CreateAdController::class, 'index'])->name('web.dashboard.create_ad'); // vendor create ad
-Route::post('/Web/dashBoard/getBrands', [CreateAdController::class, 'getBrands'])->name('web.dashboard.vehicle_type'); // web get brands
-Route::post('/Web/dashBoard/getModels', [CreateAdController::class, 'getModels'])->name('web.dashboard.vehicle_model'); // web get model
-Route::post('/Web/dashBoard/createSession', [CreateAdController::class, 'createSession'])->name('web.dashboard.change_location.createSession'); // web get model
-Route::post('/Web/dashBoard/createad', [CreateAdController::class, 'create_ad'])->name('web.vendor_dashboard.create_ad'); // web create ad
-Route::get('/Web/dashBoard/Ad/Success', [CreateAdController::class, 'display_success_ad'])->name('web.dash.ad.created'); // add created
-// dashboard end 
+// web routes 
 
 Route::get('/', [homeController::class, 'index'])->name('web.home'); // web home
 Route::get('/Detailed{id}', [homeController::class, 'detailed'])->name('web.detailed_ad'); // web ad detailed
@@ -157,8 +165,6 @@ Route::group(['middleware' => ['adminCheck']], function () {
   Route::get('/admin/sliderManagement/recieveData', [sliderManagementController::class, 'recieveData'])->name('admin.slider_management.recieveData'); // slider recieve data
   Route::get('/admin/slider/{id}/delete', [sliderManagementController::class, 'delete'])->name('admin.sliderManagement.delete'); // slider management delete
 
-  // url: '{{ url('admin/slider') }}' + '/' + id + '/delete',
-
   Route::get('/admin/users', [viewUsersController::class, 'index'])->name('admin.users.view'); // admin users view
   Route::get('/admin/users/getData', [viewUsersController::class, 'getData'])->name('admin.users.recieveData'); // admin users getData
   Route::get('/admin/users/more/{id}', [viewUsersController::class, 'more'])->name('admin.users.more'); // admin users getData
@@ -199,8 +205,6 @@ Route::group(['middleware' => ['adminCheck']], function () {
   Route::get('/admin/topAdsManagement/getData', [topAdManagementController::class, 'getData'])->name('admin.topads.recieveData'); // admin table data topads
   Route::get('/admin/topAdsManagement/{id}/edit', [topAdManagementController::class, 'edit'])->name('admin.topads.edit'); // admin table data topads
   Route::post('/admin/topAdsManagement/update', [topAdManagementController::class, 'update'])->name('admin.topAds.update'); // admin UPDATE topads management
-
-
 
 });
 // admin panel routes end 
