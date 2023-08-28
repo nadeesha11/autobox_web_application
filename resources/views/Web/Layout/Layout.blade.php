@@ -93,6 +93,31 @@
                 /* display: none; */
             }
         }
+
+        /* hide wired sweet alert css  */
+        div:where(.swal2-icon).swal2-success [class^=swal2-success-circular-line][class$=left] {
+            display: none !important;
+        }
+
+        div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-circular-line-right {
+            display: none !important;
+        }
+
+        div:where(.swal2-icon).swal2-success .swal2-success-fix {
+            display: none !important;
+        }
+
+        div:where(.swal2-icon).swal2-success .swal2-success-ring {
+            display: none !important;
+        }
+
+        div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-tip {
+            display: none !important;
+        }
+
+        div:where(.swal2-icon).swal2-success.swal2-icon-show .swal2-success-line-long {
+            display: none !important;
+        }
     </style>
 
     <!-- Quick view -->

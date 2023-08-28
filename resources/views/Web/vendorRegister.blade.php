@@ -50,6 +50,9 @@
                                                             id="password" placeholder="Password" />
                                                         <span id="password_error"
                                                             class="text-danger clear_form_error"></span>
+                                                        <span class="text-success">password should contain at least one
+                                                            number, uppercase , lowercase and special character with minimum
+                                                            6 length </span>
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="password" class="clear_input"
@@ -142,8 +145,6 @@
                     },
 
                     error: function(error) {
-
-
                         // display validations in created slider 
                         $('#username_error').html(error.responseJSON.errors.username);
                         $('#email_error').html(error.responseJSON.errors.email);
