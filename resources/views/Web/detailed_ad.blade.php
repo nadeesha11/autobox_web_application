@@ -68,7 +68,10 @@
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <span class="current-price text-brand">RS.
-                                                {{ number_format($detailed_ads[0]->ad_price, 2, '.', '') }}
+                                                {{ number_format($detailed_ads[0]->ad_price, 2, '.', '') }} @if ($detailed_ads[0]->negotiable == 1)
+                                                    <h5 style="color: #555855">negotiable</h5>
+                                                @else
+                                                @endif
                                             </span>
 
                                         </div>
@@ -88,15 +91,6 @@
                                                     <li class="mb-5">Model: <span
                                                             class="text-brand">{{ $detailed_ads[0]->model_name }}</span>
                                                     </li>
-                                                    <li class="mb-5">Negotiable: <span class="text-brand">
-                                                            @if ($detailed_ads[0]->negotiable == 1)
-                                                                Yes
-                                                            @else
-                                                                No
-                                                            @endif
-                                                        </span>
-                                                    </li>
-
                                                     <li class="mb-5">District: <span
                                                             class="text-brand">{{ $detailed_ads[0]->district }}</span>
                                                     </li>
@@ -124,26 +118,26 @@
                                         <div class="col-sm-12  col-md-6 col-lg-6">
                                             <div style="margin-top: 30px !important;" class="font-xs">
                                                 <ul class="mr-50 float-start" style="list-style: none; display: flex;">
-                                                    <li class="mb-5" style="margin-right: 5px;"><a
+                                                    <li class="mb-5" style="margin-right: 5px;"> <a
                                                             href="{{ $detailed_ads[0]->Fb_link }}"><img
                                                                 style="width: 30px !important; height: 30px !important;"
                                                                 src="https://img.icons8.com/color/48/facebook-new.png"
-                                                                alt="facebook-new" /></a></li>
-                                                    <li class="mb-5" style="margin-right: 5px;"><a
+                                                                alt="facebook-new" /></a> </li>
+                                                    <li class="mb-5" style="margin-right: 5px;"> <a
                                                             href="{{ $detailed_ads[0]->Twitter_link }}"><img
                                                                 style="width: 30px !important; height: 30px !important;"
                                                                 src="https://img.icons8.com/fluency/48/twitter.png"
-                                                                alt="twitter" /></a></li>
+                                                                alt="twitter" /></a> </li>
                                                     <li class="mb-5" style="margin-right: 5px;"><a
                                                             href="{{ $detailed_ads[0]->Linkedin_link }}"><img
                                                                 style="width: 30px !important; height: 30px !important;"
                                                                 src="https://img.icons8.com/sf-black-filled/64/linkedin.png"
                                                                 alt="linkedin" /></a></li>
-                                                    <li class="mb-5" style="margin-right: 5px;"><a
+                                                    <li class="mb-5" style="margin-right: 5px;"> <a
                                                             href="{{ $detailed_ads[0]->Youtube_link }}"><img
                                                                 style="width: 30px !important; height: 30px !important;"
                                                                 src="https://img.icons8.com/color/48/youtube-play.png"
-                                                                alt="youtube-play" /></a></li>
+                                                                alt="youtube-play" /></a> </li>
                                                 </ul>
                                             </div>
                                         </div>
