@@ -67,6 +67,7 @@ class homeController extends Controller
     public function memberShop($id)
     {
         $member_details = DB::table('dealer')->where('user_id', $id)->first();
+        $user_data = DB::table('users')->find($id);
         $filterd_ads = DB::table('ads')
             ->leftJoin('ads_images', function ($join) {
                 $join->on('ads.id', '=', 'ads_images.ads_id')
@@ -79,7 +80,7 @@ class homeController extends Controller
             ->paginate(12);
 
         $totalCount = $filterd_ads->total();
-        return view('Web.shop', compact('filterd_ads', 'totalCount', 'member_details'));
+        return view('Web.shop', compact('filterd_ads', 'totalCount', 'member_details', 'user_data'));
     }
 
     public function getBrands($id)

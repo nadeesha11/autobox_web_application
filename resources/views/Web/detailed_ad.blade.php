@@ -88,6 +88,14 @@
                                                     <li class="mb-5">Model: <span
                                                             class="text-brand">{{ $detailed_ads[0]->model_name }}</span>
                                                     </li>
+                                                    <li class="mb-5">Negotiable: <span class="text-brand">
+                                                            @if ($detailed_ads[0]->negotiable == 1)
+                                                                Yes
+                                                            @else
+                                                                No
+                                                            @endif
+                                                        </span>
+                                                    </li>
 
                                                     <li class="mb-5">District: <span
                                                             class="text-brand">{{ $detailed_ads[0]->district }}</span>

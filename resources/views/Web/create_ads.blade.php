@@ -153,27 +153,6 @@
 
                                     </div>
                                 </div>
-                                {{-- <div class="row shipping_calculator">
-                                    <div class="form-group col-lg-6">
-                                        <div class="custom_select">
-                                            <select id="accessory_type" name="part accessory type_id"
-                                                class="form-control select-active">
-                                                <option value="">Select an part accessory type ...</option>
-                                                <option value="Body Components">
-                                                    Body Components</option>
-                                                <option value="Interior Parts & Furnishings">Interior Parts & Furnishings
-                                                </option>
-                                                <option value="Engines & Engine Parts">Engines & Engine Parts </option>
-                                                <option value="Accessories">Accessories </option>
-                                                <option value="Wheels, Tyres & Rims ">Wheels, Tyres & Rims </option>
-                                                <option value="Car Audio Systems">Car Audio Systems </option>
-                                            </select>
-                                            <label for="accessory_type" class="select-label">Accessory type</label>
-                                            <span class="clear_form_error" id="accessory_type_error"></span>
-                                        </div>
-                                    </div>
-
-                                </div> --}}
 
                                 <div class="form-group row ">
                                     @if ($package_max_image >= 1)
@@ -247,6 +226,14 @@
                                     <textarea class=" " id="description" name="additional_information" rows="5"
                                         placeholder="Additional information"></textarea>
                                     <span class="clear_form_error" id="description_error"></span>
+                                </div>
+                                <div class="chek-form">
+                                    <div class="custome-checkbox">
+                                        <input class="form-check-input" type="checkbox" name="negotiable"
+                                            id="exampleCheckbox1" value="negotiable" />
+                                        <label class="form-check-label" for="exampleCheckbox1"><i
+                                                class="fa-solid fa-tag m-1"></i><span> negotiable</span></label>
+                                    </div>
                                 </div>
                                 <div class="chek-form">
                                     <div class="custome-checkbox">

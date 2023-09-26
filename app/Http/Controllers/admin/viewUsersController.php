@@ -11,9 +11,13 @@ class viewUsersController extends Controller
 {
     public function index()
     {
-
-
         return view('Admin.users');
+    }
+
+    public function test()
+    {
+        $data = DB::table('users')->get();
+        return response()->json(['data' => $data]);
     }
 
     public function getData()

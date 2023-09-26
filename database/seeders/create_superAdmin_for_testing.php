@@ -17,8 +17,8 @@ class create_superAdmin_for_testing extends Seeder
         User::create([
             'name' => 'temp_username',
             'email' => 'jayathilaka221b@gmail.com',
-            'password'=>Hash::make('temp_Password'),
-        
+            'password' => Hash::make('temp_Password'),
+
         ]);
     }
 }

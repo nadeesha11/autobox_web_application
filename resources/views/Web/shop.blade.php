@@ -24,7 +24,6 @@
             font-size: 16px !important;
             border: none !important;
             border-radius: 3px !important;
-
             color: #fff !important;
             cursor: pointer !important;
             margin-top: 5px !important;
@@ -105,7 +104,6 @@
                                                     <img style="height: 300px; width: 100%; object-fit: cover !important;"
                                                         src="{{ asset('assets/myCustomThings/vehicleTypes/' . $item->name) }}"
                                                         alt="{{ $item->ad_title }}" />
-
                                                 </a>
                                             </div>
                                         </div>
@@ -167,12 +165,25 @@
                                 <a class="m-2" target="_blank" href="route('{{ $member_details->google_location }}')">
                                     Google Location</a>
                             </div>
-                            {{-- <div style="margin-top: 10px !important; padding:10px !important;" class="font-xs card">
-                                <a class="m-2" target="_blank"
-                                    href="{{ route('web.memberShop', ['id' => $member_details->user_id]) }}">
-                                    Visit Shop</a>
-                            </div> --}}
                         </div>
+                        <div class="col-sm-12  col-md-12 col-lg-12 row m-2 ">
+                            <div class="col">
+                                <a href="{{ $user_data->Fb_link }}"><img
+                                        style="width: 30px !important; height: 30px !important;"
+                                        src="https://img.icons8.com/color/48/facebook-new.png" alt="facebook-new" /></a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ $user_data->Twitter_link }}"><img
+                                        style="width: 30px !important; height: 30px !important;"
+                                        src="https://img.icons8.com/fluency/48/twitter.png" alt="twitter" /></a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ $user_data->Youtube_link }}"><img
+                                        style="width: 30px !important; height: 30px !important;"
+                                        src="https://img.icons8.com/color/48/youtube-play.png" alt="youtube-play" /></a>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

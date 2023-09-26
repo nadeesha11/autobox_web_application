@@ -55,6 +55,7 @@ class CreateAdController extends Controller
 
     public function create_ad(Request $request)
     {
+
         $request->validate([
             'title' => 'required|max:160',
             'price' => 'required|numeric',
@@ -84,6 +85,14 @@ class CreateAdController extends Controller
         }
 
         try {
+
+            // check negotiable or not
+            if (isset($request->negotiable)) {
+                $negotiable = 1; // negotiable
+            } else {
+                $negotiable = 0; // not negotiable
+            }
+
             $ads_id = DB::table('ads')->insertGetId([
                 'ad_number' => str_pad(mt_rand(0, 99999999), 8, '0', STR_PAD_LEFT),
                 'ad_title' => $request->title,
@@ -104,6 +113,7 @@ class CreateAdController extends Controller
                 'top_ad_expire_date' => $top_ad_expire_date = isset($check_top_ad_count)  ? Carbon::now()->addDays(1) : null, // check top ad or not
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'negotiable' => $negotiable,
             ]);
 
             if ($ads_id) {
