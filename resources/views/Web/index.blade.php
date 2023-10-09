@@ -327,70 +327,142 @@
                     <div class="col-8 row " style="margin-top: 10px;">
 
                         <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
-                            <div style="border-radius: 20px !important; background-color:#ffffff !important;"
-                                class="card mb-3">
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 4]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
 
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <img class="category_image" src="{{ asset('assets/imgs/theme/car.png') }}"
-                                        alt="">
-                                    <p class="text-center">CARS, DOUBLE CABS & SUVS</p>
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/motorcycle_new.png') }}"
+                                            alt="">
+                                        <p class="text-center">MOTOR BIKES</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
-                            <div style="border-radius: 20px !important; background-color:#ffffff !important;"
-                                class="card mb-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <img class="category_image" src="{{ asset('assets/imgs/theme/motorcycle.png') }}"
-                                        alt="">
-                                    <p class="text-center">MOTOR BIKES & SCOOTERS</p>
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 5]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/car _new.png') }}" alt="">
+                                        <p class="text-center">CARS</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
-                            <div style="border-radius: 20px !important; background-color:#ffffff !important;"
-                                class="card mb-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <img class="category_image" src="{{ asset('assets/imgs/theme/delivery-van.png') }}"
-                                        alt="">
-                                    <p class="text-center">BUSES, TRUCK & LORRIES</p>
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 6]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/tuk-tuk_new.png') }}"
+                                            alt="">
+                                        <p class="text-center">THREE WHEELERS</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
-                            <div style="border-radius: 20px !important; background-color:#ffffff !important;"
-                                class="card mb-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <img class="category_image" src="{{ asset('assets/imgs/theme/autorickshaw.png') }}"
-                                        alt="">
-                                    <p class="text-center">THREE WHEELERS</p>
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 7]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/bicycle _new.png') }}"
+                                            alt="">
+                                        <p class="text-center">BICYCLES</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
-                            <div style="border-radius: 20px !important; background-color:#ffffff !important;"
-                                class="card mb-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <img class="category_image" src="{{ asset('assets/imgs/theme/delivery-van.png') }}"
-                                        alt="">
-                                    <p class="text-center">VANS</p>
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 8]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/lorry _new.png') }}"
+                                            alt="">
+                                        <p class="text-center">LORRIES AND TRUCKS</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
-                            <div style="border-radius: 20px !important; background-color:#ffffff !important;"
-                                class="card mb-3">
-                                <div class="p-3 d-flex flex-column align-items-center justify-content-center">
-                                    <img class="category_image" src="{{ asset('assets/imgs/theme/loader.png') }}"
-                                        alt="">
-                                    <p class="text-center">HEAVY MACHINERY & TRACTORS</p>
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 9]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/delivery-van_new.png') }}"
+                                            alt="">
+                                        <p class="text-center">VANS</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 10]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/tractor _new.png') }}"
+                                            alt="">
+                                        <p class="text-center">TRACTORS</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 11]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/drill _new.png') }}"
+                                            alt="">
+                                        <p class="text-center">HEAVY DUTY</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 12]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/bus _new.png') }}" alt="">
+                                        <p class="text-center">BUSES</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 vehicle_type_check_height ">
+                            <a href="{{ route('web.allads.vehicleType', ['id' => 13]) }}">
+                                <div style="border-radius: 20px !important; background-color:#ffffff !important;"
+                                    class="card mb-3">
+                                    <div class="p-3 d-flex flex-column align-items-center justify-content-center">
+                                        <img class="category_image"
+                                            src="{{ asset('assets/imgs/new_images_home/yatch_new.png') }}"
+                                            alt="">
+                                        <p class="text-center">BOATS AND WATER TRANSPORT</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
 
                     </div>
