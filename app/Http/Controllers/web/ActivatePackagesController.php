@@ -40,7 +40,43 @@ class ActivatePackagesController extends Controller
                 }
             }
         } else {
-            //this is payed package
+            $merchant_id = '1224415';
+            $order_id = uniqid();
+            $amount = $package_data->package_price;
+            $merchant_secret = 'MTY3ODUwNDAyMTI5NTU0NjI2MzkzMDk2NDM1MjEzNTE3Njg3MTQw';
+            $currency = 'LKR';
+
+            $hash = strtoupper(
+                md5(
+                    $merchant_id . 
+                    $order_id . 
+                    number_format($amount, 2, '.', '') . 
+                    $currency .  
+                    strtoupper(md5($merchant_secret)) 
+                ) 
+            );
+
+            $payment_data = [];
+            $payment_data['amount'] =$package_data->package_price;
+            $payment_data['order_id'] =$order_id;
+            $payment_data['items'] =$package_data->package_name;
+            $payment_data['hash'] =$hash;
+
+            $payment_data['currency'] ="LKR";
+            $payment_data['delivery_country'] ="Sri lanka";
+            $payment_data['delivery_city'] ="Anuradhapura";
+            $payment_data['delivery_address'] ="44/b, ibbagamuwa";
+            $payment_data['country'] ="Sri lanka";
+            $payment_data['city'] = "Anuradhapura";
+            $payment_data['address'] ="44/b,ibbagamuwa";
+            $payment_data['phone'] ="0713439884";
+            $payment_data['email'] ="jayathilaka221b@gmail.com";
+            $payment_data['last_name'] ="jayathshan";
+            $payment_data['first_name'] ="Nadeesha";
+
+            $encoded_data = json_encode($payment_data);
+            return $encoded_data;
+
 
         }
     }

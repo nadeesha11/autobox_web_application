@@ -131,7 +131,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td><a class="btn btn-sucess"
-                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
+                                                                onclick="payedActivatePackage({{ $single->id }})">Buy
                                                                 Now</a></td>
                                                     </tr>
                                                 </table>
@@ -177,7 +177,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td><a class="btn btn-sucess"
-                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
+                                                            onclick="payedActivatePackage({{ $single->id }})">Buy
                                                                 Now</a></td>
                                                     </tr>
                                                 </table>
@@ -222,7 +222,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td><a class="btn btn-sucess"
-                                                                href="{{ route('web.dashboard.activatePackage', ['id' => $single->id]) }}">Buy
+                                                            onclick="payedActivatePackage({{ $single->id }})">Buy
                                                                 Now</a></td>
                                                     </tr>
                                                 </table>
@@ -243,4 +243,76 @@
             </div>
         </div>
     </main>
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
+    <script>
+        function payedActivatePackage(id){
+         //need to create ajax
+
+         $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            }); //ajax setup
+        
+         $.ajax({
+            url: '{{ url('Web/Vendor/ActivatePackage') }}/' + id,
+
+                method: 'GET',
+                success: function(data) {
+ 
+                var decodedData = JSON.parse(data)    
+
+                    // Payment completed. It can be a successful failure.
+    payhere.onCompleted = function onCompleted(orderId) {
+        console.log("Payment completed. OrderID:" + orderId);
+        // Note: validate the payment and show success or failure page to the customer
+    };
+
+    // Payment window closed
+    payhere.onDismissed = function onDismissed() {
+        // Note: Prompt user to pay again or show an error page
+        console.log("Payment dismissed");
+    };
+
+    // Error occurred
+    payhere.onError = function onError(error) {
+        // Note: show an error page
+        console.log("Error:"  + error);
+    };
+
+    // Put the payment variables here
+    var payment = {
+        "sandbox": true,
+        "merchant_id": "1224415",    // Replace your Merchant ID
+        "return_url": 'http://127.0.0.1:8000/Web/dashBoard/garage',     // Important
+        "cancel_url": 'http://127.0.0.1:8000/Web/dashBoard/garage',     // Important
+        "notify_url": "http://sample.com/notify",
+        "order_id": decodedData['order_id'],
+        "items": decodedData['items'],
+        "amount": decodedData['amount'],
+        "currency": decodedData['currency'],
+        "hash":  decodedData['hash'], // *Replace with generated hash retrieved from backend
+        "first_name": decodedData['first_name'],
+        "last_name": decodedData['last_name'],
+        "email": decodedData['email'],
+        "phone": decodedData['phone'],
+        "address": decodedData['address'],
+        "city": decodedData['city'],
+        "country": decodedData['country'],
+        "delivery_address": decodedData['delivery_address'],
+        "delivery_city": decodedData['delivery_city'],
+        "delivery_country": decodedData['delivery_country'],
+        // "custom_1": "",
+        // "custom_2": ""
+  
+    };
+
+    payhere.startPayment(payment);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
 @endsection
