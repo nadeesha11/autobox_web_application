@@ -259,7 +259,7 @@
 
                 method: 'GET',
                 success: function(data) {
- 
+                alert(data)
                 var decodedData = JSON.parse(data)    
 
                     // Payment completed. It can be a successful failure.
@@ -284,8 +284,8 @@
     var payment = {
         "sandbox": true,
         "merchant_id": "1224415",    // Replace your Merchant ID
-        "return_url": 'https://autobox_web_application.test/',     // Important
-        "cancel_url": 'https://autobox_web_application.test/',     // Important
+        "return_url": "http://localhost/payhere_config/",     // Important
+        "cancel_url": "http://localhost/payhere_config/",     // Important
         "notify_url": "http://sample.com/notify",
         "order_id": decodedData['order_id'],
         "items": decodedData['items'],
@@ -302,8 +302,8 @@
         "delivery_address": decodedData['delivery_address'],
         "delivery_city": decodedData['delivery_city'],
         "delivery_country": decodedData['delivery_country'],
-        // "custom_1": "",
-        // "custom_2": ""
+        "custom_1": "",
+        "custom_2": ""
   
     };
 

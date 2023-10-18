@@ -43,7 +43,7 @@ class ActivatePackagesController extends Controller
             $merchant_id = '1224415';
             $order_id = uniqid();
             $amount = $package_data->package_price;
-            $merchant_secret = 'MjY0MDA2OTg1MjEzMzc4MjQ3NjM1ODgxNzkwMTcxOTk4OTU4NDMx';
+            $merchant_secret = 'MjQ5NjgyNTQ4NzMwOTU0NTY4NTMyNzI1NDQ3MTY4NDM2NDMwNzAz';
             $currency = 'LKR';
 
             $hash = strtoupper(
