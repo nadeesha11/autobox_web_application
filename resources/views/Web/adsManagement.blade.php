@@ -284,8 +284,8 @@
     var payment = {
         "sandbox": true,
         "merchant_id": "1224415",    // Replace your Merchant ID
-        "return_url": 'http://127.0.0.1:8000/Web/dashBoard/garage',     // Important
-        "cancel_url": 'http://127.0.0.1:8000/Web/dashBoard/garage',     // Important
+        "return_url": 'https://autobox_web_application.test/',     // Important
+        "cancel_url": 'https://autobox_web_application.test/',     // Important
         "notify_url": "http://sample.com/notify",
         "order_id": decodedData['order_id'],
         "items": decodedData['items'],

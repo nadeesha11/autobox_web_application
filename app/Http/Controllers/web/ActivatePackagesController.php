@@ -43,7 +43,7 @@ class ActivatePackagesController extends Controller
             $merchant_id = '1224415';
             $order_id = uniqid();
             $amount = $package_data->package_price;
-            $merchant_secret = 'MTY3ODUwNDAyMTI5NTU0NjI2MzkzMDk2NDM1MjEzNTE3Njg3MTQw';
+            $merchant_secret = 'MjY0MDA2OTg1MjEzMzc4MjQ3NjM1ODgxNzkwMTcxOTk4OTU4NDMx';
             $currency = 'LKR';
 
             $hash = strtoupper(
@@ -76,7 +76,6 @@ class ActivatePackagesController extends Controller
 
             $encoded_data = json_encode($payment_data);
             return $encoded_data;
-
 
         }
     }
